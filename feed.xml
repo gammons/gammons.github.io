@@ -28,20 +28,16 @@ When an object knows the name
 </summary>
   </entry>
   <entry>
-    <title>Welcome to Ghost</title>
-    <link rel="alternate" href="http://grantammons.me/2013/10/26/welcome-to-ghost/"/>
-    <id>http://grantammons.me/2013/10/26/welcome-to-ghost/</id>
-    <published>2013-10-25T20:00:00-04:00</published>
-    <updated>2015-11-10T07:10:21-05:00</updated>
+    <title>Where the logic hides in Rails apps</title>
+    <link rel="alternate" href="http://grantammons.me/2012/12/22/where-the-logic-hides/"/>
+    <id>http://grantammons.me/2012/12/22/where-the-logic-hides/</id>
+    <published>2012-12-22T06:05:00-05:00</published>
+    <updated>2015-11-12T06:10:59-05:00</updated>
     <author>
       <name>Grant Ammons</name>
     </author>
-    <summary type="html">You’re in! Nice. We’ve put together a little post to introduce you to the Ghost
-editor and get you started. Go ahead and edit this post to get going and learn
-how it all works!
+    <summary type="html">DHH recently authored a SVN blog post that advocated breaking up fat models into separate mixins that would live in a new directory in the rails structure, app/concerns.
 
-Getting Started
-
-Writing in markdown is really easy. In the left hand panel</summary>
+He made it clear that breaking up domain logic into concerns will make code easier</summary>
   </entry>
 </feed>

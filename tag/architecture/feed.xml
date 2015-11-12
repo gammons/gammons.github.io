@@ -27,4 +27,17 @@ An object is said to depend on another object in the following scenarios:
 When an object knows the name
 </summary>
   </entry>
+  <entry>
+    <title>Where the logic hides in Rails apps</title>
+    <link rel="alternate" href="http://grantammons.me/2012/12/22/where-the-logic-hides/"/>
+    <id>http://grantammons.me/2012/12/22/where-the-logic-hides/</id>
+    <published>2012-12-22T06:05:00-05:00</published>
+    <updated>2015-11-12T06:10:59-05:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">DHH recently authored a SVN blog post that advocated breaking up fat models into separate mixins that would live in a new directory in the rails structure, app/concerns.
+
+He made it clear that breaking up domain logic into concerns will make code easier</summary>
+  </entry>
 </feed>
