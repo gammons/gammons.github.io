@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Grant Ammons: architecture</title>
+  <subtitle>Posts tagged with architecture</subtitle>
+  <id>http://grantammons.me</id>
+  <link href="http://grantammons.me"/>
+  <link href="http://grantammons.me/tag/architecture/feed.xml" rel="self"/>
+  <updated>2015-11-10T08:01:00-05:00</updated>
+  <author>
+    <name>Grant Ammons</name>
+  </author>
+  <entry>
+    <title>How dependency lines work in object-oriented design</title>
+    <link rel="alternate" href="http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/"/>
+    <id>http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/</id>
+    <published>2015-11-10T08:01:00-05:00</published>
+    <updated>2015-11-11T06:37:23-05:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">When you look at an object dependency graph, it’s not 100% clear how to read it.  When one object points to another,
+what does that mean exactly?
+
+An object is said to depend on another object in the following scenarios:
+
+
+When an object knows the name
+</summary>
+  </entry>
+</feed>

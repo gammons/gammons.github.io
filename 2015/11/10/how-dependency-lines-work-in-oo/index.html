@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Grant Ammons: How dependency lines work in object-oriented design</title>
+<meta content='When you look at an object dependency graph, it&amp;rsquo;s not 100% clear how to read it. When one object points to another, what does that mean ex...' name='description'>
+<meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<meta content='IE=edge' http-equiv='X-UA-Compatible'>
+<meta content='True' name='HandheldFriendly'>
+<meta content='Grant Ammons' property='og:site_name'>
+<meta content='article' property='og:type'>
+<meta content='How dependency lines work in object-oriented design' property='og:title'>
+<meta content='When you look at an object dependency graph, it&amp;rsquo;s not 100% clear how to read it. When one object points to another, what does that mean ex...' property='og:description'>
+<meta content='http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' property='og:url'>
+<meta content='http://grantammons.me/images/Railway-in-the-fog.jpg' property='og:image'>
+<meta content='2015-11-10' property='article:published_time'>
+<meta content='summary' name='twitter:card'>
+<meta content='gammons' name='twitter:site'>
+<meta content='How dependency lines work in object-oriented design' name='twitter:title'>
+<meta content='When you look at an object dependency graph, it&amp;rsquo;s not 100% clear how to read it. When one object points to another, what does that mean ex...' name='twitter:description'>
+<meta content='http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' name='twitter:url'>
+<meta content='http://grantammons.me/images/Railway-in-the-fog.jpg' name='twitter:image:src'>
+<link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" />
+<link href="/images/favicon.ico" rel="icon" type="image/ico" />
+<link href="/stylesheets/application.css" rel="stylesheet" />
+<link href='//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(["_setAccount", "UA-37191428-1"]);
+  _gaq.push(["_trackPageview"]);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class='post-template nav-closed'>
+<div class='nav'>
+<h3 class='nav-title'>Menu</h3>
+<a class='nav-close' href='#'>
+<span class='hidden'>Close</span>
+</a>
+<ul>
+<li class='nav-home' role='presentation'>
+<a href='/'>Home</a>
+</li>
+</ul>
+<a class='subscribe-button icon-feed' href='/feed.xml'>Subscribe</a>
+</div>
+<span class='nav-cover'></span>
+
+<div class='site-wrapper'>
+<header class='main-header post-head' style='background-image: url(/images/Railway-in-the-fog.jpg)'>
+<nav class='clearfix main-nav overlay'>
+<a class='menu-button icon-menu' href='#'>
+<span class='word'>Menu</span>
+</a>
+</nav>
+</header>
+<main class='content' role='main'>
+<article class='post'>
+<header class='post-header'>
+<h1 class='post-title'>How dependency lines work in object-oriented design</h1>
+<section class='post-meta'>
+<time class='post-date' datetime='2015-11-10'>
+10 November 2015
+</time>
+on <a href='/tag/architecture/'>architecture</a>
+</section>
+</header>
+<section class='post-content'><p>When you look at an object dependency graph, it&rsquo;s not 100% clear how to read it.  When one object points to another,
+what does that mean exactly?</p>
+
+<p>An object is said to depend on another object in the following scenarios:</p>
+
+<ol>
+<li>When an object knows the name of another object</li>
+<li>When an object knows the name of a method of another object, and knows the arguments that method takes</li>
+</ol>
+
+<p>The first is quite easy to recognize and if you have that first dependency level, you implicitly have the second.  If at
+all possible, you want to strive towards the second point.
+&lt;!&ndash;more&ndash;&gt;</p>
+
+<p>Below is an obvious example of a class having a name dependency on another object.  In this case a <code>Car</code> object has a
+dependency on an <code>Engine</code> object.</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Car</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="vi">@engine</span> <span class="o">=</span> <span class="no">Engine</span><span class="p">.</span><span class="nf">new</span>
+    <span class="vi">@engine</span><span class="p">.</span><span class="nf">start</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Engine</span>
+  <span class="k">def</span> <span class="nf">start</span>
+    <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+  <span class="nf">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>If we looked at this relationship using UML, it would look something like this.</p>
+
+<p><img src="/images/car_dependency-1.png" /></p>
+
+<p>In UML, the arrows always point in the direction of the dependency.  The particular example above illustrates that a
+<code>Car</code> depends on an <code>Engine</code>.</p>
+
+<p>This means that if, sometime in the future, the <code>Engine</code> class needs to change, <code>Car</code> may need to change with it.  This
+is why you need to take care to minimize the dependencies between objects.</p>
+
+<p>If one object knows the name of another object, the coupling is absolute.  There simply isn&rsquo;t a tighter binding.  If one
+object must require another object in some fashion, you can reduce the tightness of this coupling by binding to the
+object&rsquo;s message, rather than than the name.</p>
+
+<p>If at all possible, you should always strive for the second type of coupling, which is to bind to a <em>message</em>, rather
+than a <em>class</em>.  This is illustrated below:</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Car</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+    <span class="vi">@engine</span> <span class="o">=</span> <span class="n">engine</span>
+    <span class="n">engine</span><span class="p">.</span><span class="nf">start</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Engine</span>
+  <span class="k">def</span> <span class="nf">start</span>
+    <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+  <span class="nf">end</span>
+<span class="k">end</span>
+
+<span class="no">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">GasEngine</span><span class="p">.</span><span class="nf">new</span><span class="p">)</span>
+</code></pre>
+
+<p>This is an example of a more loosely coupled binding, and is preferable to the name-based tight coupling in many ways.
+Essentially, you have removed the hard coupling to another class, and instead have a coupling to an <em>interface</em>.   You
+can then pass in anything that implements the <code>start</code> method.</p>
+
+<ol>
+<li> This code is more flexible.  I am now able to pass anything into the <code>new</code> method of car.  If, for instance, another
+type of engine was invented, (say a <code>BatteryEngine</code>), I am free to pass this into <code>Car</code>, provided that <code>BatteryEngine</code>
+implements the method <code>start</code>.</li>
+<li> This code is easier to test.  If <code>Engine</code> was just the tip of the iceburg, and needed to reach out to a 3rd party
+api, then it would be easy to stub out <code>Engine</code> for testing.</li>
+</ol>
+
+<p>This is the crux of <em>dependency injection</em>.  You are <em>injecting</em> the Engine dependency into <code>Car</code>.</p>
+
+<p>If we were to draw a new UML diagram, it would look something like this:</p>
+
+<p><img src="/car_dependency_2-1.png" /></p>
+
+<p>This is a better scenario mainly because you want to <em>program to an interface, not to an implementation</em>.   In ruby,
+there are no hard interfaces.  The interface here is implicit.  The car object is implicitly expecting the engine object
+we pass in to implement <code>start</code>.</p>
+
+<p>This is one of the core tenets of reusable object-oriented design.</p>
+
+<h2>Applying this to a rails app</h2>
+
+<p>At a very high level, you want your dependency lines to be pointing in the same direction, away from Rails, towards your
+business logic.  You <em>don&rsquo;t</em> want your business logic to be calling Rails-y objects.</p>
+
+<p>So, for instance, it&rsquo;s perfectly fine for your a Rails controller to call a class that invokes business logic.  Imagine
+if you have a simple policy object that determines whether or not a user has sufficient privileges to post:</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">create</span>
+    <span class="k">if</span> <span class="no">PostingPolicy</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">user</span><span class="p">).</span><span class="nf">can_create_post?</span>
+      <span class="n">flash</span><span class="p">[</span><span class="ss">:notice</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Post has been saved."</span>
+    <span class="k">else</span>
+      <span class="n">render</span> <span class="ss">status: </span><span class="no">UnprocessableEntity</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>And then, somewhere else, perhaps in <code>app/lib</code>, you have <code>PostingPolicy</code> defined:</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostingPolicy</span>
+  <span class="kp">attr_reader</span> <span class="ss">:user</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">can_create_post?</span>
+    <span class="vi">@user</span><span class="p">.</span><span class="nf">has_post_access?</span> <span class="o">||</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">is_admin?</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>It&rsquo;s perfectly acceptable for your Rails-y objects to call up your business logic.  In the case above, <code>PostsController</code>
+is depends on <code>PostingPolicy</code>, and that is just fine.</p>
+
+<p>Here we are passing in a <code>User</code> object to <code>PostingPolicy</code>, and we have a 2nd-order dependency.  In other words,
+<code>PostingPolicy</code> depends on the <code>User</code> <strong>interface</strong>, not the object itself.</p>
+
+<p>Where we get into trouble, however, is when your business logic uses Rails objects directly.</p>
+
+<p>Imagine we have a <code>PostingPolicy</code> as such:</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostingPolicy</span>
+  <span class="kp">attr_reader</span> <span class="ss">:user</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">can_create_post?</span>
+    <span class="n">user</span><span class="p">.</span><span class="nf">has_post_access?</span> <span class="o">||</span> <span class="n">user</span><span class="p">.</span><span class="nf">is_admin?</span>
+    <span class="no">User</span><span class="p">.</span><span class="nf">increment!</span><span class="p">(</span><span class="ss">:post_attempts</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>Do you see the problematic line?  If you said the one with <code>UserMailer</code>, you are correct.  Here, <code>PostingPolicy</code> is calling a Rails model.  In this case, your business logic is starting to get tied up in Rails-y
+things.  Your business logic is pointing <em>back</em> to the Rails framework, and <em>depending</em> on Rails.  <strong>This is what is to be avoided.</strong></p>
+
+<p>In this particular case, it would be easy enough just to throw the <code>User.increment!</code> back into the controller.</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">create</span>
+    <span class="no">User</span><span class="p">.</span><span class="nf">increment!</span><span class="p">(</span><span class="ss">:post_attempts</span><span class="p">)</span>
+    <span class="k">if</span> <span class="no">PostingPolicy</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">user</span><span class="p">).</span><span class="nf">can_create_post?</span>
+      <span class="n">flash</span><span class="p">[</span><span class="ss">:notice</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Post has been saved."</span>
+    <span class="k">else</span>
+      <span class="n">render</span> <span class="ss">status: </span><span class="no">UnprocessableEntity</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>That way, the <code>increment!</code> call is still within the Rails land, and your business logic does not have a dependency on Rails:</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostingPolicy</span>
+  <span class="kp">attr_reader</span> <span class="ss">:user</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">can_create_post?</span>
+    <span class="n">user</span><span class="p">.</span><span class="nf">has_post_access?</span> <span class="o">||</span> <span class="n">user</span><span class="p">.</span><span class="nf">is_admin?</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>&ldquo;But wait!&rdquo; you say, &ldquo;isn&rsquo;t <code>user&#39; a rails model, and therefore the dependency lines are still pointing in the wrong direction?</code></p>
+
+<p>And the answer is, <strong>no!</strong>.  But why?  Well, I&rsquo;ll tell you why.</p>
+
+<p><code>PostingPolicy</code> is depending on an <strong>object</strong> that has the following methods: <code>_has_post_access?</code> and <code>is_admin?</code>.  This object could be <em>any</em> type.  It could be a mock object in a test.  It could be an instance of a plain ol&rsquo; ruby object that has those methods.  Or, it could be a <code>User</code> class that inherits from <code>ActiveRecord::Base</code>.</p>
+
+<p>The point is, <code>PostingPolicy</code> is dependent on being passed in an object that implements those methods.  It is dependent on an <code>interface</code>.  Much like our <code>Engine</code> example above, we&rsquo;re passing in the object we need, rather than naming it directly.  This is how you keep your business logic free and clear of being dependent on your framework.  It also makes your code easier to test!</p>
+</section>
+<footer class='post-footer'>
+<figure class='author-image'>
+<a class='img' href='/author/grant-ammons/' style='background-image: url(https://www.gravatar.com/avatar/5fc5f4dd13be5f1e40834300d23a398c?size=68)'>
+<span class='hidden'>Grant Ammons's Picture</span>
+</a>
+</figure>
+<section class='author'>
+<h4>
+<a href='/author/grant-ammons/'>Grant Ammons</a>
+</h4>
+<p></p>
+Read
+<a href='/author/grant-ammons/'>more posts</a>
+by this author.
+<div class='author-meta'>
+<span class='author-location icon-location'>Philly</span>
+</div>
+</section>
+<section class='share'>
+<h4>Share this post</h4>
+<a class='icon-twitter' href='https://twitter.com/intent/tweet?text=How dependency lines work in object-oriented design&amp;amp;url=http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+<span class='hidden'>Twitter</span>
+</a>
+<a class='icon-facebook' href='https://www.facebook.com/sharer/sharer.php?u=http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+<span class='hidden'>Facebook</span>
+</a>
+<a class='icon-google-plus' href='https://plus.google.com/share?url=http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+<span class='hidden'>Google+</span>
+</a>
+</section>
+<section class='disqus'><div class='disqusbox'>
+<div id='disqus_thread'></div>
+</div>
+<script>
+  var disqus_shortname = "theblogofgrantammons";
+  var disqus_url = "/2015/11/10/how-dependency-lines-work-in-oo/";
+  var disqus_identifier = "articles/2015-11-10-how-dependency-lines-work-in-oo.html";
+  
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
+</section>
+</footer>
+</article>
+</main>
+<aside class='read-next'>
+<a class='no-cover read-next-story' href='/2013/10/26/welcome-to-ghost/'>
+<section class='post'>
+<h2>Welcome to Ghost</h2>
+<p>You&rsquo;re in! Nice. We&rsquo;ve put together a little post to introduce you to the Ghost editor and get you&hellip;</p>
+</section>
+</a>
+</aside>
+
+<footer class='site-footer clearfix'>
+<section class='copyright'>
+<a href='/'>Grant Ammons</a>
+&copy;
+2015
+</section>
+<section class='poweredby'>
+Casper theme powered by
+<a href='https://ghost.org'>Ghost</a>
+</section>
+</footer>
+</div>
+<script src="/javascripts/application.js"></script>
+</body>
+</html>

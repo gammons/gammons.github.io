@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Grant Ammons</title>
+  <subtitle>My thoughts as a developer and engineering leader</subtitle>
+  <id>http://grantammons.me</id>
+  <link href="http://grantammons.me"/>
+  <link href="http://grantammons.me/feed.xml" rel="self"/>
+  <updated>2015-11-10T08:01:00-05:00</updated>
+  <author>
+    <name>Grant Ammons</name>
+  </author>
+  <entry>
+    <title>How dependency lines work in object-oriented design</title>
+    <link rel="alternate" href="http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/"/>
+    <id>http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/</id>
+    <published>2015-11-10T08:01:00-05:00</published>
+    <updated>2015-11-11T06:37:23-05:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">When you look at an object dependency graph, it’s not 100% clear how to read it.  When one object points to another,
+what does that mean exactly?
+
+An object is said to depend on another object in the following scenarios:
+
+
+When an object knows the name
+</summary>
+  </entry>
+  <entry>
+    <title>Welcome to Ghost</title>
+    <link rel="alternate" href="http://grantammons.me/2013/10/26/welcome-to-ghost/"/>
+    <id>http://grantammons.me/2013/10/26/welcome-to-ghost/</id>
+    <published>2013-10-25T20:00:00-04:00</published>
+    <updated>2015-11-10T07:10:21-05:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">You’re in! Nice. We’ve put together a little post to introduce you to the Ghost
+editor and get you started. Go ahead and edit this post to get going and learn
+how it all works!
+
+Getting Started
+
+Writing in markdown is really easy. In the left hand panel</summary>
+  </entry>
+</feed>
