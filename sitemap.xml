@@ -7,6 +7,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://grantammons.me/2013/12/23/resources-to-help-guide-architectural-decisions/index.html</loc>
+    <lastmod>2015-11-13T09:15:49-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/index.html</loc>
     <lastmod>2015-11-11T06:37:23-05:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -14,19 +20,19 @@
   </url>
   <url>
     <loc>http://grantammons.me/index.html</loc>
-    <lastmod>2015-11-13T09:07:00-05:00</lastmod>
+    <lastmod>2015-11-13T09:20:04-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/author/grant-ammons/index.html</loc>
-    <lastmod>2015-11-13T09:07:00-05:00</lastmod>
+    <lastmod>2015-11-13T09:20:04-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/architecture/index.html</loc>
-    <lastmod>2015-11-13T09:07:00-05:00</lastmod>
+    <lastmod>2015-11-13T09:20:04-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

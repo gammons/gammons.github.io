@@ -2187,100 +2187,101 @@ body:not(.post-template) .post-title {
 
 /* line 3, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight, .highlight .w {
-  color: #303030; }
+  color: #d0d0d0;
+  background-color: #151515; }
 
-/* line 6, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 7, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .err {
   color: #151515;
   background-color: #ac4142; }
 
-/* line 10, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 11, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
   color: #505050; }
 
-/* line 13, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 14, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .cp {
   color: #f4bf75; }
 
-/* line 16, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 17, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .nt {
   color: #f4bf75; }
 
-/* line 19, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 20, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .o, .highlight .ow {
   color: #d0d0d0; }
 
-/* line 22, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 23, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .p, .highlight .pi {
   color: #d0d0d0; }
 
-/* line 25, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 26, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .gi {
   color: #90a959; }
 
-/* line 28, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 29, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .gd {
   color: #ac4142; }
 
-/* line 31, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 32, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .gh {
   color: #6a9fb5;
   background-color: #151515;
   font-weight: bold; }
 
-/* line 36, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 37, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
   color: #aa759f; }
 
-/* line 39, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 40, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .kc {
   color: #d28445; }
 
-/* line 42, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 43, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .kt {
   color: #d28445; }
 
-/* line 45, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 46, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .kd {
   color: #d28445; }
 
-/* line 48, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 49, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
   color: #90a959; }
 
-/* line 51, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 52, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .sr {
   color: #75b5aa; }
 
-/* line 54, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 55, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .si {
   color: #8f5536; }
 
-/* line 57, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 58, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .se {
   color: #8f5536; }
 
-/* line 60, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 61, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .nn {
   color: #f4bf75; }
 
-/* line 63, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 64, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .nc {
   color: #f4bf75; }
 
-/* line 66, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 67, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .no {
   color: #f4bf75; }
 
-/* line 69, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 70, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .na {
   color: #6a9fb5; }
 
-/* line 72, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 73, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
   color: #90a959; }
 
-/* line 75, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
+/* line 76, /Users/grantammons/Dropbox/code/blog/source/stylesheets/_syntax.css.erb */
 .highlight .ss {
   color: #90a959; }
 
