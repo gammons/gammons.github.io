@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://grantammons.me/2012/12/22/where-the-logic-hides/index.html</loc>
-    <lastmod>2015-11-12T06:10:59-05:00</lastmod>
+    <lastmod>2015-11-14T09:10:05-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/2013/12/23/resources-to-help-guide-architectural-decisions/index.html</loc>
-    <lastmod>2015-11-13T09:15:49-05:00</lastmod>
+    <lastmod>2015-11-14T09:10:12-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -20,31 +20,31 @@
   </url>
   <url>
     <loc>http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/index.html</loc>
-    <lastmod>2015-11-14T09:02:48-05:00</lastmod>
+    <lastmod>2015-11-14T09:10:15-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/index.html</loc>
-    <lastmod>2015-11-14T09:03:53-05:00</lastmod>
+    <lastmod>2015-11-14T09:40:28-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/author/grant-ammons/index.html</loc>
-    <lastmod>2015-11-14T09:03:53-05:00</lastmod>
+    <lastmod>2015-11-14T09:40:28-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/architecture/index.html</loc>
-    <lastmod>2015-11-14T09:03:53-05:00</lastmod>
+    <lastmod>2015-11-14T09:40:28-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/bitcoin/index.html</loc>
-    <lastmod>2015-11-14T09:03:53-05:00</lastmod>
+    <lastmod>2015-11-14T09:40:28-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
