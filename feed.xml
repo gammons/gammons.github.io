@@ -14,18 +14,35 @@
     <link rel="alternate" href="http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/"/>
     <id>http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/</id>
     <published>2015-11-10T08:01:00-05:00</published>
-    <updated>2015-11-11T06:37:23-05:00</updated>
+    <updated>2015-11-14T09:02:48-05:00</updated>
     <author>
       <name>Grant Ammons</name>
     </author>
-    <summary type="html">When you look at an object dependency graph, it’s not 100% clear how to read it.  When one object points to another,
+    <summary type="html">When you look at an object dependency graph, it&amp;rsquo;s not 100% clear how to read it.  When one object points to another,
 what does that mean exactly?
 
 An object is said to depend on another object in the following scenarios:
 
 
-When an object knows the name
+When an object knows the name of another object
+When an object knows the name of a method of another object, and knows the arguments that method takes
+
+
+The first is quite easy to recognize and if you have that first dependency level, you implicitly have the second.  If at
+all possible, you want to strive towards the second point.
+
 </summary>
+  </entry>
+  <entry>
+    <title>Bitcoin, Litecoin, Dogecoin - Exploring the block chain</title>
+    <link rel="alternate" href="http://grantammons.me/2014/01/17/bitcoin-litecoin-dogecoin-exploring-the-block-chain/"/>
+    <id>http://grantammons.me/2014/01/17/bitcoin-litecoin-dogecoin-exploring-the-block-chain/</id>
+    <published>2014-01-17T09:26:00-05:00</published>
+    <updated>2015-11-14T09:01:50-05:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">Ever go to a site like http://blockchain.info and just wonder what all those numbers mean?  Well, wonder no more!  This guide will have you exploring the block chain like a pro.  This guide is separated into two main sections – a brief, high level overview</summary>
   </entry>
   <entry>
     <title>Resources to help guide architectural decisions in Rails apps</title>

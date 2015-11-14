@@ -64,7 +64,7 @@
 <span class='author-location icon-location'>Philly</span>
 <span class='author-stats'>
 <i class='icon-stats'></i>
-3 posts
+4 posts
 </span>
 </div>
 </section>
@@ -81,13 +81,19 @@
 </header>
 <section class='post-excerpt'>
 <p>
-When you look at an object dependency graph, it’s not 100% clear how to read it.  When one object points to another,
+When you look at an object dependency graph, it&rsquo;s not 100% clear how to read it.  When one object points to another,
 what does that mean exactly?
 
 An object is said to depend on another object in the following scenarios:
 
 
-When an object knows the name
+When an object knows the name of another object
+When an object knows the name of a method of another object, and knows the arguments that method takes
+
+
+The first is quite easy to recognize and if you have that first dependency level, you implicitly have the second.  If at
+all possible, you want to strive towards the second point.
+
 
 <a class="read-more" href="/2015/11/10/how-dependency-lines-work-in-oo/">&raquo;</a>
 </p>
@@ -98,6 +104,25 @@ When an object knows the name
 on <a href='/tag/architecture/'>architecture</a>
 <time class='post-date' datetime='2015-11-10'>
 10 November 2015
+</time>
+</footer>
+</article>
+<article class='post'>
+<header class='post-header'>
+<h2 class='post-title'><a href="/2014/01/17/bitcoin-litecoin-dogecoin-exploring-the-block-chain/">Bitcoin, Litecoin, Dogecoin - Exploring the block chain</a></h2>
+</header>
+<section class='post-excerpt'>
+<p>
+Ever go to a site like http://blockchain.info and just wonder what all those numbers mean?  Well, wonder no more!  This guide will have you exploring the block chain like a pro.  This guide is separated into two main sections – a brief, high level overview
+<a class="read-more" href="/2014/01/17/bitcoin-litecoin-dogecoin-exploring-the-block-chain/">&raquo;</a>
+</p>
+</section>
+<footer class='post-meta'>
+<img alt='Grant Ammons' class='author-thumb' nopin='nopin' src='https://www.gravatar.com/avatar/5fc5f4dd13be5f1e40834300d23a398c?size=24'>
+<a href='/author/grant-ammons/'>Grant Ammons</a>
+on <a href='/tag/bitcoin/'>bitcoin</a>
+<time class='post-date' datetime='2014-01-17'>
+17 January 2014
 </time>
 </footer>
 </article>

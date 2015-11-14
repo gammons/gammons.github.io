@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Grant Ammons: bitcoin</title>
+  <subtitle>Posts tagged with bitcoin</subtitle>
+  <id>http://grantammons.me</id>
+  <link href="http://grantammons.me"/>
+  <link href="http://grantammons.me/tag/bitcoin/feed.xml" rel="self"/>
+  <updated>2015-11-10T08:01:00-05:00</updated>
+  <author>
+    <name>Grant Ammons</name>
+  </author>
+  <entry>
+    <title>Bitcoin, Litecoin, Dogecoin - Exploring the block chain</title>
+    <link rel="alternate" href="http://grantammons.me/2014/01/17/bitcoin-litecoin-dogecoin-exploring-the-block-chain/"/>
+    <id>http://grantammons.me/2014/01/17/bitcoin-litecoin-dogecoin-exploring-the-block-chain/</id>
+    <published>2014-01-17T09:26:00-05:00</published>
+    <updated>2015-11-14T09:01:50-05:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">Ever go to a site like http://blockchain.info and just wonder what all those numbers mean?  Well, wonder no more!  This guide will have you exploring the block chain like a pro.  This guide is separated into two main sections – a brief, high level overview</summary>
+  </entry>
+</feed>

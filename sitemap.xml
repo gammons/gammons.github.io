@@ -13,26 +13,38 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://grantammons.me/2014/01/17/bitcoin-litecoin-dogecoin-exploring-the-block-chain/index.html</loc>
+    <lastmod>2015-11-14T09:01:50-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/index.html</loc>
-    <lastmod>2015-11-11T06:37:23-05:00</lastmod>
+    <lastmod>2015-11-14T09:02:48-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/index.html</loc>
-    <lastmod>2015-11-13T09:20:04-05:00</lastmod>
+    <lastmod>2015-11-14T09:03:53-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/author/grant-ammons/index.html</loc>
-    <lastmod>2015-11-13T09:20:04-05:00</lastmod>
+    <lastmod>2015-11-14T09:03:53-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/architecture/index.html</loc>
-    <lastmod>2015-11-13T09:20:04-05:00</lastmod>
+    <lastmod>2015-11-14T09:03:53-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://grantammons.me/tag/bitcoin/index.html</loc>
+    <lastmod>2015-11-14T09:03:53-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

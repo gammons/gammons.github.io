@@ -80,8 +80,9 @@ what does that mean exactly?</p>
 </ol>
 
 <p>The first is quite easy to recognize and if you have that first dependency level, you implicitly have the second.  If at
-all possible, you want to strive towards the second point.
-&lt;!&ndash;more&ndash;&gt;</p>
+all possible, you want to strive towards the second point.</p>
+
+
 
 <p>Below is an obvious example of a class having a name dependency on another object.  In this case a <code>Car</code> object has a
 dependency on an <code>Engine</code> object.</p>
@@ -147,7 +148,7 @@ api, then it would be easy to stub out <code>Engine</code> for testing.</li>
 
 <p>If we were to draw a new UML diagram, it would look something like this:</p>
 
-<p><img src="/car_dependency_2-1.png" /></p>
+<p><img src="/images/car_dependency_2-1.png" /></p>
 
 <p>This is a better scenario mainly because you want to <em>program to an interface, not to an implementation</em>.   In ruby,
 there are no hard interfaces.  The interface here is implicit.  The car object is implicitly expecting the engine object
@@ -300,10 +301,10 @@ by this author.
 </article>
 </main>
 <aside class='read-next'>
-<a class='read-next-story' href='/2013/12/23/resources-to-help-guide-architectural-decisions/' style='background-image: url(/images/computer.jpg)'>
+<a class='read-next-story' href='/2014/01/17/bitcoin-litecoin-dogecoin-exploring-the-block-chain/' style='background-image: url(/images/bitcoin.jpg)'>
 <section class='post'>
-<h2>Resources to help guide architectural decisions in Rails apps</h2>
-<p>My previous post outlined a trivial example where I refactored some basic, boring business logic into a service object,&hellip;</p>
+<h2>Bitcoin, Litecoin, Dogecoin - Exploring the block chain</h2>
+<p>Ever go to a site like http://blockchain.info and just wonder what all those numbers mean? Well, wonder no more!&hellip;</p>
 </section>
 </a>
 </aside>
