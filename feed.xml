@@ -5,10 +5,23 @@
   <id>http://grantammons.me</id>
   <link href="http://grantammons.me"/>
   <link href="http://grantammons.me/feed.xml" rel="self"/>
-  <updated>2015-11-10T08:01:00-05:00</updated>
+  <updated>2015-11-27T09:23:00-05:00</updated>
   <author>
     <name>Grant Ammons</name>
   </author>
+  <entry>
+    <title>Making 20% time work for your engineering team</title>
+    <link rel="alternate" href="http://grantammons.me/2015/11/27/making-20-time-work-for-your-engineering-team-md/"/>
+    <id>http://grantammons.me/2015/11/27/making-20-time-work-for-your-engineering-team-md/</id>
+    <published>2015-11-27T09:23:00-05:00</published>
+    <updated>2015-11-28T11:56:30-05:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">At PipelineDeals, believe in 20% time.  We call it Investment Time.  Each Friday, engineers are free from the shackles of our backlog to work on creative projects.  It feeds an enormous amount of creativity and happiness with our teams. Also, it helps other departments run better, and pushes our goals as a team forward.
+
+</summary>
+  </entry>
   <entry>
     <title>How dependency lines work in object-oriented design</title>
     <link rel="alternate" href="http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/"/>

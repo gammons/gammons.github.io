@@ -25,26 +25,38 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://grantammons.me/2015/11/27/making-20-time-work-for-your-engineering-team-md/index.html</loc>
+    <lastmod>2015-11-28T11:56:30-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://grantammons.me/index.html</loc>
-    <lastmod>2015-11-14T09:40:28-05:00</lastmod>
+    <lastmod>2015-11-29T12:43:32-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/author/grant-ammons/index.html</loc>
-    <lastmod>2015-11-14T09:40:28-05:00</lastmod>
+    <lastmod>2015-11-29T12:43:32-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/architecture/index.html</loc>
-    <lastmod>2015-11-14T09:40:28-05:00</lastmod>
+    <lastmod>2015-11-29T12:43:32-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/bitcoin/index.html</loc>
-    <lastmod>2015-11-14T09:40:28-05:00</lastmod>
+    <lastmod>2015-11-29T12:43:32-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://grantammons.me/tag/engineering-teams-investment-time/index.html</loc>
+    <lastmod>2015-11-29T12:43:32-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
