@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Grant Ammons: engineering leadership</title>
+  <subtitle>Posts tagged with engineering leadership</subtitle>
+  <id>http://grantammons.me</id>
+  <link href="http://grantammons.me"/>
+  <link href="http://grantammons.me/tag/engineering-leadership/feed.xml" rel="self"/>
+  <updated>2015-12-08T08:15:00-05:00</updated>
+  <author>
+    <name>Grant Ammons</name>
+  </author>
+  <entry>
+    <title>Keep an Engineering Manifesto</title>
+    <link rel="alternate" href="http://grantammons.me/2015/12/08/keep-an-engineering-manifesto/"/>
+    <id>http://grantammons.me/2015/12/08/keep-an-engineering-manifesto/</id>
+    <published>2015-12-08T08:15:00-05:00</published>
+    <updated>2015-12-08T08:19:42-05:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">At PipelineDeals we have an engineering manifesto.  Our manifesto is the backbone of what we stand for as a team.  They are high level, core underpinnings of our team’s culture.  They read like team-level objectives, but they trancend any time-based measurement</summary>
+  </entry>
+</feed>
