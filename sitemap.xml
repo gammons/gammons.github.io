@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://grantammons.me/about/index.html</loc>
-    <lastmod>2015-12-13T16:24:10-05:00</lastmod>
+    <lastmod>2015-12-14T13:24:44-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -43,38 +43,62 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://grantammons.me/2015/12/14/from-scrum-to-kanban/index.html</loc>
+    <lastmod>2015-12-14T13:24:17-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://grantammons.me/index.html</loc>
-    <lastmod>2015-12-13T16:24:10-05:00</lastmod>
+    <lastmod>2015-12-14T13:24:44-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/author/grant-ammons/index.html</loc>
-    <lastmod>2015-12-13T16:24:10-05:00</lastmod>
+    <lastmod>2015-12-14T13:24:44-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/architecture/index.html</loc>
-    <lastmod>2015-12-13T16:24:10-05:00</lastmod>
+    <lastmod>2015-12-14T13:24:44-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/bitcoin/index.html</loc>
-    <lastmod>2015-12-13T16:24:10-05:00</lastmod>
+    <lastmod>2015-12-14T13:24:44-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/engineering-teams-investment-time/index.html</loc>
-    <lastmod>2015-12-13T16:24:10-05:00</lastmod>
+    <lastmod>2015-12-14T13:24:44-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/engineering-leadership/index.html</loc>
-    <lastmod>2015-12-13T16:24:10-05:00</lastmod>
+    <lastmod>2015-12-14T13:24:44-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://grantammons.me/tag/engineering-process-software/index.html</loc>
+    <lastmod>2015-12-14T13:24:44-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://grantammons.me/page/2/index.html</loc>
+    <lastmod>2015-12-14T13:24:44-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://grantammons.me/author/grant-ammons/page/2/index.html</loc>
+    <lastmod>2015-12-14T13:24:44-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -5,10 +5,23 @@
   <id>http://grantammons.me</id>
   <link href="http://grantammons.me"/>
   <link href="http://grantammons.me/feed.xml" rel="self"/>
-  <updated>2015-12-08T08:15:00-05:00</updated>
+  <updated>2015-12-14T13:21:00-05:00</updated>
   <author>
     <name>Grant Ammons</name>
   </author>
+  <entry>
+    <title>Ditching Scrum for Kanban - The best decision we've made as a team</title>
+    <link rel="alternate" href="http://grantammons.me/2015/12/14/from-scrum-to-kanban/"/>
+    <id>http://grantammons.me/2015/12/14/from-scrum-to-kanban/</id>
+    <published>2015-12-14T13:21:00-05:00</published>
+    <updated>2015-12-14T13:24:17-05:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">The following is a story about how we matured as an engineering team.  We went from an ad-hoc process to Scrum, and used Scrum for a whole year.  Scrum leveled us up as a team in terms of structure and process.  But it caused major morale issues.  Then we found Kanban.  We implemented it and have never looked back.
+
+</summary>
+  </entry>
   <entry>
     <title>Keep an Engineering Manifesto</title>
     <link rel="alternate" href="http://grantammons.me/2015/12/08/keep-an-engineering-manifesto/"/>
@@ -87,18 +100,5 @@ It set off a lot of debate on Twitter and Hacker news about the topic.  I was qu
 that many others have felt the pain of having rails dictate your applications core architecture.
 
 </summary>
-  </entry>
-  <entry>
-    <title>Where the logic hides in Rails apps</title>
-    <link rel="alternate" href="http://grantammons.me/2012/12/22/where-the-logic-hides/"/>
-    <id>http://grantammons.me/2012/12/22/where-the-logic-hides/</id>
-    <published>2012-12-22T06:05:00-05:00</published>
-    <updated>2015-11-14T09:10:05-05:00</updated>
-    <author>
-      <name>Grant Ammons</name>
-    </author>
-    <summary type="html">DHH recently authored a SVN blog post that advocated breaking up fat models into separate mixins that would live in a new directory in the rails structure, app/concerns.
-
-He made it clear that breaking up domain logic into concerns will make code easier</summary>
   </entry>
 </feed>
