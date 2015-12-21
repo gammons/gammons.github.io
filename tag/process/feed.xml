@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Grant Ammons: process</title>
+  <subtitle>Posts tagged with process</subtitle>
+  <id>http://grantammons.me</id>
+  <link href="http://grantammons.me"/>
+  <link href="http://grantammons.me/tag/process/feed.xml" rel="self"/>
+  <updated>2015-12-21T14:23:00-05:00</updated>
+  <author>
+    <name>Grant Ammons</name>
+  </author>
+  <entry>
+    <title>The simplest thing you can do to not violate the first principle of Agile</title>
+    <link rel="alternate" href="http://grantammons.me/2015/12/21/the-simplest-thing/"/>
+    <id>http://grantammons.me/2015/12/21/the-simplest-thing/</id>
+    <published>2015-12-21T14:23:00-05:00</published>
+    <updated>2015-12-21T15:30:39-05:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">
+Individuals and interactions over processes and tools.
+
+
+Why?  Because the first principle of the Agile Manifesto is so easy to break.  We broke it big time and learned a lot when fixing it.
+
+Tools like Jira seduce you into building a mammoth process</summary>
+  </entry>
+</feed>
