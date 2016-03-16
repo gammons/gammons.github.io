@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Grant Ammons: engineering process software</title>
+  <subtitle>Posts tagged with engineering process software</subtitle>
+  <id>http://grantammons.me</id>
+  <link href="http://grantammons.me"/>
+  <link href="http://grantammons.me/tag/engineering-process-software/feed.xml" rel="self"/>
+  <updated>2015-12-29T15:23:00-05:00</updated>
+  <author>
+    <name>Grant Ammons</name>
+  </author>
+  <entry>
+    <title>Ditching Scrum for Kanban - The best decision we've made as a team</title>
+    <link rel="alternate" href="http://grantammons.me/2015/12/14/from-scrum-to-kanban/"/>
+    <id>http://grantammons.me/2015/12/14/from-scrum-to-kanban/</id>
+    <published>2015-12-14T13:21:00-05:00</published>
+    <updated>2016-03-16T06:45:37-04:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">The following is a story about how we matured as an engineering team.  We went from an ad-hoc process to Scrum, and used Scrum for a whole year.  Scrum leveled us up as a team in terms of structure and process.  But it caused major morale issues.  Then we found Kanban.  We implemented it and have never looked back.
+
+</summary>
+  </entry>
+</feed>
