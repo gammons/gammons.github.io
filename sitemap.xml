@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://grantammons.me/about/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -61,86 +61,104 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://grantammons.me/2016/03/23/how-to-deliver-high-quality-software/index.html</loc>
+    <lastmod>2016-03-23T08:22:41-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://grantammons.me/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/author/grant-ammons/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/architecture/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/bitcoin/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/engineering-teams-investment-time/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/engineering-leadership/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/engineering-process-software/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/software/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/process/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/teams/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/tag/management/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://grantammons.me/tag/softare/index.html</loc>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://grantammons.me/tag/development/index.html</loc>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/about/page/2/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/page/2/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://grantammons.me/author/grant-ammons/page/2/index.html</loc>
-    <lastmod>2016-03-23T07:47:27-04:00</lastmod>
+    <lastmod>2016-03-23T08:22:58-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
