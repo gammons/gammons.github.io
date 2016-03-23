@@ -946,9 +946,18 @@ body:not(.post-template) .post-title {
     font-size: 3.6rem;
 }
 
+body:not(.post-template) .post-subtitle {
+    font-size: 2.6rem;
+}
+
 .post-title a {
     text-decoration: none;
 }
+
+.post-subtitle a {
+    text-decoration: none;
+}
+
 
 .post-excerpt p {
     margin: 0;
@@ -1050,6 +1059,11 @@ body:not(.post-template) .post-title {
 
 .post-template .post-title {
     margin-bottom: 0;
+}
+
+.post-template .post-subtitle {
+    margin-bottom: 0;
+    font-weight: normal;
 }
 
 .post-template .post-meta {
@@ -1653,6 +1667,10 @@ body:not(.post-template) .post-title {
         font-size: 3.2rem;
     }
 
+    body:not(.post-template) .post-subtitle {
+        font-size: 2.2rem;
+    }
+
     hr {
         margin: 2.4em 0;
     }
@@ -1905,6 +1923,9 @@ body:not(.post-template) .post-title {
 
     body:not(.post-template) .post-title {
         font-size: 2.5rem;
+    }
+    body:not(.post-template) .post-subtitle {
+        font-size: 1.5rem;
     }
 
     .post-template .site-footer {

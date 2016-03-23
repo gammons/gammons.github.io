@@ -1077,20 +1077,28 @@ body:not(.post-template) .post-title {
   font-size: 3.6rem; }
 
 /* line 949, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+body:not(.post-template) .post-subtitle {
+  font-size: 2.6rem; }
+
+/* line 953, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-title a {
   text-decoration: none; }
 
-/* line 953, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 957, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+.post-subtitle a {
+  text-decoration: none; }
+
+/* line 962, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-excerpt p {
   margin: 0;
   font-size: 0.9em;
   line-height: 1.7em; }
 
-/* line 959, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 968, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-more {
   text-decoration: none; }
 
-/* line 963, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 972, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-meta {
   display: block;
   margin: 1.75rem 0 0 0;
@@ -1099,7 +1107,7 @@ body:not(.post-template) .post-title {
   line-height: 2.2rem;
   color: #9EABB3; }
 
-/* line 972, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 981, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-thumb {
   width: 24px;
   height: 24px;
@@ -1107,22 +1115,22 @@ body:not(.post-template) .post-title {
   margin-right: 9px;
   border-radius: 100%; }
 
-/* line 980, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 989, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-meta a {
   color: #9EABB3;
   text-decoration: none; }
 
-/* line 985, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 994, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-meta a:hover {
   text-decoration: underline; }
 
-/* line 989, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 998, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .user-meta {
   position: relative;
   padding: 0.3rem 40px 0 100px;
   min-height: 77px; }
 
-/* line 995, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1004, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-date {
   display: inline-block;
   margin-left: 8px;
@@ -1132,25 +1140,25 @@ body:not(.post-template) .post-title {
   font-size: 1.3rem;
   white-space: nowrap; }
 
-/* line 1005, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1014, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .user-image {
   position: absolute;
   top: 0;
   left: 0; }
 
-/* line 1011, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1020, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .user-name {
   display: block;
   font-weight: 700; }
 
-/* line 1016, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1025, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .user-bio {
   display: block;
   max-width: 440px;
   font-size: 1.4rem;
   line-height: 1.5em; }
 
-/* line 1023, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1032, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .publish-meta {
   position: absolute;
   top: 0;
@@ -1158,12 +1166,12 @@ body:not(.post-template) .post-title {
   padding: 4.3rem 0 4rem 0;
   text-align: right; }
 
-/* line 1031, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1040, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .publish-heading {
   display: block;
   font-weight: 700; }
 
-/* line 1036, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1045, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .publish-date {
   display: block;
   font-size: 1.4rem;
@@ -1172,19 +1180,24 @@ body:not(.post-template) .post-title {
 /* ==========================================================================
    5. Single Post - When you click on an individual post
    ========================================================================== */
-/* line 1047, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1056, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-template .post-header {
   margin-bottom: 3.4rem; }
 
-/* line 1051, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1060, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-template .post-title {
   margin-bottom: 0; }
 
-/* line 1055, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1064, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+.post-template .post-subtitle {
+  margin-bottom: 0;
+  font-weight: normal; }
+
+/* line 1069, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-template .post-meta {
   margin: 0; }
 
-/* line 1059, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1073, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-template .post-date {
   padding: 0;
   margin: 0;
@@ -1193,25 +1206,25 @@ body:not(.post-template) .post-title {
 /* Stop elements, such as img wider than the post content, from
    creating horizontal scroll - slight hack due to imperfections
    with browser width % calculations and rounding */
-/* line 1068, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1082, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-template .content {
   overflow: hidden; }
 
 /* Tweak the .post wrapper style */
-/* line 1073, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1087, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-template .post {
   margin-top: 0;
   border-bottom: none;
   padding-bottom: 0; }
 
 /* Kill that stylish little circle that was on the border, too */
-/* line 1080, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1094, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-template .post:after {
   display: none; }
 
 /* Keep images centered, and allow images wider than the main
    text column to break out. */
-/* line 1086, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1100, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-content img {
   display: block;
   max-width: 100%;
@@ -1229,45 +1242,45 @@ body:not(.post-template) .post-title {
   /* for IE9 */
   transform: translateX(-50%); }
 
-/* line 1102, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1116, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .footnotes {
   font-style: italic;
   font-size: 1.3rem;
   line-height: 1.6em; }
 
-/* line 1108, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1122, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .footnotes li {
   margin: 0.6rem 0; }
 
-/* line 1112, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1126, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .footnotes p {
   margin: 0; }
 
-/* line 1116, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1130, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .footnotes p a:last-child {
   text-decoration: none; }
 
 /* The author credit area after the post */
-/* line 1122, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1136, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-footer {
   position: relative;
   margin: 6rem 0 0 0;
   padding: 6rem 0 0 0;
   border-top: #EBF2F6 1px solid; }
 
-/* line 1129, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1143, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-footer h4 {
   font-size: 1.8rem;
   margin: 0; }
 
-/* line 1134, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1148, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-footer p {
   margin: 1rem 0;
   font-size: 1.4rem;
   line-height: 1.75em; }
 
 /* list of author links - location / url */
-/* line 1141, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1155, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-meta {
   padding: 0;
   margin: 0;
@@ -1277,25 +1290,25 @@ body:not(.post-template) .post-title {
   font-style: italic;
   color: #9EABB3; }
 
-/* line 1151, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1165, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-meta a {
   color: #9EABB3; }
 
-/* line 1154, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1168, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-meta a:hover {
   color: #111; }
 
 /* Create some space to the right for the share links */
-/* line 1159, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1173, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-footer .author {
   margin-right: 180px; }
 
-/* line 1163, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1177, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-footer h4 a {
   color: #2e2e2e;
   text-decoration: none; }
 
-/* line 1168, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1182, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-footer h4 a:hover {
   text-decoration: underline; }
 
@@ -1303,14 +1316,14 @@ body:not(.post-template) .post-title {
    Doing it like this means it's easier for the author bio
    to be flexible at smaller screen sizes while the share
    links remain at a fixed width the whole time */
-/* line 1176, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1190, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-footer .share {
   position: absolute;
   top: 6rem;
   right: 0;
   width: 140px; }
 
-/* line 1183, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1197, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-footer .share a {
   font-size: 1.8rem;
   display: inline-block;
@@ -1318,57 +1331,57 @@ body:not(.post-template) .post-title {
   color: #BBC7CC;
   text-decoration: none; }
 
-/* line 1191, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1205, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-footer .share .icon-twitter:hover {
   color: #55acee; }
 
-/* line 1194, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1208, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-footer .share .icon-facebook:hover {
   color: #3b5998; }
 
-/* line 1197, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1211, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-footer .share .icon-google-plus:hover {
   color: #dd4b39; }
 
 /* ==========================================================================
    6. Author profile
    ========================================================================== */
-/* line 1206, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1220, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .post-head.main-header {
   height: 65vh;
   min-height: 180px; }
 
-/* line 1211, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1225, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .no-cover.post-head.main-header {
   height: 85px;
   min-height: 0;
   margin-bottom: 0;
   background: transparent; }
 
-/* line 1218, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1232, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .tag-head.main-header {
   height: 40vh;
   min-height: 180px; }
 
-/* line 1223, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1237, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-head.main-header {
   height: 40vh;
   min-height: 180px; }
 
-/* line 1228, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1242, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .no-cover.author-head.main-header {
   height: 10vh;
   min-height: 100px;
   background: transparent; }
 
-/* line 1234, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1248, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-profile {
   padding: 0 15px 5rem 15px;
   border-bottom: #EBF2F6 1px solid;
   text-align: center; }
 
 /* Add a little circle in the middle of the border-bottom */
-/* line 1241, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1255, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-profile:after {
   display: block;
   content: "";
@@ -1383,7 +1396,7 @@ body:not(.post-template) .post-title {
   border-radius: 100%;
   box-shadow: #FFF 0 0 0 5px; }
 
-/* line 1256, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1270, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-image {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1402,7 +1415,7 @@ body:not(.post-template) .post-title {
   z-index: 2;
   box-shadow: #E7EEF2 0 0 0 1px; }
 
-/* line 1275, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1289, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-image .img {
   position: relative;
   display: block;
@@ -1412,7 +1425,7 @@ body:not(.post-template) .post-title {
   background-position: center center;
   border-radius: 100%; }
 
-/* line 1285, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1299, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-profile .author-image {
   position: relative;
   left: auto;
@@ -1423,11 +1436,11 @@ body:not(.post-template) .post-title {
   margin: -100px auto 0 auto;
   box-shadow: none; }
 
-/* line 1296, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1310, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-title {
   margin: 1.5rem 0 1rem; }
 
-/* line 1300, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1314, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-bio {
   font-size: 1.8rem;
   line-height: 1.5em;
@@ -1436,38 +1449,38 @@ body:not(.post-template) .post-title {
   letter-spacing: 0;
   text-indent: 0; }
 
-/* line 1309, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1323, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-meta {
   margin: 1.6rem 0; }
 
 /* Location, website, and link */
-/* line 1313, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1327, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-profile .author-meta {
   margin: 2rem 0;
   font-family: "Merriweather", serif;
   letter-spacing: 0.01rem;
   font-size: 1.7rem; }
 
-/* line 1319, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1333, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-meta span {
   display: inline-block;
   margin: 0 2rem 1rem 0;
   word-wrap: break-word; }
 
-/* line 1324, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1338, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .author-meta a {
   text-decoration: none; }
 
 /* Turn off meta for page2+ to make room for extra
    pagination prev/next links */
-/* line 1330, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1344, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .archive-template .author-profile .author-meta {
   display: none; }
 
 /* ==========================================================================
    7. Read More - Next/Prev Post Links
    ========================================================================== */
-/* line 1339, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1353, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1479,7 +1492,7 @@ body:not(.post-template) .post-title {
   align-items: stretch;
   margin-top: 10rem; }
 
-/* line 1351, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1365, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1498,18 +1511,18 @@ body:not(.post-template) .post-title {
   background-size: cover;
   overflow: hidden; }
 
-/* line 1369, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1383, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story:hover:before {
   background: rgba(0, 0, 0, 0.8);
   transition: all 0.2s ease; }
 
-/* line 1373, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1387, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story:hover .post:before {
   color: #222;
   background: #fff;
   transition: all 0.2s ease; }
 
-/* line 1379, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1393, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story:before {
   content: "";
   display: block;
@@ -1521,12 +1534,12 @@ body:not(.post-template) .post-title {
   background: rgba(0, 0, 0, 0.7);
   transition: all 0.5s ease; }
 
-/* line 1391, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1405, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story .post {
   padding-top: 6rem;
   padding-bottom: 6rem; }
 
-/* line 1396, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1410, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story .post:before {
   content: "Read This Next";
   padding: 4px 10px 5px;
@@ -1538,44 +1551,44 @@ body:not(.post-template) .post-title {
   border-radius: 4px;
   transition: all 0.5s ease; }
 
-/* line 1407, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1421, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story.prev .post:before {
   content: "You Might Enjoy"; }
 
-/* line 1411, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1425, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story h2 {
   margin-top: 1rem;
   color: #fff; }
 
-/* line 1416, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1430, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story p {
   margin: 0;
   color: rgba(255, 255, 255, 0.8); }
 
 /* Special styles for posts with no cover images */
-/* line 1422, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1436, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story.no-cover {
   background: #f5f8fa; }
 
-/* line 1426, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1440, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story.no-cover:before {
   display: none; }
 
-/* line 1430, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1444, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story.no-cover .post:before {
   color: rgba(0, 0, 0, 0.5);
   border-color: rgba(0, 0, 0, 0.2); }
 
-/* line 1435, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1449, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story.no-cover h2 {
   color: rgba(0, 0, 0, 0.8); }
 
-/* line 1439, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1453, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story.no-cover p {
   color: rgba(0, 0, 0, 0.5); }
 
 /* if there are two posts without covers, put a border between them */
-/* line 1444, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1458, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next-story.no-cover + .read-next-story.no-cover {
   border-left: rgba(0, 0, 100, 0.04) 1px solid;
   -webkit-box-sizing: border-box;
@@ -1583,7 +1596,7 @@ body:not(.post-template) .post-title {
   box-sizing: border-box; }
 
 /* Correctly position site-footer when next to the .read-next container */
-/* line 1452, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1466, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .read-next + .site-footer {
   position: absolute;
   bottom: 0;
@@ -1595,21 +1608,21 @@ body:not(.post-template) .post-title {
    8. Third Party Elements - Embeds from other services
    ========================================================================== */
 /* Github */
-/* line 1465, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1479, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .gist table {
   margin: 0;
   font-size: 1.4rem; }
 
-/* line 1469, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1483, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .gist td {
   line-height: 1.4; }
 
-/* line 1472, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1486, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .gist .line-number {
   min-width: 25px; }
 
 /* Pastebin */
-/* line 1477, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1491, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .content .embedPastebin {
   margin-bottom: 1.75em; }
 
@@ -1617,7 +1630,7 @@ body:not(.post-template) .post-title {
    9. Pagination - Tools to let you flick between pages
    ========================================================================== */
 /* The main wrapper for our pagination links */
-/* line 1487, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1501, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .pagination {
   position: relative;
   width: 80%;
@@ -1628,13 +1641,13 @@ body:not(.post-template) .post-title {
   color: #9EABB3;
   text-align: center; }
 
-/* line 1498, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1512, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .pagination a {
   color: #9EABB3;
   transition: all 0.2s ease; }
 
 /* Push the previous/next links out to the left/right */
-/* line 1504, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1518, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .older-posts,
 .newer-posts {
   position: absolute;
@@ -1645,32 +1658,32 @@ body:not(.post-template) .post-title {
   border-radius: 4px;
   transition: border 0.3s ease; }
 
-/* line 1515, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1529, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .older-posts {
   right: 0; }
 
-/* line 1519, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1533, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .page-number {
   display: inline-block;
   padding: 2px 0;
   min-width: 100px; }
 
-/* line 1525, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1539, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .newer-posts {
   left: 0; }
 
-/* line 1529, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1543, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .older-posts:hover,
 .newer-posts:hover {
   color: #889093;
   border-color: #98a0a4; }
 
-/* line 1535, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1549, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .extra-pagination {
   display: none;
   border-bottom: #EBF2F6 1px solid; }
 
-/* line 1539, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1553, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .extra-pagination:after {
   display: block;
   content: "";
@@ -1685,24 +1698,24 @@ body:not(.post-template) .post-title {
   border-radius: 100%;
   box-shadow: #FFF 0 0 0 5px; }
 
-/* line 1553, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1567, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .extra-pagination .pagination {
   width: auto; }
 
 /* On page2+ make all the headers smaller */
-/* line 1558, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1572, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .archive-template .main-header {
   max-height: 30vh; }
 
 /* On page2+ show extra pagination controls at the top of post list */
-/* line 1563, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1577, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .archive-template .extra-pagination {
   display: block; }
 
 /* ==========================================================================
    10. Footer - The bottom of every page
    ========================================================================== */
-/* line 1572, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1586, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .site-footer {
   position: relative;
   margin: 8rem 0 0 0;
@@ -1712,24 +1725,24 @@ body:not(.post-template) .post-title {
   line-height: 1.75em;
   color: #BBC7CC; }
 
-/* line 1582, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1596, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .site-footer a {
   color: #BBC7CC;
   text-decoration: none;
   font-weight: bold; }
 
-/* line 1588, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1602, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .site-footer a:hover {
   border-bottom: #bbc7cc 1px solid; }
 
-/* line 1592, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1606, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .poweredby {
   display: block;
   width: 45%;
   float: right;
   text-align: right; }
 
-/* line 1599, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+/* line 1613, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
 .copyright {
   display: block;
   width: 45%;
@@ -1739,11 +1752,11 @@ body:not(.post-template) .post-title {
    11. Media Queries - Smaller than 900px
    ========================================================================== */
 @media only screen and (max-width: 900px) {
-  /* line 1612, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1626, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   blockquote {
     margin-left: 0; }
 
-  /* line 1616, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1630, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .main-header {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -1753,107 +1766,111 @@ body:not(.post-template) .post-title {
     height: 60vh;
     padding: 15% 0; }
 
-  /* line 1626, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1640, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .scroll-down,
   .home-template .main-header:after {
     display: none; }
 
-  /* line 1629, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1643, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .archive-template .main-header {
     min-height: 180px;
     padding: 10% 0; }
 
-  /* line 1634, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1648, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .blog-logo img {
     padding: 4px 0; }
 
-  /* line 1638, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1652, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .page-title {
     font-size: 4rem;
     letter-spacing: -1px; }
 
-  /* line 1643, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1657, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .page-description {
     font-size: 1.8rem;
     line-height: 1.5em; }
 
-  /* line 1648, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1662, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post {
     font-size: 0.95em; }
 
-  /* line 1652, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1666, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   body:not(.post-template) .post-title {
     font-size: 3.2rem; }
 
-  /* line 1656, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1670, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  body:not(.post-template) .post-subtitle {
+    font-size: 2.2rem; }
+
+  /* line 1674, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   hr {
     margin: 2.4em 0; }
 
-  /* line 1660, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1678, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   ol, ul {
     padding-left: 2em; }
 
-  /* line 1664, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1682, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   h1 {
     font-size: 4.5rem;
     text-indent: -2px; }
 
-  /* line 1669, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1687, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   h2 {
     font-size: 3.6rem; }
 
-  /* line 1673, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1691, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   h3 {
     font-size: 3.1rem; }
 
-  /* line 1677, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1695, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   h4 {
     font-size: 2.5rem; }
 
-  /* line 1681, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1699, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   h5 {
     font-size: 2.2rem; }
 
-  /* line 1685, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1703, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   h6 {
     font-size: 1.8rem; }
 
-  /* line 1689, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1707, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .author-profile {
     padding-bottom: 4rem; }
 
-  /* line 1693, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1711, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .author-profile .author-bio {
     font-size: 1.6rem; }
 
-  /* line 1697, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1715, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .author-meta span {
     display: block;
     margin: 1.5rem 0; }
 
-  /* line 1701, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1719, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .author-profile .author-meta span {
     font-size: 1.6rem; }
 
-  /* line 1705, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1723, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post-head.main-header {
     height: 45vh; }
 
-  /* line 1709, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1727, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .tag-head.main-header,
   .author-head.main-header {
     height: 30vh; }
 
-  /* line 1714, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1732, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .no-cover.post-head.main-header {
     height: 55px;
     padding: 0; }
 
-  /* line 1719, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1737, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .no-cover.author-head.main-header {
     padding: 0; }
 
-  /* line 1723, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1741, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .read-next {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1862,11 +1879,11 @@ body:not(.post-template) .post-title {
     flex-direction: column;
     margin-top: 4rem; }
 
-  /* line 1732, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1750, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .read-next p {
     display: none; }
 
-  /* line 1736, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1754, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .read-next-story.no-cover + .read-next-story.no-cover {
     border-top: rgba(0, 0, 100, 0.06) 1px solid;
     border-left: none; } }
@@ -1874,35 +1891,35 @@ body:not(.post-template) .post-title {
    12. Media Queries - Smaller than 500px
    ========================================================================== */
 @media only screen and (max-width: 500px) {
-  /* line 1750, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1768, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .main-header {
     margin-bottom: 15px;
     height: 40vh; }
 
-  /* line 1755, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1773, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .no-cover.main-header {
     height: 30vh; }
 
-  /* line 1759, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1777, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .archive-template .main-header {
     max-height: 20vh;
     min-height: 160px;
     padding: 10% 0; }
 
-  /* line 1765, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1783, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .main-nav {
     padding: 5px;
     margin-bottom: 2rem; }
 
-  /* line 1770, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1788, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .blog-logo {
     padding: 5px; }
 
-  /* line 1774, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1792, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .blog-logo img {
     height: 30px; }
 
-  /* line 1778, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1796, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .menu-button {
     padding: 0 5px;
     border-radius: 0;
@@ -1910,55 +1927,55 @@ body:not(.post-template) .post-title {
     color: #2e2e2e;
     background: transparent; }
 
-  /* line 1785, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1803, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .menu-button:hover {
     color: #2e2e2e;
     border-color: transparent;
     background: none; }
 
-  /* line 1790, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1808, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   body.nav-opened .menu-button {
     background: none;
     border: transparent; }
 
-  /* line 1795, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1813, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .main-nav.overlay a:hover {
     color: #fff;
     border-color: transparent;
     background: transparent; }
 
-  /* line 1801, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1819, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .no-cover .main-nav.overlay {
     background: none; }
 
-  /* line 1804, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1822, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .no-cover .main-nav.overlay .menu-button {
     border: none; }
 
-  /* line 1808, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1826, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .main-nav.overlay .menu-button {
     border-color: transparent; }
 
-  /* line 1812, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1830, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .nav-title {
     top: 25px; }
 
-  /* line 1817, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1835, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .nav-close {
     position: absolute;
     top: 18px; }
 
-  /* line 1822, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1840, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .nav ul {
     padding: 60px 9% 5%; }
 
-  /* line 1826, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1844, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .inner,
   .pagination {
     width: auto;
     margin: 2rem auto; }
 
-  /* line 1832, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1850, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post {
     width: auto;
     margin-top: 2rem;
@@ -1968,79 +1985,83 @@ body:not(.post-template) .post-title {
     padding-bottom: 2rem;
     line-height: 1.65em; }
 
-  /* line 1842, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1860, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post-date {
     display: none; }
 
-  /* line 1846, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1864, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post-template .post-header {
     margin-bottom: 2rem; }
 
-  /* line 1850, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1868, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post-template .post-date {
     display: inline-block; }
 
-  /* line 1854, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1872, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   hr {
     margin: 1.75em 0; }
 
-  /* line 1858, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1876, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   p, ul, ol, dl {
     font-size: 0.95em;
     margin: 0 0 2.5rem 0; }
 
-  /* line 1863, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1881, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .page-title {
     font-size: 3rem; }
 
-  /* line 1867, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1885, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post-excerpt p {
     font-size: 0.85em; }
 
-  /* line 1871, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1889, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .page-description {
     font-size: 1.6rem; }
 
-  /* line 1875, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1893, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   h1, h2, h3,
   h4, h5, h6 {
     margin: 0 0 0.3em 0; }
 
-  /* line 1880, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1898, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   h1 {
     font-size: 2.8rem;
     letter-spacing: -1px; }
 
-  /* line 1885, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1903, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   h2 {
     font-size: 2.4rem;
     letter-spacing: 0; }
 
-  /* line 1890, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1908, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   h3 {
     font-size: 2.1rem; }
 
-  /* line 1894, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1912, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   h4 {
     font-size: 1.9rem; }
 
-  /* line 1898, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1916, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   h5 {
     font-size: 1.8rem; }
 
-  /* line 1902, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1920, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   h6 {
     font-size: 1.8rem; }
 
-  /* line 1906, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1924, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   body:not(.post-template) .post-title {
     font-size: 2.5rem; }
 
-  /* line 1910, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1927, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  body:not(.post-template) .post-subtitle {
+    font-size: 1.5rem; }
+
+  /* line 1931, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post-template .site-footer {
     margin-top: 0; }
 
-  /* line 1914, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1935, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post-content img {
     padding: 0;
     width: calc(100% + 32px);
@@ -2049,86 +2070,86 @@ body:not(.post-template) .post-title {
     max-width: 112%;
     /* fallback when calc doesn't work */ }
 
-  /* line 1921, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1942, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post-meta {
     font-size: 1.3rem;
     margin-top: 1rem; }
 
-  /* line 1926, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1947, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post-footer {
     padding: 5rem 0 3rem 0;
     text-align: center; }
 
-  /* line 1931, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1952, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post-footer .author {
     margin: 0 0 2rem 0;
     padding: 0 0 1.6rem 0;
     border-bottom: #EBF2F6 1px dashed; }
 
-  /* line 1937, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1958, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post-footer .share {
     position: static;
     width: auto; }
 
-  /* line 1942, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1963, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post-footer .share a {
     margin: 1.4rem 0.8rem 0 0.8rem; }
 
-  /* line 1946, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1967, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .author-meta li {
     float: none;
     margin: 0;
     line-height: 1.75em; }
 
-  /* line 1952, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1973, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .author-meta li:before {
     display: none; }
 
-  /* line 1956, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1977, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .older-posts,
   .newer-posts {
     position: static;
     margin: 10px 0; }
 
-  /* line 1962, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1983, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .page-number {
     display: block; }
 
-  /* line 1966, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1987, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .site-footer {
     margin-top: 3rem; }
 
-  /* line 1970, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1991, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .author-profile {
     padding-bottom: 2rem; }
 
-  /* line 1974, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1995, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .post-head.main-header {
     height: 30vh; }
 
-  /* line 1978, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 1999, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .tag-head.main-header,
   .author-head.main-header {
     height: 20vh; }
 
-  /* line 1983, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 2004, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .author-profile .author-image {
     margin-top: -70px; }
 
-  /* line 1987, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 2008, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .author-profile .author-meta span {
     font-size: 1.4rem; }
 
-  /* line 1991, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 2012, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .archive-template .main-header .page-description {
     display: none; }
 
-  /* line 1995, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 2016, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .read-next {
     margin-top: 2rem;
     margin-bottom: -37px; }
 
-  /* line 2000, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
+  /* line 2021, /Users/grantammons/Dropbox/code/blog/source/stylesheets/vendor/casper.css */
   .read-next .post {
     width: 100%; } }
 /* ==========================================================================
@@ -2292,3 +2313,13 @@ pre.highlight {
   /* line 7, /Users/grantammons/Dropbox/code/blog/source/stylesheets/application.css.scss */
   pre.highlight code {
     white-space: pre; }
+
+/* line 12, /Users/grantammons/Dropbox/code/blog/source/stylesheets/application.css.scss */
+.caption {
+  font-size: 1.2rem;
+  text-align: center;
+  padding-bottom: 20px; }
+
+/* line 18, /Users/grantammons/Dropbox/code/blog/source/stylesheets/application.css.scss */
+h3 {
+  color: rgba(0, 0, 0, 0.44); }
