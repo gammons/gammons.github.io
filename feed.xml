@@ -14,11 +14,24 @@
     <link rel="alternate" href="http://grantammons.me/2016/03/23/how-to-deliver-high-quality-software/"/>
     <id>http://grantammons.me/2016/03/23/how-to-deliver-high-quality-software/</id>
     <published>2016-03-23T08:21:00-04:00</published>
-    <updated>2016-03-23T09:04:35-04:00</updated>
+    <updated>2016-03-23T09:04:31-04:00</updated>
     <author>
       <name>Grant Ammons</name>
     </author>
     <summary type="html">When it comes to software, the term “QA” itself is highly loaded. Because what is it, really? Is it just a thing at the end of the software delivery line, where quality gets lovingly sprayed on at the end, achieving  a nice glossy sheen? Is it a separate</summary>
+  </entry>
+  <entry>
+    <title>4 awesome ways we leveled up as a dev team</title>
+    <link rel="alternate" href="http://grantammons.me/2016/01/11/4-awesome-ways-we-leveled-up-as-a-dev-team/"/>
+    <id>http://grantammons.me/2016/01/11/4-awesome-ways-we-leveled-up-as-a-dev-team/</id>
+    <published>2016-01-11T13:21:00-05:00</published>
+    <updated>2016-03-24T14:45:34-04:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">A major goal you should have as an technical leader is to help grow the abilities of your team.
+
+In order to do this, you need to deliberately cut your engineers’ time away from doing their actual work to focus on learning. On purpose. Knowledge workers</summary>
   </entry>
   <entry>
     <title>The importance of celebrating success with your team</title>
@@ -73,19 +86,6 @@ Tools like Jira seduce you into building a mammoth process</summary>
       <name>Grant Ammons</name>
     </author>
     <summary type="html">At PipelineDeals we have an engineering manifesto.  Our manifesto is the backbone of what we stand for as a team.  They are high level, core underpinnings of our team&amp;rsquo;s culture. They read like team-level objectives, but they trancend any time-based measurement.  They are here for the life of the company.
-
-</summary>
-  </entry>
-  <entry>
-    <title>Making 20% time work for your engineering team</title>
-    <link rel="alternate" href="http://grantammons.me/2015/11/27/making-20-time-work-for-your-engineering-team-md/"/>
-    <id>http://grantammons.me/2015/11/27/making-20-time-work-for-your-engineering-team-md/</id>
-    <published>2015-11-27T09:23:00-05:00</published>
-    <updated>2016-03-16T06:45:37-04:00</updated>
-    <author>
-      <name>Grant Ammons</name>
-    </author>
-    <summary type="html">At PipelineDeals, believe in 20% time.  We call it Investment Time.  Each Friday, engineers are free from the shackles of our backlog to work on creative projects.  It feeds an enormous amount of creativity and happiness with our teams. Also, it helps other departments run better, and pushes our goals as a team forward.
 
 </summary>
   </entry>
