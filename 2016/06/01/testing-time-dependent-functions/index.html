@@ -133,9 +133,7 @@ on <a href='/tag/testing/'>testing</a>
 
 <p>The main issue here is that I must mock the <code>Time</code> and <code>Date</code> classes in order to test my function.  The reason is because my function is fully dependent on today&rsquo;s date.   It is a hard dependency on a global state (in this case <code>Date.today</code>).  The output of my function will change based upon the day I run my test!  So I <em>must</em> mock <code>Date.today</code>.  Right?  Right!?</p>
 
-<p>Well, maybe not!  If we treat today&rsquo;s date as a <em>dependency</em> then we can always <em>reverse</em> that dependency with good ol&rsquo; <a rel="nofollow" href="http://martinfowler.com/articles/dipInTheWild.html">dependency injection</a>.</p>
-
-<p>In this case, if we <em>inject</em> the date rather than depending on it, then the function instantly becomes much more testable:</p>
+<p>Well, maybe not!  If we treat today&rsquo;s date as a <em>dependency</em> then we can always <em>reverse</em> that dependency with good ol&rsquo; <a rel="nofollow" href="http://martinfowler.com/articles/dipInTheWild.html">dependency injection</a>.  In this case, if we <em>inject</em> the date rather than depending on it, then the function instantly becomes much more testable:</p>
 <pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">WeekLibrary</span>
   <span class="k">def</span> <span class="nf">is_weekday?</span><span class="p">(</span><span class="n">day</span> <span class="o">=</span> <span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">)</span>
     <span class="o">!</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">].</span><span class="nf">include?</span><span class="p">(</span><span class="n">day</span><span class="p">.</span><span class="nf">wday</span><span class="p">)</span>
@@ -143,7 +141,7 @@ on <a href='/tag/testing/'>testing</a>
 <span class="k">end</span>
 </code></pre>
 
-<p>Well huh, so the default here is still today&rsquo;s date, which is great for the usability of my class&rsquo;s API, but I can also <em>inject</em> the date I want for testing purposes, thus eliminating the need for Timecop or <code>travel_to</code> or what have you.</p>
+<p>Well huh, so the default here is still today&rsquo;s date, which is great for the usability of my class&rsquo;s API. But I can also <em>inject</em> a specific date, which is great for testing purposes. This completely eliminates the need for Timecop, <code>travel_to</code>, or what have you.</p>
 
 <p>Another positive side effect is that my function is now much more generic.  Now, <code>is_weekday</code> will tell me if <em>any</em> date is a weekday, rather than <em>today&rsquo;s</em> date.  It has much more utility.</p>
 
@@ -176,13 +174,13 @@ on <a href='/tag/testing/'>testing</a>
 
 <p><strong>1. Functions that require comparisons to today&rsquo;s date are <em>dependent</em> on time.</strong></p>
 
-<p>Today is variable.  As I write this, today is Wednesday.  But tomorrow, today will be Thursday!  The simple fact that time moves forward makes a function&rsquo;s output <em>variable</em> based upon when it is run.  This makes the function&rsquo;s <a rel="nofollow" href="http://googletesting.blogspot.com/2008/08/by-miko-hevery-so-you-decided-to.html">testability</a> very difficult, and introduces a reliance on a global state.</p>
+<p>Today is variable.  As I write this, today is Wednesday.  But tomorrow, today will be Thursday!  The simple fact that time (purportedly) moves forward makes a function&rsquo;s output <em>variable</em> based upon when it is run.  This makes the function&rsquo;s <a rel="nofollow" href="http://googletesting.blogspot.com/2008/08/by-miko-hevery-so-you-decided-to.html">testability</a> very difficult, and introduces a reliance on a global state.</p>
 
 <p>While using libraries to fix the output of <code>Date.today</code> is handy, it&rsquo;s not the best solution.</p>
 
 <p><strong>2. Use dependency injection to inject the comparison date rather than relying on today&rsquo;s date.</strong></p>
 
-<p>If you find yourself relying on a time class in your function and are about to reach for a time mocking library like <code>travel_to</code>, think first if it&rsquo;s even necessary.  There&rsquo;s a good chance you don&rsquo;t need it at all!</p>
+<p>If you find yourself relying on a time class in your function and are about to reach for a time mocking library like <code>travel_to</code>, try injecting the date into the function first.  There&rsquo;s a good chance your problem will be solved right there!</p>
 </section>
 <footer class='post-footer'>
 <figure class='author-image'>
