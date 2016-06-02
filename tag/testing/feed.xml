@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Grant Ammons: testing</title>
+  <subtitle>Posts tagged with testing</subtitle>
+  <id>http://grantammons.me</id>
+  <link href="http://grantammons.me"/>
+  <link href="http://grantammons.me/tag/testing/feed.xml" rel="self"/>
+  <updated>2016-06-01T06:03:00-04:00</updated>
+  <author>
+    <name>Grant Ammons</name>
+  </author>
+  <entry>
+    <title>Testing time-dependent functions</title>
+    <link rel="alternate" href="http://grantammons.me/2016/06/01/how-to-test-time-dependent-code/"/>
+    <id>http://grantammons.me/2016/06/01/how-to-test-time-dependent-code/</id>
+    <published>2016-06-01T06:03:00-04:00</published>
+    <updated>2016-06-02T07:43:04-04:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">Recently I started a weekend project called Todolist, which is a little Go application for the command line that does simple task management.  Todolist is centered around due dates,  and I needed a good way to unit test my code.  So the question was,</summary>
+  </entry>
+</feed>

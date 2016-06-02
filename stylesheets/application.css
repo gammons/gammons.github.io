@@ -2309,17 +2309,20 @@ body:not(.post-template) .post-subtitle {
 
 /* line 5, /Users/grantammons/Dropbox/code/blog/source/stylesheets/application.css.scss */
 pre.highlight {
-  word-wrap: normal; }
+  word-wrap: normal;
+  line-height: 1.2em;
+  padding-top: 20px;
+  padding-bottom: 20px; }
   /* line 7, /Users/grantammons/Dropbox/code/blog/source/stylesheets/application.css.scss */
   pre.highlight code {
     white-space: pre; }
 
-/* line 12, /Users/grantammons/Dropbox/code/blog/source/stylesheets/application.css.scss */
+/* line 15, /Users/grantammons/Dropbox/code/blog/source/stylesheets/application.css.scss */
 .caption {
   font-size: 1.2rem;
   text-align: center;
   padding-bottom: 20px; }
 
-/* line 18, /Users/grantammons/Dropbox/code/blog/source/stylesheets/application.css.scss */
+/* line 21, /Users/grantammons/Dropbox/code/blog/source/stylesheets/application.css.scss */
 h3 {
   color: rgba(0, 0, 0, 0.44); }
