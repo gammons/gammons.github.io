@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Grant Ammons: side projects</title>
+  <subtitle>Posts tagged with side projects</subtitle>
+  <id>http://grantammons.me</id>
+  <link href="http://grantammons.me"/>
+  <link href="http://grantammons.me/tag/side-projects/feed.xml" rel="self"/>
+  <updated>2016-07-22T09:50:00-04:00</updated>
+  <author>
+    <name>Grant Ammons</name>
+  </author>
+  <entry>
+    <title>The life-changing benefits of side projects</title>
+    <link rel="alternate" href="http://grantammons.me/2016/07/22/the-life-changing-benefits-of-side-projects/"/>
+    <id>http://grantammons.me/2016/07/22/the-life-changing-benefits-of-side-projects/</id>
+    <published>2016-07-22T09:50:00-04:00</published>
+    <updated>2016-07-22T10:16:24-04:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">I am an avid side project-er. At any point in time I always have at least one “thing” going on in the background that feeds my appetite for playing with new tech and learning new stuff.
+
+Side projects can be liberating and super fun. They are great for</summary>
+  </entry>
+</feed>

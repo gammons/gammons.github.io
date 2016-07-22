@@ -5,10 +5,23 @@
   <id>http://grantammons.me</id>
   <link href="http://grantammons.me"/>
   <link href="http://grantammons.me/feed.xml" rel="self"/>
-  <updated>2016-06-01T06:03:00-04:00</updated>
+  <updated>2016-07-22T09:50:00-04:00</updated>
   <author>
     <name>Grant Ammons</name>
   </author>
+  <entry>
+    <title>The life-changing benefits of side projects</title>
+    <link rel="alternate" href="http://grantammons.me/2016/07/22/the-life-changing-benefits-of-side-projects/"/>
+    <id>http://grantammons.me/2016/07/22/the-life-changing-benefits-of-side-projects/</id>
+    <published>2016-07-22T09:50:00-04:00</published>
+    <updated>2016-07-22T10:16:24-04:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">I am an avid side project-er. At any point in time I always have at least one “thing” going on in the background that feeds my appetite for playing with new tech and learning new stuff.
+
+Side projects can be liberating and super fun. They are great for</summary>
+  </entry>
   <entry>
     <title>Testing time-dependent functions</title>
     <link rel="alternate" href="http://grantammons.me/2016/06/01/testing-time-dependent-functions/"/>
@@ -25,7 +38,7 @@
     <link rel="alternate" href="http://grantammons.me/2016/03/23/how-to-deliver-high-quality-software/"/>
     <id>http://grantammons.me/2016/03/23/how-to-deliver-high-quality-software/</id>
     <published>2016-03-23T08:21:00-04:00</published>
-    <updated>2016-03-23T09:04:35-04:00</updated>
+    <updated>2016-03-23T09:04:31-04:00</updated>
     <author>
       <name>Grant Ammons</name>
     </author>
@@ -73,18 +86,5 @@ Individuals and interactions over processes and tools.
 Why?  Because the first principle of the Agile Manifesto is so easy to break.  We broke it big time and learned a lot when fixing it.
 
 Tools like Jira seduce you into building a mammoth process</summary>
-  </entry>
-  <entry>
-    <title>Ditching Scrum for Kanban - The best decision we've made as a team</title>
-    <link rel="alternate" href="http://grantammons.me/2015/12/14/from-scrum-to-kanban/"/>
-    <id>http://grantammons.me/2015/12/14/from-scrum-to-kanban/</id>
-    <published>2015-12-14T13:21:00-05:00</published>
-    <updated>2016-03-16T06:45:37-04:00</updated>
-    <author>
-      <name>Grant Ammons</name>
-    </author>
-    <summary type="html">The following is a story about how we matured as an engineering team.  We went from an ad-hoc process to Scrum, and used Scrum for a whole year.  Scrum leveled us up as a team in terms of structure and process.  But it caused major morale issues.  Then we found Kanban.  We implemented it and have never looked back.
-
-</summary>
   </entry>
 </feed>
