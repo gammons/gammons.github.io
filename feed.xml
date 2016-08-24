@@ -5,10 +5,21 @@
   <id>http://grantammons.me</id>
   <link href="http://grantammons.me"/>
   <link href="http://grantammons.me/feed.xml" rel="self"/>
-  <updated>2016-07-22T09:50:00-04:00</updated>
+  <updated>2016-08-24T15:44:00-04:00</updated>
   <author>
     <name>Grant Ammons</name>
   </author>
+  <entry>
+    <title>The Case of the Missing React Framework</title>
+    <link rel="alternate" href="http://grantammons.me/2016/08/24/the-case-of-the-missing-react-framework/"/>
+    <id>http://grantammons.me/2016/08/24/the-case-of-the-missing-react-framework/</id>
+    <published>2016-08-24T15:44:00-04:00</published>
+    <updated>2016-08-24T16:01:35-04:00</updated>
+    <author>
+      <name>Grant Ammons</name>
+    </author>
+    <summary type="html">Learning React is easy, but learning how to properly architect an app using React is an exercise in frustration. React is just the view layer and Flux is a pattern for updating views. But there is a large gap - how to organize your data in a React app</summary>
+  </entry>
   <entry>
     <title>The life-changing benefits of side projects</title>
     <link rel="alternate" href="http://grantammons.me/2016/07/22/the-life-changing-benefits-of-side-projects/"/>
@@ -38,7 +49,7 @@ Side projects can be liberating and super fun. They are great for</summary>
     <link rel="alternate" href="http://grantammons.me/2016/03/23/how-to-deliver-high-quality-software/"/>
     <id>http://grantammons.me/2016/03/23/how-to-deliver-high-quality-software/</id>
     <published>2016-03-23T08:21:00-04:00</published>
-    <updated>2016-03-23T09:04:31-04:00</updated>
+    <updated>2016-03-23T09:04:35-04:00</updated>
     <author>
       <name>Grant Ammons</name>
     </author>
@@ -69,22 +80,5 @@ In order to do this, you need to deliberately cut your engineers’ time away fr
     <summary type="html">
 “Ok, so we launched our new feature last night. However we have 30 customer emails from last night about bugs, and we need to hit those right away. Also the error rate is a little spikey, which probably means there’s more issues, and our response time
 </summary>
-  </entry>
-  <entry>
-    <title>The simplest thing you can do to not violate the first principle of Agile</title>
-    <link rel="alternate" href="http://grantammons.me/2015/12/21/the-simplest-thing/"/>
-    <id>http://grantammons.me/2015/12/21/the-simplest-thing/</id>
-    <published>2015-12-21T14:23:00-05:00</published>
-    <updated>2016-03-16T06:45:37-04:00</updated>
-    <author>
-      <name>Grant Ammons</name>
-    </author>
-    <summary type="html">
-Individuals and interactions over processes and tools.
-
-
-Why?  Because the first principle of the Agile Manifesto is so easy to break.  We broke it big time and learned a lot when fixing it.
-
-Tools like Jira seduce you into building a mammoth process</summary>
   </entry>
 </feed>
