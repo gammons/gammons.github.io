@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>How to deliver high quality software</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,400i,700|Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+    <link href="/stylesheets/site.css" rel="stylesheet" /><link href="/stylesheets/syntax.css" rel="stylesheet" />
+    <script src="/javascripts/all.js"></script>
+  </head>
+
+  <body class="x2016 x2016_03 x2016_03_23 x2016_03_23_how-to-deliver-high-quality-software x2016_03_23_how-to-deliver-high-quality-software_index">
+    <nav class="navbar navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+
+    </button>
+    <a class="navbar-brand" href="/">Grant Ammons</a>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="">
+          <a href="/">
+            About
+          </a>
+        </li>
+        <li class="active">
+          <a href="/blog">Blog</a>
+        </li>
+        <li class="">
+          <a href="/portfolio">Portfolio</a>
+        </li>
+        <li class="">
+          <a href="/talks">Talks</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="logo">
+      <img src="/images/me.png" />
+    </div>
+
+    <div class="page">
+      <section class="firstSection">
+        <h1>How to deliver high quality software</h1>
+      </section>
+
+      <article class="blog-post">
+        <p>When it comes to software, the term “QA” itself is highly loaded. Because what is it, really? Is it just a thing at the end of the software delivery line, where quality gets lovingly sprayed on at the end, achieving  a nice glossy sheen? Is it a separate department that bolts on quality, where the developers don’t really need to worry about it after they throw it over the wall? Is it that one integration test that one developer wrote, once, and it’s “probably good enough”? Of course not!</p>
+
+<div class="caption">
+  <img src="/images/spray.jpeg" />
+  QA being applied to our test subject. This is not how it works.
+</div>
+
+<p>So what goes into the process of <em>actually delivering high quality software</em>? In essence, there’s 2 parts to this whole thing:</p>
+
+<ul>
+<li><strong>The QA step:</strong> A verification check by a tester. It’s a series of testing, exploratory or automated, to ensure that newly built software is ready for prime time. When you Google “QA” you are generally reading about this step.</li>
+<li><strong>Development practices for writing high quality software:</strong> The stuff that the developers can do throughout the entire development process to ensure their work will pass through those checks with flying colors. These are things like code reviews, ensuring proper unit + integration test coverage, and continuous delivery.</li>
+</ul>
+
+<p>As an engineering leader, you need to define both of these parts. There are some practices that work better than others, and that’s what this post is about. So let’s run through the cast of characters in this crazy play:</p>
+
+<h3>Developers</h3>
+
+<p>These are the people who put the quality in. Developers are the only people who can directly control the quality of software.</p>
+
+<p>Developers also:</p>
+
+<ul>
+<li>Help other developers with the quality of their code by means of code reviews.</li>
+<li>Write unit and integration tests for the code they create.</li>
+<li>May write automated tests at the browser/user level, using a tool like selenium. They may get help from the tester as to which automated tests to write.</li>
+</ul>
+
+<h3>Testers</h3>
+
+<p>Testers are people who test the software and find bugs. They can then bring awareness of those bugs to the developers.</p>
+
+<p>Although developers are usually very good about finding errors in their own code, not everything will be found. Testers are akin to an editor reading an article that someone wrote. While the writer probably did proofread well, they never catch everything themselves.</p>
+
+<p>Testers can help guide developers on which tests are important to write. These will likely be at the user level, but sometimes at a lower level as well. </p>
+
+<p>Testers may or may not write automated tests at the browser level using a tool like selenium. It depends on their skill set. Sometimes testers will write those tests, but other times they can tell developers to write those types of tests.</p>
+
+<p>Skilled testers usually are very good at exploratory testing. They have a bizarre personality trait where breaking things, making things go haywire, and generally creating disorder and chaos is something they very much enjoy.</p>
+
+<h3>Product Managers</h3>
+
+<p>Product managers can answer the question “Are we building the correct product?” They are are not looking for quality issues or bugs per se; they are instead looking to ensure the output matches their expectation for what the user should experience. </p>
+
+<p>Building a high quality feature is a waste of time if it does not match the PM’s vision. This is why the PM is also engaged in any changes.</p>
+
+<h2>Practices that work well</h2>
+
+<p>So there’s a whole sea of practices that don’t really work. Handoffs, separate teams, throwing code over walls, no tests, and very large, complicated deployment processes are all signs that high quality software is not going to be delivered. So what does work?</p>
+
+<p><strong>An integrated team.</strong> One or more testers should be a full-fledged part of a development team. At <a href="https://www.pipelinedeals.com" rel="nofollow">PipelineDeals</a> we have 4 developers per team, and a shared designer and tester. The tester comes to all standup meetings and coordinates with the developers as to which parts of the project are ready for them to test. Testers should be involved at all phases of the development process, starting with reviewing mockups.</p>
+
+<p>Testers should not be a separate team that only gets involved in the late stages of the game. Nor should there be a <em>handoff</em> from dev to QA. Handoffs are a sign of a broken process and usually foster an <a href="http://royrapoport.blogspot.com/2016/02/the-failure-of-us.html" rel="nofollow">us-vs-them</a> mentality.</p>
+
+<p><strong>Developers test first.</strong> Just as a writer wouldn’t hand over their work to their editor without proofreading it themselves first, developers should perform exploratory tests first.</p>
+
+<p>Before a tester executes their test plan, bring all the developers in a room for a couple hours and test the system end-to-end. The developers will find things. Usually the things they find can be fixed in realtime, to avoid further delays in testing.</p>
+
+<p>After the developers complete their own testing, the project will look much better than it did. The tester will waste less time with the low-hanging fruit and be able to concentrate on breaking things in much more devious and subtle ways.</p>
+
+<p><strong>Automated tests.</strong> The output of exploratory and plan-based testing should feed into automated acceptance tests. Either the tester or developers can write these automated tests, depending on the tester’s skill set.</p>
+
+<div class='caption'>
+  <img src="/images/baby.jpeg" />
+</div>
+
+<p><strong>Code reviews.</strong> Code reviews are an excellent way of ensuring the quality of code that is going to be merged into master. Developers never want to look bad in front of their peers, so usually they will always go above and beyond to ensure their work will stand up to a review.</p>
+
+<p>A code reviewer should be looking for the following:</p>
+
+<ol>
+<li>Is this code maintainable? Is it understandable? Will developers 6 months from now want to strangle the person who wrote it? We generally look to <a href="https://robots.thoughtbot.com/sandi-metz-rules-for-developers" rel="nofollow">Sandi Metz’s rules</a> as a guide.</li>
+<li>Does it have proper tests at the proper level? Code changes should always include unit tests, but sometimes (especially if coding across APIs) they should also include functional or integration tests as well. Do the tests exercise the code properly?</li>
+</ol>
+
+<p><strong><a href="http://martinfowler.com/bliki/ContinuousDelivery.html" rel="nofollow">Continuous Delivery</a></strong> conveys <a href="http://radar.oreilly.com/2014/02/the-case-for-continuous-delivery.html" rel="nofollow">tangible benefits</a> to an engineering org. It reduces development costs and increases quality.</p>
+
+<p>We use feature flags extensively at a PipelineDeals. It allows us to iterate on new feature development while keeping small, short-lived branches. Because repeat after me: long-running branches are a <em>Bad Thing</em>. Why? Well, do you really think merging that 3-month-long mammoth of a branch into master, with the intention of deploying it on a Friday afternoon is going to go swimmingly? (It will not.) Large changes carry large risks.</p>
+
+<p>Feature flags allow you to iterate on new feature development all while merging changes directly into the master branch, and it minimizes the risk that large branches carry with them. </p>
+
+<p>The other benefit is a staged rollout. You can flip a feature on for your beta testers, or to a predetermined % of users. Staged rollouts allow you to do many things:</p>
+
+<ul>
+<li>Launch early to beta testers for user feedback</li>
+<li>Launch to a small % of users as a <a href="http://martinfowler.com/bliki/CanaryRelease.html" rel="nofollow">canary release</a></li>
+<li>Launch to a predermined cohort of users to guage performance impact</li>
+<li>A/B testing</li>
+</ul>
+
+<h2>Your field guide to QA</h2>
+
+<p>When I was put in charge of engineering at PipelineDeals, one of my goals set forth by the cofounders was to ensure the delivery of high quality software. That included implementing a solid QA process. When Googling about that, of course, you get slammed with all sorts of different practices and results. The above is what works well for us, as a SaaS product company. Your Mileage May Vary.</p>
+
+      </article>
+
+      <hr />
+      <div class='disqusbox'>
+  <div id='disqus_thread'></div>
+</div>
+<script>
+  var disqus_shortname = "theblogofgrantammons";
+  var disqus_url = "http://grantammons.me/2016/03/23/how-to-deliver-high-quality-software/";
+  var disqus_identifier = "articles/2016-03-23-how-to-deliver-high-quality-software.html";
+  
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
+
+
+      <div class="footer">
+        &copy; 2016 Grant Ammons
+      </div>
+    </div>
+
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37191428-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>
+

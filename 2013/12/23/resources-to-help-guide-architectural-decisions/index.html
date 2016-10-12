@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Resources to help guide architectural decisions in Rails apps</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,400i,700|Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+    <link href="/stylesheets/site.css" rel="stylesheet" /><link href="/stylesheets/syntax.css" rel="stylesheet" />
+    <script src="/javascripts/all.js"></script>
+  </head>
+
+  <body class="x2013 x2013_12 x2013_12_23 x2013_12_23_resources-to-help-guide-architectural-decisions x2013_12_23_resources-to-help-guide-architectural-decisions_index">
+    <nav class="navbar navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+
+    </button>
+    <a class="navbar-brand" href="/">Grant Ammons</a>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="">
+          <a href="/">
+            About
+          </a>
+        </li>
+        <li class="active">
+          <a href="/blog">Blog</a>
+        </li>
+        <li class="">
+          <a href="/portfolio">Portfolio</a>
+        </li>
+        <li class="">
+          <a href="/talks">Talks</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="logo">
+      <img src="/images/me.png" />
+    </div>
+
+    <div class="page">
+      <section class="firstSection">
+        <h1>Resources to help guide architectural decisions in Rails apps</h1>
+      </section>
+
+      <article class="blog-post">
+        <p>My <a href="http://gammons.github.com/architecture/2012/12/22/where-the-logic-hides/" rel="nofollow">previous
+post</a> outlined a trivial example where I refactored some basic, boring business logic into a
+<a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/" rel="nofollow">service object</a>, or <a href="http://martinfowler.com/eaaCatalog/transactionScript.html" rel="nofollow">transaction script</a> (depending on who you ask).</p>
+
+<p>It set off a lot of debate on Twitter and <a href="http://news.ycombinator.com/item?id=4960232">Hacker news</a> about the topic.  I was quite surprised.  At the very least it means
+that many others have felt the pain of having rails dictate your applications core architecture.</p>
+
+
+
+<h2>Signs that rails has dictated your core architecture</h2>
+
+<h4>1.  Upgrading major versions of rails is an enormous, painful process.</h4>
+
+<p>When Rails 4 drops, you should be able to upgrade your app on day one.  If you cannot, or it will require a large amount of refactoring  to get there, that is a smell that
+your app is too reliant on the architecture given to you.</p>
+
+<p>Plenty of people remember the painful process it was to upgrade a Rails 2.x app to Rails 3.  Hell, there was even a <a href="https://github.com/rails/rails_upgrade" rel="nofollow">gem released</a> to
+help guide the process!  That fact alone should be sending red flags up in your head.  Rails is a fantastic framework for RESTful, CRUDdy apps, but just like anything else,
+things change.  Internal APIs change.  <a href="http://m.onkey.org/active-record-query-interface" rel="nofollow">The names of things you might have relied upon</a> change.</p>
+
+<h4>2.  All the use cases of your application are tied up in ActiveRecord models.</h4>
+
+<p>It is a good idea to start breaking up your application&rsquo;s business logic into service objects.  Service objects are essentially plain ol&rsquo; ruby classes that can encapsulate a
+process happening in your system.</p>
+
+<p>Imagine a complex use case:</p>
+
+<blockquote>
+<p>In our CRM application, when we convert a lead to a deal, the lead will become a contact, we will send a lead converted email, and we will carry over the lead source and set that as the deal&rsquo;s source.  The email will only be sent, however, if the lead source has a dollar value set.</p>
+</blockquote>
+
+<p>Where should that logic exist?  Should it exist in a Model?  Well, probably not.</p>
+
+<p>There are many reasons that this interaction does not belong in a model:</p>
+
+<ul>
+<li>  This interaction involves many models.  If you have one ActiveRecord model instantiating and calling methods on <em>another</em> ActiveRecord model, then the first model probably knows too much!</li>
+<li>  It is unclear <em>which</em> model this interaction goes into.  Should it be the Deal?  Lead?  Arguments could be made for both.</li>
+<li>  We need to perform an external action (sending an email) based upon the state of an attribute in a <strong>3rd</strong> model, the lead source.</li>
+</ul>
+
+<p>Ok fine then, that logic should go in the controller!  Maybe that makes sense!</p>
+
+<p>Let&rsquo;s implement the above use case.</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">LeadsController</span> <span class="o">&lt;</span> <span class="no">ActionController</span>
+  <span class="k">def</span> <span class="nf">convert</span>
+    <span class="vi">@lead</span> <span class="o">=</span> <span class="no">Lead</span><span class="p">.</span><span class="nf">find</span> <span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">]</span>
+    <span class="vi">@lead_source</span> <span class="o">=</span> <span class="vi">@lead</span><span class="p">.</span><span class="nf">lead_source</span>
+    <span class="vi">@deal</span> <span class="o">=</span> <span class="no">Deal</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">name: </span><span class="vi">@lead</span><span class="p">.</span><span class="nf">name</span><span class="p">,</span> <span class="ss">source: </span><span class="vi">@lead_source</span><span class="p">,</span> <span class="ss">lead: </span><span class="vi">@lead</span><span class="p">)</span>
+    <span class="vi">@lead</span><span class="p">.</span><span class="nf">touch</span><span class="p">(</span><span class="ss">:converted_at</span><span class="p">)</span>
+    <span class="vi">@lead</span><span class="p">.</span><span class="nf">update_attribute</span><span class="p">(</span><span class="ss">deal_id: </span><span class="vi">@deal</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
+    <span class="no">UserMailer</span><span class="p">.</span><span class="nf">lead_converted_email</span><span class="p">(</span><span class="vi">@lead</span><span class="p">,</span> <span class="vi">@deal</span><span class="p">).</span><span class="nf">deliver</span> <span class="k">if</span> <span class="vi">@lead_source</span><span class="p">.</span><span class="nf">value</span><span class="p">.</span><span class="nf">present?</span>
+
+    <span class="n">respond_to</span> <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+  <span class="nf">end</span>
+<span class="k">end</span>
+</code></pre>
+<p>Now you could argue that this is fine.  All of the logic is encapsulated into the controller.  However everyone knows that <a href="http://weblog.jamisbuck.org/2006/10/18/skinny-controller-fat-model" rel="nofollow">you should keep your controllers
+skinny</a>.</p>
+
+<p>Furthermore the above logic is in a place that is difficult to test.  You need to bring in the full rails stack in order to test this code, which makes testing slow.</p>
+
+<p>A good alternative is a <a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/" rel="nofollow">service object</a> whose job is solely to perform the convert
+action.</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">ConvertLead</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">lead</span><span class="p">,</span> <span class="n">lead_source</span><span class="p">)</span>
+    <span class="vi">@lead</span><span class="p">,</span> <span class="vi">@lead_source</span> <span class="o">=</span> <span class="n">lead</span><span class="p">,</span> <span class="n">lead_source</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">convert!</span>
+    <span class="vi">@deal</span> <span class="o">=</span> <span class="no">Deal</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">name: </span><span class="vi">@lead</span><span class="p">.</span><span class="nf">name</span><span class="p">,</span> <span class="ss">source: </span><span class="vi">@lead_source</span><span class="p">,</span> <span class="ss">lead: </span><span class="vi">@lead</span><span class="p">)</span>
+    <span class="vi">@lead</span><span class="p">.</span><span class="nf">touch</span><span class="p">(</span><span class="ss">:converted_at</span><span class="p">)</span>
+    <span class="vi">@lead</span><span class="p">.</span><span class="nf">update_attribute</span><span class="p">(</span><span class="ss">deal_id: </span><span class="vi">@deal</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
+    <span class="n">send_lead_converted_email</span> <span class="k">if</span> <span class="vi">@lead_source</span><span class="p">.</span><span class="nf">has_value?</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">send_lead_converted_email</span>
+    <span class="no">UserMailer</span><span class="p">.</span><span class="nf">.</span><span class="p">.</span><span class="nf">.</span><span class="n">deliver</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+<p>Since we have extracted this logic outside of rails, we can <em>test it in isolation</em>, which means we can <strong>test it fast</strong>, which brings me to my next point:</p>
+
+<h4>3.  Your tests are slow, and you are testing your database too much</h4>
+
+<p>If you have tests that are reliant on the state of your database, that is a sign that you are not testing business logic, you are testing your database.</p>
+<pre class="highlight plaintext"><code>expect { Deal.convert! }.to change { Lead.count }.by(1)
+</code></pre>
+<p>Trust me, <strong>your database works</strong>.  It will happily persist objects all the live long day.  It should <em>not</em> be used as an intermediary to testing your business logic.</p>
+
+<p>Going back to our example with the controller, testing that is a much easier process.  All we need to do is assert that we have handed control to our service object:</p>
+<pre class="highlight ruby"><code><span class="n">describe</span> <span class="no">LeadsController</span><span class="p">,</span> <span class="s2">"#convert"</span> <span class="k">do</span>
+  <span class="n">it</span> <span class="s2">"hands control to our service object"</span> <span class="k">do</span>
+    <span class="n">convert_lead</span> <span class="o">=</span> <span class="n">stub</span>
+    <span class="n">convert_lead</span><span class="p">.</span><span class="nf">should_receive</span><span class="p">(</span><span class="ss">:convert_lead!</span><span class="p">)</span>
+    <span class="no">ConvertLead</span><span class="p">.</span><span class="nf">should_receive</span><span class="p">(</span><span class="ss">:new</span><span class="p">).</span><span class="nf">with</span><span class="p">(</span><span class="n">lead</span><span class="p">,</span> <span class="n">lead_source</span><span class="p">).</span><span class="nf">and_return</span><span class="p">(</span><span class="n">convert_lead</span><span class="p">)</span>
+    <span class="n">put</span> <span class="ss">:convert</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+<p>All we need to assert is that the message got there, with the correct args.  <code>ConvertLead</code> is tested in isolation, outside of Rails.</p>
+
+<h4>Resources that can help</h4>
+
+<p>There are plenty of resources around learning software architecture.</p>
+
+<h4>Conference Presentations</h4>
+
+<ul>
+<li>  First and foremost,  watch this presentation by Uncle Bob:  <a href="http://confreaks.com/videos/759-rubymidwest2011-keynote-architecture-the-lost-years" rel="nofollow">Architecture:  the lost years</a>.  He give an eye-opening talk about where Rails should fit in your application.  (hint, it&rsquo;s not front and center!)</li>
+<li>  Then watch Corey Haines on <a href="http://www.confreaks.com/videos/641-gogaruco2011-fast-rails-tests" rel="nofollow">fast tests</a>.</li>
+<li>  <a href="http://confreaks.com/videos/185-rubyconf2009-solid-ruby" rel="nofollow">SOLID Ruby by Jim Weirich</a></li>
+<li>  <a href="http://confreaks.com/videos/240-goruco2009-solid-object-oriented-design" rel="nofollow">SOLID object oriented design by Sandi Metz</a></li>
+</ul>
+
+<h4>Screencasts</h4>
+
+<ul>
+<li>  Uncle Bob hosts the amazing (but somewhat pricey) <a href="http://www.cleancoders.com/" rel="nofollow">screencasts about software development</a>.  Uncle bob dives into function naming, how long a
+class or function should be, TDD, and the [SOLID principles](http://en.wikipedia.org/wiki/SOLID<em>(object-oriented</em>design) in depth.</li>
+<li>  <a href="https://twitter.com/garybernhardt" rel="nofollow">Gary Bernhardt</a> creates the <a href="https://www.destroyallsoftware.com/screencasts" rel="nofollow">Destroy All Software screencasts</a> which is an <strong>excellent</strong> resource about testing, fast tests, TDD, and figuring out where logic should exist.</li>
+<li>  <a href="http://railscasts.com" rel="nofollow">Ryan Bates</a> recently touched on the topic of <a href="http://railscasts.com/episodes/398-service-objects" rel="nofollow">service objects</a>.</li>
+</ul>
+
+<h4>Books</h4>
+
+<ul>
+<li>  <a href="http://www.amazon.com/Practical-Object-Oriented-Design-Ruby-Addison-Wesley/dp/0321721330/ref=la_B0097WWH62_1_1?ie=UTF8&amp;qid=1356370297&amp;sr=1-1" rel="nofollow">Practical Object Oriented Design in Ruby</a> by <a href="http://sandimetz.com/" rel="nofollow">Sandi Metz</a></li>
+<li>  <a href="http://railsoopbook.com/" rel="nofollow">Rails as she is spoke</a> by <a href="http://gilesbowkett.blogspot.com/" rel="nofollow">Giles Bowkett</a></li>
+<li>  <a href="http://clean-ruby.com/" rel="nofollow">Clean Ruby</a> by <a href="http://saturnflyer.com/blog/" rel="nofollow">Jim Gay</a></li>
+<li>  <a href="http://objectsonrails.com/" rel="nofollow">Object on Rails</a> by <a href="http://about.avdi.org/" rel="nofollow">Avdi Grimm</a></li>
+</ul>
+
+<h4>Blogs and blog posts</h4>
+
+<ul>
+<li>  The <a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html" rel="nofollow">8th light blog</a> is an excellent starting point for learning about architecture.</li>
+<li>  <a href="http://evan.tiggerpalace.com/articles/2012/11/21/use-rails-until-it-hurts/" rel="nofollow">Use Rails until it hurts</a></li>
+<li>  <a href="http://petelacey.tumblr.com/post/32626547077/making-uncle-bob-happy" rel="nofollow">Making Uncle Bob happy</a> is a very interesting post about a company that is utilizing a more modular
+application architecture.  They claim fast tests, and the ability to switch from Rails to Sinatra very easily (not that that&rsquo;s useful, but it is the principle that counts)</li>
+<li>  <a href="https://gist.github.com/4172391" rel="nofollow">How modules can make code difficult to read</a> by <a href="http://railscasts.com/" rel="nofollow">Ryan Bates</a></li>
+<li>  The <a href="http://blog.codeclimate.com" rel="nofollow">code climate blog</a> is an excellent resource in general, for architecture and design.</li>
+<li>  <a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/" rel="nofollow">7 ways to decompose fat activerecord models</a></li>
+</ul>
+
+<h4>Github repos</h4>
+
+<ul>
+<li>  <a href="https://github.com/wizardwerdna/avdi" rel="nofollow">A Web Application for Avdi and Uncle Bob, by Andrew Greenberg</a></li>
+<li>  <a href="https://github.com/jasonroelofs/raidit" rel="nofollow">A Rails app called Raidit</a> has an interesting design.</li>
+<li>  <a href="https://github.com/qertoip/guru_watch" rel="nofollow">A rails app called Guru Watch</a> has an interesting design as well.  (Notice the <a href="https://github.com/qertoip/guru_watch/tree/master/app/use_cases" rel="nofollow">use_cases</a> directory!)</li>
+</ul>
+
+      </article>
+
+      <hr />
+      <div class='disqusbox'>
+  <div id='disqus_thread'></div>
+</div>
+<script>
+  var disqus_shortname = "theblogofgrantammons";
+  var disqus_url = "http://grantammons.me/2013/12/23/resources-to-help-guide-architectural-decisions/";
+  var disqus_identifier = "articles/2013-12-23-resources-to-help-guide-architectural-decisions.html";
+  
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
+
+
+      <div class="footer">
+        &copy; 2016 Grant Ammons
+      </div>
+    </div>
+
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37191428-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>
+

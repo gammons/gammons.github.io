@@ -1,0 +1,310 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Bitcoin, Litecoin, Dogecoin - Exploring the block chain</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,400i,700|Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+    <link href="/stylesheets/site.css" rel="stylesheet" /><link href="/stylesheets/syntax.css" rel="stylesheet" />
+    <script src="/javascripts/all.js"></script>
+  </head>
+
+  <body class="x2014 x2014_01 x2014_01_17 x2014_01_17_bitcoin-litecoin-dogecoin-exploring-the-block-chain x2014_01_17_bitcoin-litecoin-dogecoin-exploring-the-block-chain_index">
+    <nav class="navbar navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+
+    </button>
+    <a class="navbar-brand" href="/">Grant Ammons</a>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="">
+          <a href="/">
+            About
+          </a>
+        </li>
+        <li class="active">
+          <a href="/blog">Blog</a>
+        </li>
+        <li class="">
+          <a href="/portfolio">Portfolio</a>
+        </li>
+        <li class="">
+          <a href="/talks">Talks</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="logo">
+      <img src="/images/me.png" />
+    </div>
+
+    <div class="page">
+      <section class="firstSection">
+        <h1>Bitcoin, Litecoin, Dogecoin - Exploring the block chain</h1>
+      </section>
+
+      <article class="blog-post">
+        <p>Ever go to a site like <a href="http://blockchain.info" rel="nofollow">http://blockchain.info</a> and just wonder what all those numbers mean?  Well, wonder no more!  This guide will have you exploring the block chain like a pro.  This guide is separated into two main sections &ndash; a brief, high level overview of transactions and blocks, followed by a deep inspection of a single block, and the transactions within it.
+&lt;!&ndash;more&ndash;&gt;</p>
+
+<h2>Cryptocurrency 101</h2>
+
+<p>Before understanding the charts and what they are telling us, it&rsquo;s important to have a firm grounding in the underpinnings of how the bitcoin protocol works.</p>
+
+<h3>Transactions</h3>
+
+<p>The first thing to understand about bitcoins is that <strong>they do not exist</strong>, neither in digital or real form. The <em>only</em> thing that exists is the list of transactions.</p>
+
+<p>A <em>transaction</em> is simply a record of someone exchanging bitcoin with someone else.</p>
+
+<p>The fundamental components of a transaction are as follows:</p>
+
+<ul>
+<li><strong>Input</strong>:  The address the bitcoins are being sent <strong>from</strong>.</li>
+<li><strong>Amount</strong>:  The total amount of coin being sent.  Can be fractions of a coin a well.  Remember, the coins do not exist!  Only the transactions!</li>
+<li><strong>Output</strong>:  The address the bitcoins are being sent <strong>to</strong>.</li>
+</ul>
+
+<h3>Blocks</h3>
+
+<p>Conceptually a <strong>block</strong> is the method in which data is permanently recorded in the networks.  It is a record of some or all transactions that have not been recorded in any other blocks.</p>
+
+<p>Blocks also contain a pointer to the previous block.  So, in computer science speak, a block behaves much like a <a href="http://en.wikipedia.org/wiki/Linked_list" rel="nofollow">linked list</a>.  This list is called the <strong>block chain</strong>.</p>
+
+<p>All bitcoin clients are part of a peer-to-peer network, so everyone is talking with everyone else.  When a transaction is performed, it is broadcast out to all the clients.  A transaction is said to be <em>confirmed</em> when the transaction is part of the longest block, and 5 blocks follow that block.</p>
+
+<p><em>Miners</em> are responsible for recording and confirming transactions into blocks.</p>
+
+<h3>How mining works</h3>
+
+<p>Miners pay attention to the current transactions coming in, and perform a computationally difficult hashing algorithm against the current transaction data created since the last block was created.</p>
+
+<p>If a miner is able to solve the hashing algorithm, they effectively &ldquo;seal off&rdquo; the block, and a new block is created to store transactions.  It is very easy for other clients to validate the work done by the miner.  The hashing algorithm is basically like a contest.  Each time the miner tries to solve, it is like rolling dice.  Therefore, it behooves a miner to have a lot of computing horsepower, so they can better their chances, by rolling the dice more often.</p>
+
+<p>When a block is &ldquo;discovered&rdquo;, the discoverer may award themselves a certain number of coins.  For dogecoin, that number is currently 500,000.  For bitcoin, it is 25.  This number gets halved over time.  Eventually, the reward will be 12.5, 6.25, and so on, until there is no more bitcoins awarded for mining.</p>
+
+<p>The miner also collects any fees involved with a transaction.  Fees on transactions are a further incentive to mine coins.  This will further incentivize miners to continue mining, even after all bitcoins are found.</p>
+
+<h2>Inspecting a block</h2>
+
+<p>If we look at the <a href="http://dogechain.info/block/efd86f0f13d4e28e4153559dcd6baec8db69b92e5a0bbb5be3c880c8d10859a7" rel="nofollow">latest dogecoin block</a> (at time of writing), we see a lot of different information.</p>
+
+<p><img src="/images/Screen_Shot_2014-01-05_at_11_46_14_AM_q6xg48.png" alt="block" /></p>
+
+<p>So what are each of these fields?</p>
+
+<h4>Hash:</h4>
+
+<p>The unique id of this block.</p>
+
+<h4>Previous block:</h4>
+
+<p>The unique id of the previous block in the chain.  This is what links blocks into a chain.</p>
+
+<h4>Height:</h4>
+
+<p>This is simply the length of the chain, or the number of blocks in the chain.</p>
+
+<h4>Version:</h4>
+
+<p>For dogecoin, it&rsquo;s always 1.  For bitcoin, it&rsquo;s 2.  This specifies the version of the coin protocol.</p>
+
+<h4>Transaction Merkle Root:</h4>
+
+<p>This is the SHA-256d hash based on all of the transactions in the block.  It is updated when a transaction is accepted into the block.  This hash of all hashes is known as the <a href="http://bitcoin.stackexchange.com/questions/10479/what-is-the-merkle-root" rel="nofollow">merkle root</a>.</p>
+
+<h4>Time:</h4>
+
+<p>The timestamp of when this block was found.</p>
+
+<h4>Difficulty:</h4>
+
+<p>The difficulty of finding a new block.  The difficulty is a human-friendly way of expressing how hard it is for a computer to do the proof-of-work algorithm, when mining.  The bitcoin protocol controls the level of difficulty very tightly.  As more miners join, and as computer hardware gets more adept at mining, the difficulty gets increased by the protocol.</p>
+
+<p>The difficulty is adjusted to keep the number of blocks found over time at a steady pace.</p>
+
+<p>The graph below shows the difficulty of mining bitcoin over the last 60 days.
+<img src="/images/Screen_Shot_2014-01-08_at_8_15_57_PM_wlrio9.png" alt="Screen shot 2014 01 08 at 8 15 57 pm wlrio9" /></p>
+
+<p>For bitcoin, litecoin and dogecoin, the difficulty gets re-calculated every 2016 blocks.</p>
+
+<h4>Nonce:</h4>
+
+<p>This is used when mining.  When mining, the nonce gets inremented so the next guess is completely random.  Part of the block header.  <a href="http://en.wikipedia.org/wiki/Cryptographic_nonce" rel="nofollow">See more about nonce here</a>.</p>
+
+<h4>Transactions:</h4>
+
+<p>The number of transactions in this block.</p>
+
+<h4>Value Out:</h4>
+
+<p>This is the total value of all the transactions in the block.</p>
+
+<h4>Average coin age:</h4>
+
+<p>This is the average age of the transaction inputs, for the block.  The average age of the coins in this block is 9.1 days, which means on average, the coins transacted in this block were mined about 9 days ago.</p>
+
+<h4>Bits:</h4>
+
+<p>This is the packed representation of the target the miners are trying to reach.</p>
+
+<h4>Coin-days destroyed</h4>
+
+<p>&ldquo;Coin-days destroyed&rdquo; attempts to be a measurement of the true economic activity in the system<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>.  It can&rsquo;t be measured simply by transaction volume, as the same user could be sending coins back and forth to herself over and over, thus artificially inflating the number.</p>
+
+<p>The idea is to multiply the amount of each transaction by the number of days since those coins were last spent.  This gives you the idea of coin-days.  These coin-days are destroyed when a new transaction occurs with the coins in question.</p>
+
+<h2>Inspecting a transaction</h2>
+
+<p><img src="/images/Screen_Shot_2014-01-08_at_8_15_57_PM_wlrio9-1.png" alt="transaction" /></p>
+
+<h3>Overview</h3>
+
+<p>Above is a picture of a transaction within a block.  This particulart transaction showing someone sending 419 coins from address <code>DPrrn</code> to address <code>D69b</code>.</p>
+
+<p>Now, <code>DPrrn</code> had a previous transaction of 430 coins earlier, and that is serving as the <strong>input</strong> to this transaction.</p>
+
+<p>The <strong>outputs</strong> are that 419 coins were transacted to <code>D69b</code>, 1 coin was the transaction fee, and 10 coins were returned back to the sender.</p>
+
+<p>&ldquo;But wait&rdquo;, I hear you say, &ldquo;Those 10 coins were sent to some other address!&rdquo;</p>
+
+<p>This is correct.  The other address, <code>DTFj</code>, is actually what is known as a <a href="https://en.bitcoin.it/wiki/Change" rel="nofollow">change address</a>, which is generated by your client.  All of this is an attempt at keeping transactions somewhat anonymous.<sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup>  It also obfuscates the transaction as well.  In the above example, it&rsquo;s impossible to determine if 419 was transacted and 10 is the change, or vice versa.</p>
+
+<h3>Attributes of a transaction</h3>
+
+<h4>Hash</h4>
+
+<p>The unique id of the transaction.</p>
+
+<h4>Timestamp</h4>
+
+<p>The timestamp of when the transaction occurred.</p>
+
+<h4>Number of inputs</h4>
+
+<p>The number of transactions that make up the from part of the transaction.</p>
+
+<p>Consider the below example, where Alice wants to send 50 dogecoin to Bob.  She has been sent 25 doge and 35 doge before, in previous transactions.  Those previous transactions will serve as inputs to sending bob 50 dogecoins.</p>
+<pre class="highlight plaintext"><code>  Alice sending 50 dogecoin to Bob
+
+  Inputs:    --------&gt;  Outputs:
+  25 doge               50 doge to Bob's address
+  35 doge               10 doge to Alice's change address
+</code></pre>
+<h4>Total in</h4>
+
+<p>The total number of coins that make up the input of the transaction.</p>
+
+<h4>Number of outputs</h4>
+
+<p>The number of wallets the output was sent to.  If the transaction requires making change, then one of the wallets is the change wallet back to the original sender.</p>
+
+<h4>Total out:</h4>
+
+<p>The total number of coins that make up the output of the transaction, minus any fees.</p>
+
+<h4>Fee:</h4>
+
+<p>If the transaction generated a fee, that would be listed here.</p>
+
+<p>Fees go to the miner who validated the block that this transaction was part of.  This further incentivizes miners to mine, and will continue to do so, even when mining yields no new coins.  Additionally it discourages transactions from yielding very small fractions of coins, which can litter a wallet.</p>
+
+<h2>Conclusion</h2>
+
+<p>Well, hopefully you have gained a more thorough understanding of what you&rsquo;re seeing when you look at the block chain!</p>
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://blockchain.info" rel="nofollow">http://blockchain.info</a></li>
+<li><a href="http://dogechain.info" rel="nofollow">http://dogechain.info</a></li>
+<li><a href="http://bitcoinfees.com" rel="nofollow">http://bitcoinfees.com</a></li>
+<li><a href="http://www.michaelnielsen.org/ddi/how-the-bitcoin-protocol-actually-works" rel="nofollow">http://www.michaelnielsen.org/ddi/how-the-bitcoin-protocol-actually-works</a></li>
+<li><a href="https://www.khanacademy.org/economics-finance-domain/core-finance/money-and-banking/bitcoin/v/bitcoin---transaction-records" rel="nofollow">Khan academy on bitcoin</a></li>
+<li>http://www.coindesk.com/information/how-bitcoin-mining-works/</li>
+<li><a href="https://en.bitcoin.it/wiki/Protocol_specification" rel="nofollow">bitcoin protocol specification</a></li>
+</ul>
+
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p>http://bitcoin.stackexchange.com/questions/845/what-are-bitcoin-days-destroyed&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn2">
+<p>http://bitcoin.stackexchange.com/questions/1629/why-does-bitcoin-send-the-change-to-a-different-address&nbsp;<a href="#fnref2" rev="footnote">&#8617;</a></p>
+</li>
+
+</ol>
+</div>
+
+      </article>
+
+      <hr />
+      <div class='disqusbox'>
+  <div id='disqus_thread'></div>
+</div>
+<script>
+  var disqus_shortname = "theblogofgrantammons";
+  var disqus_url = "http://grantammons.me/2014/01/17/bitcoin-litecoin-dogecoin-exploring-the-block-chain/";
+  var disqus_identifier = "articles/2014-01-17-bitcoin-litecoin-dogecoin-exploring-the-block-chain.html";
+  
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
+
+
+      <div class="footer">
+        &copy; 2016 Grant Ammons
+      </div>
+    </div>
+
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37191428-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>
+
