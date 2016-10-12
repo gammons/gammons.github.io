@@ -1,93 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-<title>Grant Ammons: How dependency lines work in object-oriented design</title>
-<meta content='When you look at an object dependency graph, it&amp;rsquo;s not 100% clear how to read it. When one object points to another, what does that mean ex...' name='description'>
-<meta charset='utf-8'>
-<meta content='width=device-width, initial-scale=1.0' name='viewport'>
-<meta content='IE=edge' http-equiv='X-UA-Compatible'>
-<meta content='True' name='HandheldFriendly'>
-<meta content='Grant Ammons' property='og:site_name'>
-<meta content='article' property='og:type'>
-<meta content='How dependency lines work in object-oriented design' property='og:title'>
-<meta content='When you look at an object dependency graph, it&amp;rsquo;s not 100% clear how to read it. When one object points to another, what does that mean ex...' property='og:description'>
-<meta content='http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' property='og:url'>
-<meta content='http://grantammons.me/images/Railway-in-the-fog.jpg' property='og:image'>
-<meta content='2015-11-10' property='article:published_time'>
-<meta content='summary' name='twitter:card'>
-<meta content='gammons' name='twitter:site'>
-<meta content='How dependency lines work in object-oriented design' name='twitter:title'>
-<meta content='When you look at an object dependency graph, it&amp;rsquo;s not 100% clear how to read it. When one object points to another, what does that mean ex...' name='twitter:description'>
-<meta content='http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' name='twitter:url'>
-<meta content='http://grantammons.me/images/Railway-in-the-fog.jpg' name='twitter:image:src'>
-<link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" />
-<link href="/stylesheets/application.css" rel="stylesheet" />
-<link href='//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400' rel='stylesheet' type='text/css'>
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(["_setAccount", "UA-37191428-1"]);
-  _gaq.push(["_trackPageview"]);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>How dependency lines work in object-oriented design</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,400i,700|Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
-<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
 <meta name="theme-color" content="#ffffff">
 
-</head>
-<body class='post-template nav-closed'>
-<div class='nav'>
-<h3 class='nav-title'>Menu</h3>
-<a class='nav-close' href='#'>
-<span class='hidden'>Close</span>
-</a>
-<ul>
-<li class='nav-home' role='presentation'>
-<a href='/'>Home</a>
-</li>
-<li class='nav-about-me' role='presentation'>
-<a href='/about'>About me</a>
-</li>
-</ul>
-<a class='subscribe-button icon-feed' href='/feed.xml'>Subscribe</a>
-</div>
-<span class='nav-cover'></span>
+    <link href="/stylesheets/site.css" rel="stylesheet" /><link href="/stylesheets/syntax.css" rel="stylesheet" />
+    <script src="/javascripts/all.js"></script>
+  </head>
 
-<div class='site-wrapper'>
-<header class='main-header post-head' style='background-image: url(/images/Railway-in-the-fog.jpg)'>
-<nav class='clearfix main-nav overlay'>
+  <body class="x2015 x2015_11 x2015_11_10 x2015_11_10_how-dependency-lines-work-in-oo x2015_11_10_how-dependency-lines-work-in-oo_index">
+    <nav class="navbar navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+
+    </button>
+    <a class="navbar-brand" href="/">Grant Ammons</a>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="">
+          <a href="/">
+            About
+          </a>
+        </li>
+        <li class="active">
+          <a href="/blog">Blog</a>
+        </li>
+        <li class="">
+          <a href="/portfolio">Portfolio</a>
+        </li>
+        <li class="">
+          <a href="/talks">Talks</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
-</header>
-<main class='content' role='main'>
-<article class='post'>
-<header class='post-header'>
-<h1 class='post-title'>How dependency lines work in object-oriented design</h1>
-<section class='post-meta'>
-<time class='post-date' datetime='2015-11-10'>
-10 November 2015
-</time>
-on <a href='/tag/architecture/'>architecture</a>
-</section>
-</header>
-<section class='post-content'><p>When you look at an object dependency graph, it&rsquo;s not 100% clear how to read it.  When one object points to another,
+
+
+    <div class="logo">
+      <img src="/images/me.png" />
+    </div>
+
+    <div class="page">
+      <section class="firstSection">
+        <h1>How dependency lines work in object-oriented design</h1>
+      </section>
+
+      <article class="blog-post">
+        <p>When you look at an object dependency graph, it&rsquo;s not 100% clear how to read it.  When one object points to another,
 what does that mean exactly?</p>
 
 <p>An object is said to depend on another object in the following scenarios:</p>
@@ -117,10 +104,9 @@ dependency on an <code>Engine</code> object.</p>
   <span class="nf">end</span>
 <span class="k">end</span>
 </code></pre>
-
 <p>If we looked at this relationship using UML, it would look something like this.</p>
 
-<p><img src="/images/car_dependency-1.png" /></p>
+<p><img src="/images/car_dependency-1.png" alt="Car dependency 1" /></p>
 
 <p>In UML, the arrows always point in the direction of the dependency.  The particular example above illustrates that a
 <code>Car</code> depends on an <code>Engine</code>.</p>
@@ -149,7 +135,6 @@ than a <em>class</em>.  This is illustrated below:</p>
 
 <span class="no">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">GasEngine</span><span class="p">.</span><span class="nf">new</span><span class="p">)</span>
 </code></pre>
-
 <p>This is an example of a more loosely coupled binding, and is preferable to the name-based tight coupling in many ways.
 Essentially, you have removed the hard coupling to another class, and instead have a coupling to an <em>interface</em>.   You
 can then pass in anything that implements the <code>start</code> method.</p>
@@ -166,7 +151,7 @@ api, then it would be easy to stub out <code>Engine</code> for testing.</li>
 
 <p>If we were to draw a new UML diagram, it would look something like this:</p>
 
-<p><img src="/images/car_dependency_2-1.png" /></p>
+<p><img src="/images/car_dependency_2-1.png" alt="Car dependency 2 1" /></p>
 
 <p>This is a better scenario mainly because you want to <em>program to an interface, not to an implementation</em>.   In ruby,
 there are no hard interfaces.  The interface here is implicit.  The car object is implicitly expecting the engine object
@@ -191,7 +176,6 @@ if you have a simple policy object that determines whether or not a user has suf
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre>
-
 <p>And then, somewhere else, perhaps in <code>app/lib</code>, you have <code>PostingPolicy</code> defined:</p>
 <pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostingPolicy</span>
   <span class="kp">attr_reader</span> <span class="ss">:user</span>
@@ -205,7 +189,6 @@ if you have a simple policy object that determines whether or not a user has suf
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre>
-
 <p>It&rsquo;s perfectly acceptable for your Rails-y objects to call up your business logic.  In the case above, <code>PostsController</code>
 is depends on <code>PostingPolicy</code>, and that is just fine.</p>
 
@@ -228,7 +211,6 @@ is depends on <code>PostingPolicy</code>, and that is just fine.</p>
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre>
-
 <p>Do you see the problematic line?  If you said the one with <code>UserMailer</code>, you are correct.  Here, <code>PostingPolicy</code> is calling a Rails model.  In this case, your business logic is starting to get tied up in Rails-y
 things.  Your business logic is pointing <em>back</em> to the Rails framework, and <em>depending</em> on Rails.  <strong>This is what is to be avoided.</strong></p>
 
@@ -244,7 +226,6 @@ things.  Your business logic is pointing <em>back</em> to the Rails framework, a
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre>
-
 <p>That way, the <code>increment!</code> call is still within the Rails land, and your business logic does not have a dependency on Rails:</p>
 <pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostingPolicy</span>
   <span class="kp">attr_reader</span> <span class="ss">:user</span>
@@ -258,7 +239,6 @@ things.  Your business logic is pointing <em>back</em> to the Rails framework, a
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre>
-
 <p>&ldquo;But wait!&rdquo; you say, &ldquo;isn&rsquo;t <code>user&#39; a rails model, and therefore the dependency lines are still pointing in the wrong direction?</code></p>
 
 <p>And the answer is, <strong>no!</strong>.  But why?  Well, I&rsquo;ll tell you why.</p>
@@ -266,39 +246,12 @@ things.  Your business logic is pointing <em>back</em> to the Rails framework, a
 <p><code>PostingPolicy</code> is depending on an <strong>object</strong> that has the following methods: <code>_has_post_access?</code> and <code>is_admin?</code>.  This object could be <em>any</em> type.  It could be a mock object in a test.  It could be an instance of a plain ol&rsquo; ruby object that has those methods.  Or, it could be a <code>User</code> class that inherits from <code>ActiveRecord::Base</code>.</p>
 
 <p>The point is, <code>PostingPolicy</code> is dependent on being passed in an object that implements those methods.  It is dependent on an <code>interface</code>.  Much like our <code>Engine</code> example above, we&rsquo;re passing in the object we need, rather than naming it directly.  This is how you keep your business logic free and clear of being dependent on your framework.  It also makes your code easier to test!</p>
-</section>
-<footer class='post-footer'>
-<figure class='author-image'>
-<a class='img' href='/author/grant-ammons/' style='background-image: url(https://www.gravatar.com/avatar/5fc5f4dd13be5f1e40834300d23a398c?size=68)'>
-<span class='hidden'>Grant Ammons's Picture</span>
-</a>
-</figure>
-<section class='author'>
-<h4>
-<a href='/author/grant-ammons/'>Grant Ammons</a>
-</h4>
-<p>
-<p>Grant Ammons is the VP of Engineering at <a href="https://www.pipelinedeals.com">PipelineDeals</a>, a sales CRM platform. Grant is focused on building better software products and engineering teams through fostering an amazing team culture, <a href="https://medium.com/@gammons/your-team-is-likely-violating-the-first-principle-of-agile-1700bf835e9c#.br32jg885">developing software smarter</a>, and utilizing the right metrics. He has hired and currently manages multiple development teams, <a href="https://medium.com/cto-school/ditching-scrum-for-kanban-the-best-decision-we-ve-made-as-a-team-cd1167014a6f#.fze1xt9ft">defined and matured the software development process</a>, and built an infrastructure with three 9s of uptime.</p>
 
-</p>
-<div class='author-meta'>
-<span class='author-location icon-location'>Philly</span>
-</div>
-</section>
-<section class='share'>
-<h4>Share this post</h4>
-<a class='icon-twitter' href='https://twitter.com/intent/tweet?text=How dependency lines work in object-oriented design&amp;amp;url=http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-<span class='hidden'>Twitter</span>
-</a>
-<a class='icon-facebook' href='https://www.facebook.com/sharer/sharer.php?u=http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-<span class='hidden'>Facebook</span>
-</a>
-<a class='icon-google-plus' href='https://plus.google.com/share?url=http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-<span class='hidden'>Google+</span>
-</a>
-</section>
-<section class='disqus'><div class='disqusbox'>
-<div id='disqus_thread'></div>
+      </article>
+
+      <hr />
+      <div class='disqusbox'>
+  <div id='disqus_thread'></div>
 </div>
 <script>
   var disqus_shortname = "theblogofgrantammons";
@@ -314,37 +267,21 @@ things.  Your business logic is pointing <em>back</em> to the Rails framework, a
   })();
 </script>
 <noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
-</section>
-</footer>
-</article>
-</main>
-<aside class='read-next'>
-<a class='read-next-story' href='/2014/01/17/bitcoin-litecoin-dogecoin-exploring-the-block-chain/' style='background-image: url(/images/bitcoin.jpg)'>
-<section class='post'>
-<h2>Bitcoin, Litecoin, Dogecoin - Exploring the block chain</h2>
-<p>Ever go to a site like http://blockchain.info and just wonder what all those numbers mean? Well, wonder no more!&hellip;</p>
-</section>
-</a>
-<a class='read-next-story prev' href='/2015/11/27/making-20-time-work-for-your-engineering-team-md/' style='background-image: url(/images/80_20.jpg)'>
-<section class='post'>
-<h2>Making 20% time work for your engineering team</h2>
-<p>At PipelineDeals, believe in 20% time. We call it Investment Time. Each Friday, engineers are free from the shackles&hellip;</p>
-</section>
-</a>
-</aside>
 
-<footer class='site-footer clearfix'>
-<section class='copyright'>
-<a href='/'>Grant Ammons</a>
-&copy;
-2016
-</section>
-<section class='poweredby'>
-Casper theme powered by
-<a href='https://ghost.org'>Ghost</a>
-</section>
-</footer>
-</div>
-<script src="/javascripts/application.js"></script>
-</body>
+
+      <div class="footer">
+        &copy; 2016 Grant Ammons
+      </div>
+    </div>
+
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37191428-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
 </html>
+

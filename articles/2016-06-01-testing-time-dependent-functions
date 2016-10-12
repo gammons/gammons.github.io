@@ -1,95 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Grant Ammons: Testing time-dependent functions</title>
-<meta content='Recently I started a weekend project called Todolist, which is a little Go application for the command line that does simple task management. To...' name='description'>
-<meta charset='utf-8'>
-<meta content='width=device-width, initial-scale=1.0' name='viewport'>
-<meta content='IE=edge' http-equiv='X-UA-Compatible'>
-<meta content='True' name='HandheldFriendly'>
-<meta content='Grant Ammons' property='og:site_name'>
-<meta content='article' property='og:type'>
-<meta content='Testing time-dependent functions' property='og:title'>
-<meta content='Recently I started a weekend project called Todolist, which is a little Go application for the command line that does simple task management. To...' property='og:description'>
-<meta content='http://grantammons.me/2016/06/01/testing-time-dependent-functions/' property='og:url'>
-<meta content='http://grantammons.me/images/clock.jpg' property='og:image'>
-<meta content='2016-06-01' property='article:published_time'>
-<meta content='summary' name='twitter:card'>
-<meta content='gammons' name='twitter:site'>
-<meta content='Testing time-dependent functions' name='twitter:title'>
-<meta content='Recently I started a weekend project called Todolist, which is a little Go application for the command line that does simple task management. To...' name='twitter:description'>
-<meta content='http://grantammons.me/2016/06/01/testing-time-dependent-functions/' name='twitter:url'>
-<meta content='http://grantammons.me/images/clock.jpg' name='twitter:image:src'>
-<link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" />
-<link href="/stylesheets/application.css" rel="stylesheet" />
-<link href='//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400' rel='stylesheet' type='text/css'>
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(["_setAccount", "UA-37191428-1"]);
-  _gaq.push(["_trackPageview"]);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="msapplication-TileImage" content="/mstile-144x144.png">
-<meta name="theme-color" content="#ffffff">
+<p>Recently I started a weekend project called <a href="http://todolist.site" rel="nofollow">Todolist</a>, which is a little Go application for the command line that does simple task management.  Todolist is centered around due dates,  and I needed a good way to unit test my code.  So the question was, how do I test functions with dates in Go?</p>
 
-</head>
-<body class='post-template nav-closed'>
-<div class='nav'>
-<h3 class='nav-title'>Menu</h3>
-<a class='nav-close' href='#'>
-<span class='hidden'>Close</span>
-</a>
-<ul>
-<li class='nav-home' role='presentation'>
-<a href='/'>Home</a>
-</li>
-<li class='nav-about-me' role='presentation'>
-<a href='/about'>About me</a>
-</li>
-</ul>
-<a class='subscribe-button icon-feed' href='/feed.xml'>Subscribe</a>
-</div>
-<span class='nav-cover'></span>
-
-<div class='site-wrapper'>
-<header class='main-header post-head' style='background-image: url(/images/clock.jpg)'>
-<nav class='clearfix main-nav overlay'>
-</nav>
-</header>
-<main class='content' role='main'>
-<article class='post'>
-<header class='post-header'>
-<h1 class='post-title'>Testing time-dependent functions</h1>
-<section class='post-meta'>
-<time class='post-date' datetime='2016-06-01'>
-01 June 2016
-</time>
-on <a href='/tag/testing/'>testing</a>
-</section>
-</header>
-<section class='post-content'><p>Recently I started a weekend project called <a rel="nofollow" href="http://todolist.site">Todolist</a>, which is a little Go application for the command line that does simple task management.  Todolist is centered around due dates,  and I needed a good way to unit test my code.  So the question was, how do I test functions with dates in Go?</p>
-
-<p>Well, in Ruby the answer is simple.  You either grab <a rel="nofollow" href="https://github.com/travisjeffery/timecop">Timecop</a> or drag in <a rel="nofollow" href="http://api.rubyonrails.org/classes/ActiveSupport/Testing/TimeHelpers.html">ActiveSupport&rsquo;s TimeHelpers</a> and use <code>travel_to</code> to mock up the date you need to be at.</p>
+<p>Well, in Ruby the answer is simple.  You either grab <a href="https://github.com/travisjeffery/timecop" rel="nofollow">Timecop</a> or drag in <a href="http://api.rubyonrails.org/classes/ActiveSupport/Testing/TimeHelpers.html" rel="nofollow">ActiveSupport&rsquo;s TimeHelpers</a> and use <code>travel_to</code> to mock up the date you need to be at.</p>
 
 <p>But you have to ask yourself, is this the best way to test time-dependent code?  By mocking a global variable?</p>
 
@@ -100,7 +11,6 @@ on <a href='/tag/testing/'>testing</a>
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre>
-
 <p>The above function, while easy to reason about, is actually very hard to test.  If I were to test this I&rsquo;d probably do something like this:</p>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s2">"minitest/autorun"</span>
 <span class="nb">require</span> <span class="s2">"timecop"</span>
@@ -130,17 +40,15 @@ on <a href='/tag/testing/'>testing</a>
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre>
-
 <p>The main issue here is that I must mock the <code>Time</code> and <code>Date</code> classes in order to test my function.  The reason is because my function is fully dependent on today&rsquo;s date.   It is a hard dependency on a global state (in this case <code>Date.today</code>).  The output of my function will change based upon the day I run my test!  So I <em>must</em> mock <code>Date.today</code>.  Right?  Right!?</p>
 
-<p>Well, maybe not!  If we treat today&rsquo;s date as a <em>dependency</em> then we can always <em>reverse</em> that dependency with good ol&rsquo; <a rel="nofollow" href="http://martinfowler.com/articles/dipInTheWild.html">dependency injection</a>.  In this case, if we <em>inject</em> the date rather than depending on it, then the function instantly becomes much more testable:</p>
+<p>Well, maybe not!  If we treat today&rsquo;s date as a <em>dependency</em> then we can always <em>reverse</em> that dependency with good ol&rsquo; <a href="http://martinfowler.com/articles/dipInTheWild.html" rel="nofollow">dependency injection</a>.  In this case, if we <em>inject</em> the date rather than depending on it, then the function instantly becomes much more testable:</p>
 <pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">WeekLibrary</span>
   <span class="k">def</span> <span class="nf">is_weekday?</span><span class="p">(</span><span class="n">day</span> <span class="o">=</span> <span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">)</span>
     <span class="o">!</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">].</span><span class="nf">include?</span><span class="p">(</span><span class="n">day</span><span class="p">.</span><span class="nf">wday</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre>
-
 <p>Well huh, so the default here is still today&rsquo;s date, which is great for the usability of my class&rsquo;s API. But I can also <em>inject</em> a specific date, which is great for testing purposes. This completely eliminates the need for Timecop, <code>travel_to</code>, or what have you.</p>
 
 <p>Another positive side effect is that my function is now much more generic.  Now, <code>is_weekday</code> will tell me if <em>any</em> date is a weekday, rather than <em>today&rsquo;s</em> date.  It has much more utility.</p>
@@ -169,97 +77,14 @@ on <a href='/tag/testing/'>testing</a>
 <span class="k">end</span>
 
 </code></pre>
-
 <p>So what&rsquo;s the TLDR?</p>
 
 <p><strong>1. Functions that require comparisons to today&rsquo;s date are <em>dependent</em> on time.</strong></p>
 
-<p>Today is variable.  As I write this, today is Wednesday.  But tomorrow, today will be Thursday!  The simple fact that time (purportedly) moves forward makes a function&rsquo;s output <em>variable</em> based upon when it is run.  This makes the function&rsquo;s <a rel="nofollow" href="http://googletesting.blogspot.com/2008/08/by-miko-hevery-so-you-decided-to.html">testability</a> very difficult, and introduces a reliance on a global state.</p>
+<p>Today is variable.  As I write this, today is Wednesday.  But tomorrow, today will be Thursday!  The simple fact that time (purportedly) moves forward makes a function&rsquo;s output <em>variable</em> based upon when it is run.  This makes the function&rsquo;s <a href="http://googletesting.blogspot.com/2008/08/by-miko-hevery-so-you-decided-to.html" rel="nofollow">testability</a> very difficult, and introduces a reliance on a global state.</p>
 
 <p>While using libraries to fix the output of <code>Date.today</code> is handy, it&rsquo;s not the best solution.</p>
 
 <p><strong>2. Use dependency injection to inject the comparison date rather than relying on today&rsquo;s date.</strong></p>
 
 <p>If you find yourself relying on a time class in your function and are about to reach for a time mocking library like <code>travel_to</code>, try injecting the date into the function first.  There&rsquo;s a good chance your problem will be solved right there!</p>
-</section>
-<footer class='post-footer'>
-<figure class='author-image'>
-<a class='img' href='/author/grant-ammons/' style='background-image: url(https://www.gravatar.com/avatar/5fc5f4dd13be5f1e40834300d23a398c?size=68)'>
-<span class='hidden'>Grant Ammons's Picture</span>
-</a>
-</figure>
-<section class='author'>
-<h4>
-<a href='/author/grant-ammons/'>Grant Ammons</a>
-</h4>
-<p>
-<p>Grant Ammons is the VP of Engineering at <a href="https://www.pipelinedeals.com">PipelineDeals</a>, a sales CRM platform. Grant is focused on building better software products and engineering teams through fostering an amazing team culture, <a href="https://medium.com/@gammons/your-team-is-likely-violating-the-first-principle-of-agile-1700bf835e9c#.br32jg885">developing software smarter</a>, and utilizing the right metrics. He has hired and currently manages multiple development teams, <a href="https://medium.com/cto-school/ditching-scrum-for-kanban-the-best-decision-we-ve-made-as-a-team-cd1167014a6f#.fze1xt9ft">defined and matured the software development process</a>, and built an infrastructure with three 9s of uptime.</p>
-
-</p>
-<div class='author-meta'>
-<span class='author-location icon-location'>Philly</span>
-</div>
-</section>
-<section class='share'>
-<h4>Share this post</h4>
-<a class='icon-twitter' href='https://twitter.com/intent/tweet?text=Testing time-dependent functions&amp;amp;url=http://grantammons.me/2016/06/01/testing-time-dependent-functions/' onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-<span class='hidden'>Twitter</span>
-</a>
-<a class='icon-facebook' href='https://www.facebook.com/sharer/sharer.php?u=http://grantammons.me/2016/06/01/testing-time-dependent-functions/' onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-<span class='hidden'>Facebook</span>
-</a>
-<a class='icon-google-plus' href='https://plus.google.com/share?url=http://grantammons.me/2016/06/01/testing-time-dependent-functions/' onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-<span class='hidden'>Google+</span>
-</a>
-</section>
-<section class='disqus'><div class='disqusbox'>
-<div id='disqus_thread'></div>
-</div>
-<script>
-  var disqus_shortname = "theblogofgrantammons";
-  var disqus_url = "http://grantammons.me/2016/06/01/testing-time-dependent-functions/";
-  var disqus_identifier = "articles/2016-06-01-testing-time-dependent-functions.html";
-  
-  (function() {
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-<noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
-</section>
-</footer>
-</article>
-</main>
-<aside class='read-next'>
-<a class='read-next-story' href='/2016/03/23/how-to-deliver-high-quality-software/' style='background-image: url(/images/buildings.jpeg)'>
-<section class='post'>
-<h2>How to deliver high quality software</h2>
-<p>When it comes to software, the term “QA” itself is highly loaded. Because what is it, really? Is it&hellip;</p>
-</section>
-</a>
-<a class='read-next-story prev' href='/2016/07/22/the-life-changing-benefits-of-side-projects/' style='background-image: url(/images/buildshit.png)'>
-<section class='post'>
-<h2>The life-changing benefits of side projects</h2>
-<p>I am an avid side project-er. At any point in time I always have at least one “thing” going&hellip;</p>
-</section>
-</a>
-</aside>
-
-<footer class='site-footer clearfix'>
-<section class='copyright'>
-<a href='/'>Grant Ammons</a>
-&copy;
-2016
-</section>
-<section class='poweredby'>
-Casper theme powered by
-<a href='https://ghost.org'>Ghost</a>
-</section>
-</footer>
-</div>
-<script src="/javascripts/application.js"></script>
-</body>
-</html>
