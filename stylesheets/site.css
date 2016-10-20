@@ -482,6 +482,10 @@ body {
   background-color: #fff;
   box-shadow: 0px 0px 2px #969696; }
 
+.page li {
+  padding-top: 5px;
+  padding-bottom: 5px; }
+
 @media (max-width: 600px) {
   .page {
     margin-left: 0;

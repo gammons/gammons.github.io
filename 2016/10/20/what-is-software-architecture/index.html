@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>What is software architecture?</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,400i,700|Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+    <link href="/stylesheets/site.css" rel="stylesheet" /><link href="/stylesheets/syntax.css" rel="stylesheet" />
+    <script src="/javascripts/all.js"></script>
+  </head>
+
+  <body class="x2016 x2016_10 x2016_10_20 x2016_10_20_what-is-software-architecture x2016_10_20_what-is-software-architecture_index">
+    <nav class="navbar navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+
+    </button>
+    <a class="navbar-brand" href="/">Grant Ammons</a>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="">
+          <a href="/">
+            About
+          </a>
+        </li>
+        <li class="">
+          <a href="/blog">Blog</a>
+        </li>
+        <li class="">
+          <a href="/portfolio">Portfolio</a>
+        </li>
+        <li class="">
+          <a href="/talks">Talks</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="logo">
+      <img src="/images/me.png" />
+    </div>
+
+    <div class="page">
+      <section class="firstSection">
+        <h1>What is software architecture?</h1>
+      </section>
+
+      <article class="blog-post">
+        <p>Software architecture refers to how a piece of software fits together as a whole. Large implementations of a software project are usually broken down in many different ways, and the architecture of the project will generally dictate how components are broken down.</p>
+
+<p>The architecture of a project usually relies on one or more <a href="https://sourcemaking.com/design_patterns" rel="nofollow">design patterns</a>. These are reusable solutions for common problems in software engineering. Design patterns can be used throughout the life of the application, from just starting out to refactoring a 10+ year old app.</p>
+
+<p>Design patterns are also applicable at varying conceptual levels. At the highest level, a particular pattern can dictate how an entire system is held together. And at the lowest levels, a developer may use a particular pattern in a single method of a small class.</p>
+
+<p>For instance, a <a href="http://rubyonrails.org/" rel="nofollow">Ruby on Rails</a> project uses Model-View-Controller (MVC) as it’s primary design pattern.</p>
+
+<ul>
+<li>Models are data objects, and usually they map directly to a row in a database table. You might have a User or Contact model, with attributes like first name, last name, email address, etc.</li>
+<li>Views are html representations of those models. So, you might have a profile page view where you show the data for a particular user on the screen.</li>
+<li>Controllers are the piece that kick everything off. So if a request for /contacts/1234 comes in, Rails will route that to the correct controller. From there the controller will perform authorization, get the contact model from the database, and tell Rails which view to show.</li>
+</ul>
+
+<p>There are many benefits for following a software architecture and properly using design patterns:</p>
+
+<ul>
+<li><strong>Organization of code.</strong> The architecture of a project generally dictates where you would put your code as your project grows. In the Rails example above, If you added a new concept to your app like Reservation, it would be clear where to put the code. This is highly beneficial for teams, because they don’t have to reinvent the wheel each time something new needs to be added to the project.</li>
+<li><strong>Deferring design decisions.</strong> It’s conceptually and sometimes physically expensive to commit to a particular design decision too early on in a project, especially if the requirements are in flux. You can use a pattern like <a href="https://en.wikipedia.org/wiki/Template_method_pattern" rel="nofollow">template method</a> to abstract this decision away until you have enough details to decide on a particular search technology.</li>
+<li><strong>Maintainability, extendability, and readability of the code.</strong> These are arguably the most important elements of software engineering with a team. A good software architecture and proper use of design patterns will lead developers to write code that is inherently readable and maintainable. This leads to less bugs, less churn, happier developers and happier customers.</li>
+</ul>
+
+<p>There is also something to be said for over-engineering your architecture from the start. Joel Spolsky coined the term <a href="http://www.joelonsoftware.com/articles/fog0000000018.html" rel="nofollow">Architecture Astronaut</a> - someone who over-abstracts everything, and therefore can get nothing done. And this is true! Properly architecting software and using design patterns takes skill and practice. I remember when I dove deep into learning design patterns myself, and I came away looking at everything as a pattern, which is not the right way to approach a problem. There is a proper balance for using patterns versus not, and it takes a lot of experience as a software engineer to find the right path.</p>
+
+      </article>
+
+      <hr />
+      <div class='disqusbox'>
+  <div id='disqus_thread'></div>
+</div>
+<script>
+  var disqus_shortname = "theblogofgrantammons";
+  var disqus_url = "http://grantammons.me/2016/10/20/what-is-software-architecture/";
+  var disqus_identifier = "articles/2016-10-20-what-is-software-architecture.html";
+  
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
+
+
+      <div class="footer">
+        &copy; 2016 Grant Ammons
+      </div>
+    </div>
+
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37191428-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>
+
