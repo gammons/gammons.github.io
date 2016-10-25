@@ -365,7 +365,7 @@ textarea {
   /* 2 */ }
 
 .navbar {
-  background-color: #24344b;
+  background-color: rgba(0, 0, 0, 0.2);
   border: none;
   color: #f8f8f8;
   border-radius: 0; }
@@ -391,7 +391,7 @@ ul.nav li a {
   height: 3px;
   bottom: 3px;
   left: 0;
-  background-color: #24344b;
+  background-color: #CA2C3F;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
@@ -404,7 +404,7 @@ ul.nav li a {
   visibility: visible; }
 
 ul.nav li.active a {
-  background-color: #24344b !important;
+  background-color: transparent !important;
   padding-bottom: 10px; }
 
 .navbar-brand {
@@ -441,6 +441,14 @@ article time {
   padding-left: 10px;
   border-left: #EBF2F6 1px solid; }
 
+article em {
+  font-weight: 300;
+  color: #3a4145; }
+
+article blockquote p {
+  font-size: 28px;
+  font-style: italic; }
+
 article.blog-post img {
   left: 50%;
   display: block;
@@ -450,14 +458,100 @@ article.blog-post img {
   transform: translateX(-50%);
   padding: 0.6em 0; }
 
+article.blog-post img.gemoji {
+  left: 0;
+  display: inline;
+  transform: none;
+  padding: 0;
+  width: 40px; }
+
+.latest-updates ul li {
+  list-style-type: none;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  height: 100px;
+  text-align: center;
+  position: relative;
+  background-image: url(/images/black-thread-light.png);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.latest-updates h2 {
+  border-bottom: 1px solid #ddd; }
+
+.latest-updates h3 {
+  margin: 0;
+  text-align: center; }
+
+.latest-updates img {
+  max-width: 200px;
+  float: left;
+  margin: 20px; }
+
+input:invalid {
+  box-shadow: 0 0 5px 1px red; }
+
+input:focus:invalid {
+  outline: none; }
+
+section.mailing-list {
+  position: fixed;
+  bottom: 0;
+  right: 5%;
+  width: 450px;
+  z-index: 100;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 10px 5px black;
+  -moz-box-shadow: 0px 0px 10px 5px black;
+  box-shadow: 0px 0px 10px 5px black;
+  border-top: 5px solid #ccc;
+  border-left: 5px solid #ccc;
+  border-right: 5px solid #ccc;
+  border-radius: 5px 5px 0 0; }
+
+section.mailing-list .header {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  margin-top: 15px;
+  padding-bottom: 15px;
+  margin-left: 20px;
+  margin-right: 20px; }
+
+section.mailing-list h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 22px; }
+
+section.mailing-list span {
+  float: right; }
+
+section.mailing-list a:hover {
+  text-decoration: none;
+  cursor: pointer; }
+
+section.mailing-list .body {
+  margin-left: 20px;
+  margin-right: 20px; }
+
 body {
-  background-color: #f8f8f8;
   color: #3a4145;
   letter-spacing: 0.1px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 300;
-  font-family: "Merriweather", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.75em; }
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.5em;
+  background-image: url("/images/smooth-wall-dark.png");
+  background-color: #203E5F; }
+
+pre {
+  font-size: 16px; }
+
+em {
+  color: #CA2C3F;
+  font-weight: bold;
+  font-style: italic; }
 
 .logo {
   text-align: center; }
@@ -479,12 +573,15 @@ body {
   max-width: 915px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #fff;
+  background-color: #fcfcfc;
   box-shadow: 0px 0px 2px #969696; }
 
-.page li {
-  padding-top: 5px;
-  padding-bottom: 5px; }
+.page a {
+  color: #CA2C3F; }
+
+p.callout {
+  text-align: center;
+  margin-top: 0; }
 
 @media (max-width: 600px) {
   .page {
@@ -497,27 +594,29 @@ body {
     margin: 15px; } }
 .firstSection {
   text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px; }
+  margin-top: 10px; }
 
 h1 {
   color: #3c3c44;
-  font-size: 35px;
+  font-size: 55px;
   margin-top: 10px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-family: 'Patua One', cursive; }
 
 ul {
-  margin-top: 5px; }
+  margin-top: 5px;
+  padding-left: 0; }
 
 h2 {
   color: rgba(0, 0, 0, 0.8);
-  font-size: 25px;
   margin: 0;
   margin-top: 30px;
   margin-bottom: 15px; }
 
 .page p {
-  margin: 0 0 1.75em 0; }
+  margin-top: 20px;
+  margin-bottom: 20px; }
 
 .socialIcons {
   padding-top: 20px;

@@ -1,0 +1,430 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Short methods, full hearts, can't lose</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Arimo:400,700|Roboto:300,300i,500,500i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+    <link href="/stylesheets/site.css" rel="stylesheet" /><link href="/stylesheets/syntax.css" rel="stylesheet" />
+    <script src="/javascripts/all.js"></script>
+    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+
+  
+    <nav class="navbar navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+
+    </button>
+    <a class="navbar-brand" href="/">Grant Ammons</a>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="">
+          <a href="/about">
+            About
+          </a>
+        </li>
+        <li class="">
+          <a href="/blog">Blog</a>
+        </li>
+        <li class="">
+          <a href="/portfolio">Portfolio</a>
+        </li>
+        <li class="">
+          <a href="/talks">Talks</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="logo">
+      <img src="/images/me.png" />
+    </div>
+
+    <div class="page">
+      <section class="firstSection">
+        <h1>Short methods, full hearts, can't lose</h1>
+      </section>
+
+      <article class="blog-post">
+        <p><img src="/images/shortMethods.jpg" alt="Shortmethods" /></p>
+
+<p>If there&rsquo;s one rule that really makes all the difference in terms of code readability, it&rsquo;s <em>keeping your method sizes small</em>.  Your present and future teammates will thank you for it.</p>
+
+<p>What do I mean by <em>small</em>?  Well, according to <a href="http://www.sandimetz.com/" rel="nofollow">Sandi Metz</a> and <a href="https://cleancoders.com/episode/clean-code-episode-3/show" rel="nofollow">Uncle Bob</a>, methods should generally be <a href="https://gist.github.com/PenneyGadget/879c53077621808adff2" rel="nofollow">5 lines or less</a>.  You read that right.  If you need more lines, then usually it&rsquo;s time to split that function up.</p>
+
+<p>Writing small methods forces your hand to name things descriptively, which greatly helps with the readability of your code.  Your methods will also generally tend to <em>do one thing</em>.  That&rsquo;s what you&rsquo;re aiming for when creating new functions.</p>
+
+<p>Now, should you follow this rule absolutely 100% of the time?  Of course not!  The &ldquo;5 lines&rdquo; piece is mainly to keep you in the right mindset when writing code.  You want your methods to be as small as you can possibly make them.  The goal is well-factored code.  And why do you want well-factored code?  Because you don&rsquo;t want your teammates place a bounty on your head 6 months from now, when they have to extend and/or maintain your code.  You want them to <em>easily</em> and <em>quickly</em> understand what is going on with the code you write.</p>
+
+<p>Let&rsquo;s go through a refactor session of some real-world code.  For this example I&rsquo;ve picked the <a href="https://github.com/discourse/discourse" rel="nofollow">Discourse</a> project, which is open-source online forum software.  This code is the <code>password_reset</code> function in the <code>users_controller</code>, and it clocks in at a whopping 39 lines!  This function is way too long, and any developer looking at it would have a hard time figuring out what is going on.</p>
+<pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">password_reset</span>
+    <span class="n">expires_now</span>
+
+    <span class="k">if</span> <span class="no">EmailToken</span><span class="p">.</span><span class="nf">valid_token_format?</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+      <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="nf">put?</span>
+        <span class="vi">@user</span> <span class="o">=</span> <span class="no">EmailToken</span><span class="p">.</span><span class="nf">confirm</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+      <span class="k">else</span>
+        <span class="n">email_token</span> <span class="o">=</span> <span class="no">EmailToken</span><span class="p">.</span><span class="nf">confirmable</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+        <span class="vi">@user</span> <span class="o">=</span> <span class="n">email_token</span><span class="p">.</span><span class="nf">try</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="k">if</span> <span class="vi">@user</span>
+        <span class="n">session</span><span class="p">[</span><span class="s2">"password-</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">id</span>
+      <span class="k">else</span>
+        <span class="n">user_id</span> <span class="o">=</span> <span class="n">session</span><span class="p">[</span><span class="s2">"password-</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span>
+        <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">user_id</span>
+      <span class="k">end</span>
+    <span class="k">else</span>
+      <span class="vi">@invalid_token</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="k">end</span>
+
+    <span class="k">if</span> <span class="o">!</span><span class="vi">@user</span>
+      <span class="vi">@error</span> <span class="o">=</span> <span class="no">I18n</span><span class="p">.</span><span class="nf">t</span><span class="p">(</span><span class="s1">'password_reset.no_token'</span><span class="p">)</span>
+    <span class="k">elsif</span> <span class="n">request</span><span class="p">.</span><span class="nf">put?</span>
+      <span class="vi">@invalid_password</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="ss">:password</span><span class="p">].</span><span class="nf">blank?</span> <span class="o">||</span> <span class="n">params</span><span class="p">[</span><span class="ss">:password</span><span class="p">].</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="no">User</span><span class="p">.</span><span class="nf">max_password_length</span>
+
+      <span class="k">if</span> <span class="vi">@invalid_password</span>
+        <span class="vi">@user</span><span class="p">.</span><span class="nf">errors</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="ss">:password</span><span class="p">,</span> <span class="ss">:invalid</span><span class="p">)</span>
+      <span class="k">else</span>
+        <span class="vi">@user</span><span class="p">.</span><span class="nf">password</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="ss">:password</span><span class="p">]</span>
+        <span class="vi">@user</span><span class="p">.</span><span class="nf">password_required!</span>
+        <span class="vi">@user</span><span class="p">.</span><span class="nf">auth_token</span> <span class="o">=</span> <span class="kp">nil</span>
+        <span class="k">if</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">save</span>
+          <span class="no">Invite</span><span class="p">.</span><span class="nf">invalidate_for_email</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">email</span><span class="p">)</span> <span class="c1"># invite link can't be used to log in anymore</span>
+          <span class="n">session</span><span class="p">[</span><span class="s2">"password-</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="kp">nil</span>
+          <span class="n">logon_after_password_reset</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">render</span> <span class="ss">layout: </span><span class="s1">'no_ember'</span>
+  <span class="k">end</span>
+</code></pre>
+<p>So yeah, this function has a lot of responsibilities.  It validates input, finds a user from a token, potentially sets error messages, and renders a page.  This is not ideal!</p>
+
+<p>The first thing you&rsquo;ll notice is the large peaks and valleys of the <code>if</code> statements, and in fact that&rsquo;s where we&rsquo;ll start.  The first <code>if</code> deals with trying to extract a user from a token.  So, I think a descriptive name of this functionality would be <code>get_user_from_token</code>.</p>
+<pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">password_reset</span>
+    <span class="n">expires_now</span>
+    <span class="n">get_user_from_token</span>
+
+    <span class="k">if</span> <span class="o">!</span><span class="vi">@user</span>
+      <span class="vi">@error</span> <span class="o">=</span> <span class="no">I18n</span><span class="p">.</span><span class="nf">t</span><span class="p">(</span><span class="s1">'password_reset.no_token'</span><span class="p">)</span>
+    <span class="k">elsif</span> <span class="n">request</span><span class="p">.</span><span class="nf">put?</span>
+      <span class="vi">@invalid_password</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="ss">:password</span><span class="p">].</span><span class="nf">blank?</span> <span class="o">||</span> <span class="n">params</span><span class="p">[</span><span class="ss">:password</span><span class="p">].</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="no">User</span><span class="p">.</span><span class="nf">max_password_length</span>
+
+      <span class="k">if</span> <span class="vi">@invalid_password</span>
+        <span class="vi">@user</span><span class="p">.</span><span class="nf">errors</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="ss">:password</span><span class="p">,</span> <span class="ss">:invalid</span><span class="p">)</span>
+      <span class="k">else</span>
+        <span class="vi">@user</span><span class="p">.</span><span class="nf">password</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="ss">:password</span><span class="p">]</span>
+        <span class="vi">@user</span><span class="p">.</span><span class="nf">password_required!</span>
+        <span class="vi">@user</span><span class="p">.</span><span class="nf">auth_token</span> <span class="o">=</span> <span class="kp">nil</span>
+        <span class="k">if</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">save</span>
+          <span class="no">Invite</span><span class="p">.</span><span class="nf">invalidate_for_email</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">email</span><span class="p">)</span> <span class="c1"># invite link can't be used to log in anymore</span>
+          <span class="n">session</span><span class="p">[</span><span class="s2">"password-</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="kp">nil</span>
+          <span class="n">logon_after_password_reset</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">render</span> <span class="ss">layout: </span><span class="s1">'no_ember'</span>
+  <span class="k">end</span>
+</code></pre><pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">get_user_from_token</span>
+    <span class="k">if</span> <span class="no">EmailToken</span><span class="p">.</span><span class="nf">valid_token_format?</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+      <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="nf">put?</span>
+        <span class="vi">@user</span> <span class="o">=</span> <span class="no">EmailToken</span><span class="p">.</span><span class="nf">confirm</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+      <span class="k">else</span>
+        <span class="n">email_token</span> <span class="o">=</span> <span class="no">EmailToken</span><span class="p">.</span><span class="nf">confirmable</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+        <span class="vi">@user</span> <span class="o">=</span> <span class="n">email_token</span><span class="p">.</span><span class="nf">try</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="k">if</span> <span class="vi">@user</span>
+        <span class="n">session</span><span class="p">[</span><span class="s2">"password-</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">id</span>
+      <span class="k">else</span>
+        <span class="n">user_id</span> <span class="o">=</span> <span class="n">session</span><span class="p">[</span><span class="s2">"password-</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span>
+        <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">user_id</span>
+      <span class="k">end</span>
+    <span class="k">else</span>
+      <span class="vi">@invalid_token</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre>
+<p>And <img class="gemoji" alt="boom" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a5.png" /> just like that, our <code>password_reset</code> function went from <strong>39</strong> lines to <strong>22</strong>!  Progress is being made!  The method is also <em>more readable</em>.  If you need to extend the functionality of getting a user from a token, you can study that function.  If you <em>don&rsquo;t</em> care about that, then you&rsquo;re free to skip it.  Less to grok, less to keep in your brain.  It&rsquo;s win/win.</p>
+
+<p>But here&rsquo;s the thing, we can actually keep going.  Instead of a single 39 line function, we now 2 functions that are still pretty large in size, but more importantly they are not as readable as they can be.</p>
+
+<p>Back in <code>password_reset</code>, I think we can extract the logic that actually changes a user&rsquo;s password:</p>
+<pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">password_reset</span>
+    <span class="n">expires_now</span>
+    <span class="n">get_user_from_token</span>
+
+    <span class="k">if</span> <span class="o">!</span><span class="vi">@user</span>
+      <span class="vi">@error</span> <span class="o">=</span> <span class="no">I18n</span><span class="p">.</span><span class="nf">t</span><span class="p">(</span><span class="s1">'password_reset.no_token'</span><span class="p">)</span>
+    <span class="k">elsif</span> <span class="n">request</span><span class="p">.</span><span class="nf">put?</span>
+      <span class="vi">@invalid_password</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="ss">:password</span><span class="p">].</span><span class="nf">blank?</span> <span class="o">||</span> <span class="n">params</span><span class="p">[</span><span class="ss">:password</span><span class="p">].</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="no">User</span><span class="p">.</span><span class="nf">max_password_length</span>
+
+      <span class="k">if</span> <span class="vi">@invalid_password</span>
+        <span class="vi">@user</span><span class="p">.</span><span class="nf">errors</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="ss">:password</span><span class="p">,</span> <span class="ss">:invalid</span><span class="p">)</span>
+      <span class="k">else</span>
+        <span class="n">perform_password_reset</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">render</span> <span class="ss">layout: </span><span class="s1">'no_ember'</span>
+  <span class="k">end</span>
+</code></pre><pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">perform_password_reset</span>
+    <span class="vi">@user</span><span class="p">.</span><span class="nf">password</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="ss">:password</span><span class="p">]</span>
+    <span class="vi">@user</span><span class="p">.</span><span class="nf">password_required!</span>
+    <span class="vi">@user</span><span class="p">.</span><span class="nf">auth_token</span> <span class="o">=</span> <span class="kp">nil</span>
+    <span class="k">if</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">save</span>
+      <span class="no">Invite</span><span class="p">.</span><span class="nf">invalidate_for_email</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">email</span><span class="p">)</span> <span class="c1"># invite link can't be used to log in anymore</span>
+      <span class="n">session</span><span class="p">[</span><span class="s2">"password-</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="kp">nil</span>
+      <span class="n">logon_after_password_reset</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre>
+<p>Awesome.  Now our <code>password_reset</code> function feels more like a method we can be proud of.  It&rsquo;s now 15 lines, but more importantly it&rsquo;s readling <em>more like english</em> and <em>less like code</em>.</p>
+
+<p>Can we go further?  Absolutely!  While our new methods certainly make <code>password_reset</code> smaller, there&rsquo;s still some logic we can extract out into new methods.  Let&rsquo;s take a look at the method we just created, <code>get_user_from_token</code>.</p>
+<pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">get_user_from_token</span>
+    <span class="k">if</span> <span class="no">EmailToken</span><span class="p">.</span><span class="nf">valid_token_format?</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+      <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="nf">put?</span>
+        <span class="vi">@user</span> <span class="o">=</span> <span class="no">EmailToken</span><span class="p">.</span><span class="nf">confirm</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+      <span class="k">else</span>
+        <span class="n">email_token</span> <span class="o">=</span> <span class="no">EmailToken</span><span class="p">.</span><span class="nf">confirmable</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+        <span class="vi">@user</span> <span class="o">=</span> <span class="n">email_token</span><span class="p">.</span><span class="nf">try</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="k">if</span> <span class="vi">@user</span>
+        <span class="n">session</span><span class="p">[</span><span class="s2">"password-</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">id</span>
+      <span class="k">else</span>
+        <span class="n">user_id</span> <span class="o">=</span> <span class="n">session</span><span class="p">[</span><span class="s2">"password-</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span>
+        <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">user_id</span>
+      <span class="k">end</span>
+    <span class="k">else</span>
+      <span class="vi">@invalid_token</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre>
+<p>It&rsquo;s 17 lines and does a lot of things.  So first let&rsquo;s take advantage of Ruby&rsquo;s brevity and return early, rather than using a giant <code>if</code> statement:</p>
+<pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">get_user_from_token</span>
+    <span class="vi">@invalid_token</span> <span class="o">=</span> <span class="kp">true</span> <span class="n">and</span> <span class="k">return</span> <span class="k">unless</span> <span class="no">EmailToken</span><span class="p">.</span><span class="nf">valid_token_format?</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="nf">put?</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="no">EmailToken</span><span class="p">.</span><span class="nf">confirm</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+    <span class="k">else</span>
+      <span class="n">email_token</span> <span class="o">=</span> <span class="no">EmailToken</span><span class="p">.</span><span class="nf">confirmable</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="n">email_token</span><span class="p">.</span><span class="nf">try</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="k">if</span> <span class="vi">@user</span>
+      <span class="n">session</span><span class="p">[</span><span class="s2">"password-</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">id</span>
+    <span class="k">else</span>
+      <span class="n">user_id</span> <span class="o">=</span> <span class="n">session</span><span class="p">[</span><span class="s2">"password-</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">user_id</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre>
+<p>Now it&rsquo;s 15 lines.  Next, let&rsquo;s look at the first <code>if</code> block that has to deal with assigning <code>@user</code>.  Can we make this a bit clearer?  What if we did something like this:</p>
+<pre class="highlight ruby"><code>    <span class="vi">@user</span> <span class="o">=</span> <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="nf">put?</span>
+      <span class="no">EmailToken</span><span class="p">.</span><span class="nf">confirm</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+    <span class="k">else</span>
+      <span class="no">EmailToken</span><span class="p">.</span><span class="nf">confirmable</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]).</span><span class="nf">try</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
+    <span class="k">end</span>
+</code></pre>
+<p>That&rsquo;s easier to undertand and it&rsquo;s shorter. And, it can be it&rsquo;s own function as well:</p>
+<pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">get_user_from_token</span>
+    <span class="vi">@invalid_token</span> <span class="o">=</span> <span class="kp">true</span> <span class="n">and</span> <span class="k">return</span> <span class="k">unless</span> <span class="no">EmailToken</span><span class="p">.</span><span class="nf">valid_token_format?</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+
+    <span class="vi">@user</span> <span class="o">=</span> <span class="n">get_user_from_reqeust</span>
+
+    <span class="k">if</span> <span class="vi">@user</span>
+      <span class="n">session</span><span class="p">[</span><span class="s2">"password-</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">id</span>
+    <span class="k">else</span>
+      <span class="n">user_id</span> <span class="o">=</span> <span class="n">session</span><span class="p">[</span><span class="s2">"password-</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">user_id</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre><pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">get_user_from_request</span>
+    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="nf">put?</span>
+      <span class="no">EmailToken</span><span class="p">.</span><span class="nf">confirm</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+    <span class="k">else</span>
+      <span class="no">EmailToken</span><span class="p">.</span><span class="nf">confirmable</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:token</span><span class="p">]).</span><span class="nf">try</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre>
+<p>Finally, I think there&rsquo;s a bit more we can extract out of the <code>password_reset</code> function.  The code block in the <code>elsif request.put?</code> can be put in its own method as well:</p>
+<pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">password_reset</span>
+    <span class="n">expires_now</span>
+    <span class="n">get_user_from_token</span>
+
+    <span class="k">if</span> <span class="o">!</span><span class="vi">@user</span>
+      <span class="vi">@error</span> <span class="o">=</span> <span class="no">I18n</span><span class="p">.</span><span class="nf">t</span><span class="p">(</span><span class="s1">'password_reset.no_token'</span><span class="p">)</span>
+    <span class="k">elsif</span> <span class="n">request</span><span class="p">.</span><span class="nf">put?</span>
+      <span class="n">handle_password_put_request</span>
+    <span class="k">end</span>
+    <span class="n">render</span> <span class="ss">layout: </span><span class="s1">'no_ember'</span>
+  <span class="k">end</span>
+</code></pre><pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">handle_password_put_request</span>
+    <span class="vi">@invalid_password</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="ss">:password</span><span class="p">].</span><span class="nf">blank?</span> <span class="o">||</span> <span class="n">params</span><span class="p">[</span><span class="ss">:password</span><span class="p">].</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="no">User</span><span class="p">.</span><span class="nf">max_password_length</span>
+
+    <span class="k">if</span> <span class="vi">@invalid_password</span>
+      <span class="vi">@user</span><span class="p">.</span><span class="nf">errors</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="ss">:password</span><span class="p">,</span> <span class="ss">:invalid</span><span class="p">)</span>
+    <span class="k">else</span>
+      <span class="n">perform_password_reset</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre>
+<p>And so there you have it,  we&rsquo;ve refactored <code>password_reset</code> from <strong>39</strong> lines down to <strong>9</strong>!</p>
+
+<p>Could we go further?  You know, we probably could.  However, I think at this point the function is quite readable as it stands, and does not need more refactoring.  There is a point where you can introduce too much <a href="https://en.wikipedia.org/wiki/Indirection" rel="nofollow"><em>indirection</em></a>, where there are so many methods that it&rsquo;s hard to follow the string of logic.  It&rsquo;s a game of judgement, where readability trumps all.</p>
+
+<p>In short - much like Kramer <a href="https://www.youtube.com/watch?v=wcFZIj96LwY" rel="nofollow">slicing thin meats</a>, you want <em>thin functions</em>.  So thin, <strong>the flavor has nowhere to hide</strong>.  Keep this in mind and your teammates will thank you!</p>
+
+<p><img src="/images/meats.png" alt="Meats" /></p>
+
+      </article>
+
+      <hr />
+      <ul class="socialIcons">
+  <li> <a target="_blank" href="https://www.github.com/gammons"><i class="fa fa-github" aria-hidden="true"></i></a> </li>
+  <li> <a target="_blank" href="https://twitter.com/gammons"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+  <li> <a target="_blank" href="https://medium.com/@gammons"><i class="fa fa-medium" aria-hidden="true"></i></a> </li>
+  <li> <a target="_blank" href="https://www.linkedin.com/in/grant-ammons-70611"><i class="fa fa-linkedin" aria-hidden="true"></i> </a> </li>
+  <li> <a target="_blank" href="mailto:hi@grantammons.me"><i class="fa fa-envelope" aria-hidden="true"></i></a> </li>
+</ul>
+
+
+      <div class='disqusbox'>
+  <div id='disqus_thread'></div>
+</div>
+<script>
+  var disqus_shortname = "theblogofgrantammons";
+  var disqus_url = "http://grantammons.me/2016/10/25/short-methods-full-hearts-cant-lose/";
+  var disqus_identifier = "articles/2016-10-25-short-methods-full-hearts-cant-lose.html";
+  
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
+
+      <section class='mailing-list closed'>
+  <div class='header'>
+    <div class='closed'>
+      <a class='js-open-mailing-modal'>
+        <h2>
+          Want to become a better developer?
+          <span class='glyphicon glyphicon-arrow-up'></span>
+        </h2>
+      </a>
+    </div>
+    <div class='open hidden'>
+      <a class='js-close-mailing-modal'>
+        <h2>
+          Want to become a better developer?
+          <span class='glyphicon glyphicon-remove'></span>
+        </h2>
+      </a>
+    </div>
+  </div>
+  <div class='body hidden'>
+    <p>Did you like this post?</p>
+    <p>Sign up to receive <em>short, focused, occasional</em> emails about how to level yourself up as a developer.</p>
+    <p>You'll also be the first to know about some awesome courses I have coming up!</p>
+    <form action='//grantammons.us6.list-manage.com/subscribe/post?u=2c85635c3b0fa63233638e6c7&amp;amp;id=43be60dfc6' class='validate' method='post' target='_blank'>
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_2c85635c3b0fa63233638e6c7_43be60dfc6" tabindex="-1" value=""></div>
+      <div class='form-group form-group-lg'>
+        <input class='form-control email-address' name='EMAIL' placeholder='your@email.com' required type='email'>
+      </div>
+      <button class='btn btn-primary btn-block btn-lg' type='submit'>I want to level up!</button>
+    </form>
+    <p>Join hundreds of other developers looking to up their game!</p>
+  </div>
+</section>
+<script>
+  var modalClosed = false;
+  var openModal = function() {
+    $("section.mailing-list .closed").addClass("hidden");
+    $("section.mailing-list .open").removeClass("hidden");
+    $("section.mailing-list .body").removeClass("hidden");
+    $("input.email-address").focus();
+  }
+  
+  var closeModal = function() {
+    modalClosed = true;
+    $("section.mailing-list .closed").removeClass("hidden");
+    $("section.mailing-list .open").addClass("hidden");
+    $("section.mailing-list .body").addClass("hidden");
+    ga('send', 'event', 'Mailing List Modal', 'Click Close')
+  }
+  
+  $('form').on('submit', function() {
+    ga('send', 'event', 'Mailing List Modal', 'List signup')
+  })
+  
+  $(window).scroll(function() {
+    if($(window).scrollTop() + $(window).height() >= ($(document).height() * 0.97)) {
+      if (!modalClosed) {
+        ga('send', 'event', 'Mailing List Modal', 'Scroll Open')
+        openModal();
+      }
+    }
+  });
+  
+  $(".js-open-mailing-modal").click(function() {
+    openModal()
+    ga('send', 'event', 'Mailing List Modal', 'Click Open')
+  });
+  $(".js-close-mailing-modal").click(closeModal);
+</script>
+
+
+      <div class="footer">
+        &copy; 2016 Grant Ammons
+      </div>
+    </div>
+
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37191428-1', 'auto');
+  ga('send', 'pageview');
+</script>
+    <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+</html>
+
