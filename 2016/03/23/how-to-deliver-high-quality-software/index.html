@@ -4,9 +4,10 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta name="google-site-verification" content="Su9DAzyh4kqIZRj1EP_bybJM0q_NdYemm_ekm32s7F8" />
 
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title>How to deliver high quality software</title>
+    <title>Grant Ammons - How to deliver high quality software</title>
 
     <link href="https://fonts.googleapis.com/css?family=Arimo:400,700|Roboto:300,300i,500,500i,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
@@ -14,6 +15,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 
+    <link href="/stylesheets/site.css" rel="stylesheet" /><link href="/stylesheets/syntax.css" rel="stylesheet" />
+    <script src="/javascripts/all.js"></script>
     <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
@@ -32,52 +35,66 @@
 <meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
 <meta name="theme-color" content="#ffffff">
 
-    <link href="/stylesheets/site.css" rel="stylesheet" /><link href="/stylesheets/syntax.css" rel="stylesheet" />
-    <script src="/javascripts/all.js"></script>
-    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
 
   
-    <nav class="navbar navbar-default">
-  <div class="container">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-      <i class="fa fa-bars" aria-hidden="true"></i>
-
-    </button>
-    <a class="navbar-brand" href="/">Grant Ammons</a>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li class="">
-          <a href="/about">
-            About
-          </a>
-        </li>
-        <li class="active">
-          <a href="/blog">Blog</a>
-        </li>
-        <li class="">
-          <a href="/portfolio">Portfolio</a>
-        </li>
-        <li class="">
-          <a href="/talks">Talks</a>
-        </li>
-      </ul>
+    <div class='me-header-small'>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+  
+      </button>
+        <a class="navbar-brand" href="/">
+          Grant Ammons
+        </a>
+  
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/">
+              Home
+            </a>
+          </li>
+          <li class="">
+            <a href="/about">
+              About
+            </a>
+          </li>
+          <li class="">
+            <a href="/blog">Blog</a>
+          </li>
+          <li class="">
+            <a href="/portfolio">Portfolio</a>
+          </li>
+          <li class="">
+            <a href="/talks">Talks</a>
+          </li>
+          <li class="">
+            <a href="/contact">
+              <i class="fa fa-envelope"></i>
+              Contact me
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-12 logo centered'>
+        <img class='img-responsive desktop-logo' src='/images/me.png'>
+      </div>
     </div>
   </div>
-</nav>
+</div>
 
-
-    <div class="logo">
-      <img src="/images/me.png" />
-    </div>
-
-    <div class="page">
-      <section class="firstSection">
-        <h1>How to deliver high quality software</h1>
-      </section>
-
-      <article class="blog-post">
-        <p>When it comes to software, the term “QA” itself is highly loaded. Because what is it, really? Is it just a thing at the end of the software delivery line, where quality gets lovingly sprayed on at the end, achieving  a nice glossy sheen? Is it a separate department that bolts on quality, where the developers don’t really need to worry about it after they throw it over the wall? Is it that one integration test that one developer wrote, once, and it’s “probably good enough”? Of course not!</p>
+    <div class="container main-container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="title">How to deliver high quality software</h1>
+          <div class="page">
+            <p>When it comes to software, the term “QA” itself is highly loaded. Because what is it, really? Is it just a thing at the end of the software delivery line, where quality gets lovingly sprayed on at the end, achieving  a nice glossy sheen? Is it a separate department that bolts on quality, where the developers don’t really need to worry about it after they throw it over the wall? Is it that one integration test that one developer wrote, once, and it’s “probably good enough”? Of course not!</p>
 
 <div class="caption">
   <img src="/images/spray.jpeg" />
@@ -171,19 +188,37 @@
 
 <p>When I was put in charge of engineering at PipelineDeals, one of my goals set forth by the cofounders was to ensure the delivery of high quality software. That included implementing a solid QA process. When Googling about that, of course, you get slammed with all sorts of different practices and results. The above is what works well for us, as a SaaS product company. Your Mileage May Vary.</p>
 
-      </article>
 
-      <hr />
-      <ul class="socialIcons">
-  <li> <a target="_blank" href="https://www.github.com/gammons"><i class="fa fa-github" aria-hidden="true"></i></a> </li>
-  <li> <a target="_blank" href="https://twitter.com/gammons"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-  <li> <a target="_blank" href="https://medium.com/@gammons"><i class="fa fa-medium" aria-hidden="true"></i></a> </li>
-  <li> <a target="_blank" href="https://www.linkedin.com/in/grant-ammons-70611"><i class="fa fa-linkedin" aria-hidden="true"></i> </a> </li>
-  <li> <a target="_blank" href="mailto:hi@grantammons.me"><i class="fa fa-envelope" aria-hidden="true"></i></a> </li>
-</ul>
+            <div class='row'>
+  <div class='col-md-8 col-md-offset-2'>
+    <div class='panel panel-default mailing-list'>
+      <div class='panel-body text-center'>
+        <h2>Did you like this article?</h2>
+        <p>Sign up to receive <em>short, focused, occasional</em> emails about how to level yourself up as a developer.</p>
+        <form action='//app.mailerlite.com/webforms/submit/g5t8r8' method='POST' target='_blank'>
+          <input name='ml-submit' type='hidden' value='1'>
+          <div class='form-group'>
+            <div class='row mail-input'>
+              <div class='column col-md-8 col-xs-12'>
+                <input class='form-control input-lg col-sm-8' name='fields[email]' placeholder='Email address' required type='email'>
+              </div>
+              <div class='column col-md-4 col-xs-12'>
+                <button class='btn btn-primary btn-lg btn-block'>I want to level up!</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <p>You'll also be the first to know about some awesome courses I have coming up!</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-      <div class='disqusbox'>
+              <div class="middle-line">
+                <h2><span>Comments</span></h2>
+              </div>
+              <div class='disqusbox'>
   <div id='disqus_thread'></div>
 </div>
 <script>
@@ -201,81 +236,38 @@
 </script>
 <noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
 
-      <section class='mailing-list closed'>
-  <div class='header'>
-    <div class='closed'>
-      <a class='js-open-mailing-modal'>
-        <h2>
-          Want to become a better developer?
-          <span class='glyphicon glyphicon-arrow-up'></span>
-        </h2>
-      </a>
-    </div>
-    <div class='open hidden'>
-      <a class='js-close-mailing-modal'>
-        <h2>
-          Want to become a better developer?
-          <span class='glyphicon glyphicon-remove'></span>
-        </h2>
-      </a>
-    </div>
-  </div>
-  <div class='body hidden'>
-    <p>Did you like this post?</p>
-    <p>Sign up to receive <em>short, focused, occasional</em> emails about how to level yourself up as a developer.</p>
-    <p>You'll also be the first to know about some awesome courses I have coming up!</p>
-    <form action='//grantammons.us6.list-manage.com/subscribe/post?u=2c85635c3b0fa63233638e6c7&amp;amp;id=43be60dfc6' class='validate' method='post' target='_blank'>
-      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_2c85635c3b0fa63233638e6c7_43be60dfc6" tabindex="-1" value=""></div>
-      <div class='form-group form-group-lg'>
-        <input class='form-control email-address' name='EMAIL' placeholder='your@email.com' required type='email'>
-      </div>
-      <button class='btn btn-primary btn-block btn-lg' type='submit'>I want to level up!</button>
-    </form>
-    <p>Join hundreds of other developers looking to up their game!</p>
-  </div>
-</section>
-<script>
-  var modalClosed = false;
-  var openModal = function() {
-    $("section.mailing-list .closed").addClass("hidden");
-    $("section.mailing-list .open").removeClass("hidden");
-    $("section.mailing-list .body").removeClass("hidden");
-    $("input.email-address").focus();
-  }
-  
-  var closeModal = function() {
-    modalClosed = true;
-    $("section.mailing-list .closed").removeClass("hidden");
-    $("section.mailing-list .open").addClass("hidden");
-    $("section.mailing-list .body").addClass("hidden");
-    ga('send', 'event', 'Mailing List Modal', 'Click Close')
-  }
-  
-  $('form').on('submit', function() {
-    ga('send', 'event', 'Mailing List Modal', 'List signup')
-  })
-  
-  $(window).scroll(function() {
-    if($(window).scrollTop() + $(window).height() >= ($(document).height() * 0.97)) {
-      if (!modalClosed) {
-        ga('send', 'event', 'Mailing List Modal', 'Scroll Open')
-        openModal();
-      }
-    }
-  });
-  
-  $(".js-open-mailing-modal").click(function() {
-    openModal()
-    ga('send', 'event', 'Mailing List Modal', 'Click Open')
-  });
-  $(".js-close-mailing-modal").click(closeModal);
-</script>
 
-
-      <div class="footer">
-        &copy; 2016 Grant Ammons
+          </div>
+        </div>
       </div>
     </div>
+    <div class='footer'>
+  <div class='container'>
+    <div class='col-md-12'>
+      <ul class='list-inline bottom-nav'>
+        <li>
+          <a href='/about'>About</a>
+        </li>
+        <li>
+          <a href='/blog'>Blog</a>
+        </li>
+        <li>
+          <a href='/portfolio'>Portfolio</a>
+        </li>
+        <li>
+          <a href='/talks'>Talks</a>
+        </li>
+        <li>
+          <a href='/contact'>
+            <i class='fa fa-envelope'></i>
+            Contact me
+          </a>
+        </li>
+      </ul>
+      &copy; 2016 Grant Ammons
+    </div>
+  </div>
+</div>
 
     <script type="text/javascript">
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -285,7 +277,7 @@
   ga('create', 'UA-37191428-1', 'auto');
   ga('send', 'pageview');
 </script>
-    <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
+  <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </html>
-
