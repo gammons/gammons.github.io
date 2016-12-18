@@ -1,0 +1,459 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta name="google-site-verification" content="Su9DAzyh4kqIZRj1EP_bybJM0q_NdYemm_ekm32s7F8" />
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Grant Ammons - The Promised Land: Javascript Promises Made Easy</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Arimo:400,700|Roboto:300,300i,500,500i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" /><link href="/stylesheets/syntax.css" rel="stylesheet" />
+    <script src="/javascripts/all.js"></script>
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+  </head>
+
+  
+    <div class='me-header-small'>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+  
+      </button>
+        <a class="navbar-brand" href="/">
+          Grant Ammons
+        </a>
+  
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/">
+              Home
+            </a>
+          </li>
+          <li class="">
+            <a href="/about">
+              About
+            </a>
+          </li>
+          <li class="">
+            <a href="/blog">Blog</a>
+          </li>
+          <li class="">
+            <a href="/portfolio">Portfolio</a>
+          </li>
+          <li class="">
+            <a href="/talks">Talks</a>
+          </li>
+          <li class="">
+            <a href="/contact">
+              <i class="fa fa-envelope"></i>
+              Contact me
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-12 logo centered'>
+        <img class='img-responsive desktop-logo' src='/images/me.png'>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container main-container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="title">The Promised Land: Javascript Promises Made Easy</h1>
+          <div class="page">
+            <p><em><strong>Note</strong></em>: <em>while reading this article, you should listen to <a href="https://www.youtube.com/watch?v=WBupia9oidU" rel="nofollow">Promises, Promises by Naked eyes.</a></em></p>
+
+<p>Promises hold the <strong>promise</strong> (yup) that they will make your asynchronous code easier to work with.  They will help you avoid <em>callback hell</em> in a lot of situations, where you&rsquo;d otherwise need to deeply nest code.  </p>
+
+<p>Promises are now native to all modern browsers, and the pattern is ubiquitous in the Javascript community.  So if you haven&rsquo;t taken the time to learn it yet, settle in and learn you Promises for great justice.</p>
+
+<h2>A simple example</h2>
+
+<p>Lots of calls in javascript are asynchronous.  That is, you must supply them with a callback function.  The best example of how promises work is to just dive in and <em>promisify</em> an asynchronous call.</p>
+
+<p>Behold, a wild contrived asynchronous call appears!</p>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">getRandoNumButNotTooHigh</span> <span class="o">=</span> <span class="p">(</span><span class="nx">cbFn</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">num</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&lt;=</span> <span class="mf">0.8</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">cbFn</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">num</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">cbFn</span><span class="p">(</span><span class="s2">"Sorry, number was too damn high"</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="mi">200</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<p>In this case, the asynchronous call is <code>getRandoNumButNotTooHigh</code>, whose only argument is a callback function that executes when it&rsquo;s done.  That callback function takes 2 arguments, <code>error</code> or <code>data</code>.  It generates a random float number between 0 and 1.  If the number is over 0.8, we return an error saying the number was too damn high.  Otherwise we return the number.  Also, I wrapped it all in a <code>setTimeout</code> because otherwise this example wouldn&rsquo;t make any sense.  So just roll with it.</p>
+
+<p>We&rsquo;re calling <code>getRandoNumButNotTooHigh</code> in a simple loop that instantiates the callback function and just logs the result.  Easy enough:</p>
+<pre class="highlight javascript"><code><span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">getRandoNumButNotTooHigh</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span> <span class="nx">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">(</span><span class="s2">"sorry, number was too damn high"</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre>
+<p>Below, you can see this function actually running IRL.</p>
+
+<p data-height="553" data-theme-id="0" data-slug-hash="gLZrvM" data-default-tab="js,result" data-user="gammons" data-embed-version="2" data-pen-title="doAsyncCall" class="codepen">See the Pen <a href="http://codepen.io/gammons/pen/gLZrvM/">doAsyncCall</a> by Grant Ammons (<a href="http://codepen.io/gammons">@gammons</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>Ok.  Still with me? Great.  Next, I am going to rewrite <code>getRandoNumButNotTooHigh</code> to return an instance of <code>Promise</code>, and we&rsquo;ll see what that does:</p>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">getRandoNumButNotTooHigh</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">num</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&lt;=</span> <span class="mf">0.8</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">reject</span><span class="p">(</span><span class="s2">"Sorry, number was too damn high"</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">},</span> <span class="mi">200</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre>
+<p>Alright.  So it&rsquo;s <em>slightly</em> different now.  Let&rsquo;s break it down.</p>
+
+<ul>
+<li>First, <code>getRandoNumButNotTooHigh</code> <em>no longer needs a callback function (<code>cbFn</code>) to be passed in</em>.  This is key, and we&rsquo;ll see how that&rsquo;s awesome in a minute when we call this function.</li>
+<li>Second, we&rsquo;re returning a <code>new Promise</code>.</li>
+<li>Third, the <code>Promise</code> instance takes 2 arguments, <code>resolve</code> and <code>reject</code>, which are functions that get called when the asynchronous function is done.  You&rsquo;ll notice that <code>resolve</code> is the happy path, and <code>reject</code> is the <em>sad panda path</em>. <img class="gemoji" alt="panda_face" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f43c.png" /></li>
+</ul>
+
+<p><strong>Calling a promise</strong></p>
+
+<p>So how does this look when we call it?  Well, it looks freaking cool:</p>
+<pre class="highlight javascript"><code><span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">getRandoNumButNotTooHigh</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span>
+  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s2">"sorry, number was too damn high"</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre>
+<p>And here you see <em>real benefit</em> of promises:  the calling function is easier to read!  Let&rsquo;s break the calling function down:</p>
+
+<p>Inside the for loop we are executing <code>getRandoNumButNotTooHigh()</code> which returns the <code>Promise</code> object.  Once the promise resolves, it will either call <code>then</code> or <code>catch</code>.</p>
+
+<ul>
+<li>If <code>getRandoNumButNotTooHigh</code> executes <code>resolve</code>, then the promise will execute the <code>then</code> block.</li>
+<li>If <code>getRandoNumButNotTooHigh</code> executes <code>reject</code>, then the will execute the <code>catch</code> block.</li>
+</ul>
+
+<p>Below is a working example of the code:</p>
+
+<p data-height="550" data-theme-id="0" data-slug-hash="zoyqjy" data-default-tab="js,result" data-user="gammons" data-embed-version="2" data-pen-title="doAsyncCall - NOW WITH PROMISES!!1!" class="codepen">See the Pen <a href="http://codepen.io/gammons/pen/zoyqjy/">doAsyncCall - NOW WITH PROMISES!!1!</a> by Grant Ammons (<a href="http://codepen.io/gammons">@gammons</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h2>Promises returning promises</h2>
+
+<p>Are there other benefits to using promises?  You betcha!  There <em>are</em> other benefits that look <em>promising</em> (yup) as well!</p>
+
+<p>See the thing is, whatever you return in the <code>then</code> block of a promise <em>gets wrapped in a promise</em> that immediately resolves.  If you are already returning a promise, it will not wrap.</p>
+
+<p>This has some pretty nifty IRL consequences, because you can chain <code>then</code> calls and avoid the dreaded <a href="http://web.archive.org/web/20151209151711/http://tritarget.org/blog/2012/11/28/the-pyramid-of-doom-a-javascript-style-trap" rel="nofollow">pyramid of doom</a>.</p>
+
+<p>Check it out:</p>
+<pre class="highlight javascript"><code><span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">getRandoNumButNotTooHigh</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">num</span>  <span class="c1">// returns a number so it will be wrapped in a promise</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">getRandoNumButNotTooHigh</span><span class="p">()</span> <span class="c1">// returns a promise already so no wrapping</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">num</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">// returns a number so will be wrapped in a promise</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>    
+    <span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="c1">// returns null so will be wrapped in a promise</span>
+  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+  <span class="p">})</span>  
+<span class="p">}</span>
+</code></pre>
+<p>The other benefit is that aysnchronous calls can be sequenced easily.  Since <code>then</code> is run <em>after</em> an asynchronous function is done, chaining <code>then</code> calls ensures that the asynchronous calls are sequentially run.</p>
+
+<p>This is enormously easier to comprehend than the alternative, which are mountains of callback functions.  These callback functions have the potential to get very deeply nested:</p>
+<pre class="highlight javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">"button"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/test.json"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">".list"</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+              <span class="nx">alert</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+          <span class="p">});</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</code></pre>
+<p>Yuck.  Yes, using promises has the potential to flatten out this giant mountaintop of code.</p>
+
+<h2>Chaining promises example</h2>
+
+<p>Since it&rsquo;s (currently) &lsquo;tis the season, we&rsquo;ll be lighting some balls to celebrate. So I present to you: <strong>BALL LIGHTER.</strong>  </p>
+
+<p>First, we&rsquo;ll light some balls the non-promise way, and see where that takes us.  After that we&rsquo;ll use promises to light up those balls (and our hearts), and see the difference in the code.</p>
+
+<p>So first, the unceremonious ball lighting without promises:</p>
+
+<p data-height="550" data-theme-id="0" data-slug-hash="jVeJMR" data-default-tab="js,result" data-user="gammons" data-embed-version="2" data-pen-title="Sequences without promises" class="codepen">See the Pen <a href="http://codepen.io/gammons/pen/jVeJMR/">Sequences without promises</a> by Grant Ammons (<a href="http://codepen.io/gammons">@gammons</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>Here&rsquo;s what you need to know about these balls:</p>
+
+<p>First, there&rsquo;s a 700ms CSS3 transition which needs to run in order for the balls to light up smoothly.</p>
+<pre class="highlight css"><code><span class="nf">#circles</span> <span class="o">&gt;</span> <span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">transition</span><span class="p">:</span> <span class="n">all</span> <span class="m">0.7s</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+<p>So in order for that transition to run, we need to build in a 700ms delay after each ball is lit.  Here&rsquo;s our <code>lightBall</code> function:</p>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">lightBall</span> <span class="o">=</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">=</span> <span class="s2">"#FFEA85"</span><span class="p">;</span>
+  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">boxShadow</span> <span class="o">=</span> <span class="s2">"0px 0px 10px 0px #FFEA85"</span><span class="p">;</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">cb</span><span class="p">()</span> <span class="p">},</span> <span class="mi">700</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<p>You&rsquo;ll notice we pass in a callback function <code>cb</code> at the end.  Then, we run a <code>setTimeout</code> to execute that callback after 700ms.</p>
+
+<p>Putting it all together, we have a function called <code>lightBallsSequentially</code>:</p>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">lightBallsSequentially</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'one'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'two'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'three'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'four'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"done!"</span><span class="p">)</span>
+        <span class="p">})</span>
+      <span class="p">})</span>
+    <span class="p">})</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre>
+<p>Why?  Because in order to light the balls one at a time, we need rely on the <code>lightBall</code> callback function to be executed.  In that callback, we can then light the next ball sequentially.  What we have here is a textbook example of the Pyramid of Doom.</p>
+
+<p>Here&rsquo;s what a promise-ified <code>lightBall</code> looks like:</p>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">lightBall</span> <span class="o">=</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">reject</span><span class="p">(</span><span class="s2">`Could not find element with id </span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">=</span> <span class="s2">"#FFEA85"</span><span class="p">;</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">boxShadow</span> <span class="o">=</span> <span class="s2">"0px 0px 10px 0px #FFEA85"</span><span class="p">;</span>
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">resolve</span><span class="p">()</span> <span class="p">},</span> <span class="mi">700</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre>
+<p>Notice we don&rsquo;t need to pass in a callback.  Instead we&rsquo;re returning a <code>new Promise</code>.  A promise takes 2 arguments:  <code>resolve</code> and <code>reject</code> which are functions.  <code>lightBall</code> calls <code>resolve()</code> after 700ms.  This &ldquo;resolves&rdquo; the promise.</p>
+
+<p>If we passed in an id that we could not find, the promise will run <code>reject</code> with the error message.</p>
+
+<p><strong>That&rsquo;s great, but how do I use this?</strong></p>
+
+<p>Now you can call <code>lightBall</code> and use the new awesome promise syntax:</p>
+<pre class="highlight javascript"><code><span class="nx">lightBall</span><span class="p">(</span><span class="s1">'one'</span><span class="p">).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"700ms passed, the ball is done lighting!"</span><span class="p">)</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Oh snap, something happened:"</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre>
+<p>When the <code>resolve()</code> function runs, the caller of the promise will run <code>then()</code>.  Similarly, if <code>reject()</code> was called, the <code>catch</code> block will run.</p>
+
+<p>And now, with the promises in place, we can run our ball lighting sequence <em>without</em> the pyramid of doom!</p>
+<pre class="highlight javascript"><code><span class="nx">lightBall</span><span class="p">(</span><span class="s1">'one'</span><span class="p">).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'two'</span><span class="p">)</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'three'</span><span class="p">)</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'four'</span><span class="p">)</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"error was "</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre>
+<p>Take a look at the final promise-ified solution:</p>
+
+<p data-height="550" data-theme-id="0" data-slug-hash="xRyMpK" data-default-tab="js,result" data-user="gammons" data-embed-version="2" data-pen-title="Promises" class="codepen">See the Pen <a href="http://codepen.io/gammons/pen/xRyMpK/">Promises</a> by Grant Ammons (<a href="http://codepen.io/gammons">@gammons</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h2>Catching errors</h2>
+
+<p>If one of the <code>lightBall</code> functions returns an error, the sequence will stop running.</p>
+
+<p>Take this code for instance:</p>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">lightBallsSequentially</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'one'</span><span class="p">).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'two'</span><span class="p">)</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'nope'</span><span class="p">)</span> <span class="c1">// This will throw an error!!</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'four'</span><span class="p">)</span>
+  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"error was "</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre>
+<p>In the above code, <code>lightBall(&#39;four&#39;)</code> will never run.  Once the error is thrown, the <code>catch</code> block runs.</p>
+
+<p>Here&rsquo;s the example of that:</p>
+
+<p data-height="550" data-theme-id="0" data-slug-hash="gLqrwY" data-default-tab="js,result" data-user="gammons" data-embed-version="2" data-pen-title="Promises with errors" class="codepen">See the Pen <a href="http://codepen.io/gammons/pen/gLqrwY/">Promises with errors</a> by Grant Ammons (<a href="http://codepen.io/gammons">@gammons</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p><strong>Simulating <code>finally</code></strong></p>
+
+<p>Similarly to <code>then</code>, <code>catch</code> can also return stuff, which will also get wrapped in a promise.  This is a good way of &ldquo;cleaning up&rdquo; regardless if a function was successful or returned an error.</p>
+
+<p>Notice that we do execute the last <code>then</code> block after the <code>catch</code> in the example below:</p>
+
+<p data-height="550" data-theme-id="0" data-slug-hash="JbxXEa" data-default-tab="js,result" data-user="gammons" data-embed-version="2" data-pen-title="Promises with errors, and a then at the end" class="codepen">See the Pen <a href="http://codepen.io/gammons/pen/JbxXEa/">Promises with errors, and a then at the end</a> by Grant Ammons (<a href="http://codepen.io/gammons">@gammons</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h1>Conclusion</h1>
+
+<p>By now, you should be a freaking <em>ninja</em> at promises.  They are not too hard after the initial learning curve.  </p>
+
+<p>Remember, promises are great for the following reasons:</p>
+
+<ol>
+<li> Your asynchronous code can be easier to read and maintain</li>
+<li> You&rsquo;ll no longer need to reinvent this pattern on your own</li>
+<li> You&rsquo;ll easily be able to grok other libraries who uses promises heavily or exclusively (like the <code>fetch</code> method, which I will cover next!)</li>
+</ol>
+
+<p>So go forth with your newfound and start making (and potentially breaking) your promises!</p>
+
+
+              <div class='row'>
+  <div class='col-md-8 col-md-offset-2'>
+    <div class='panel panel-default mailing-list'>
+      <div class='panel-body text-center'>
+        <h2>Did you like this article?</h2>
+        <p>Sign up to receive <em>short, focused, occasional</em> emails about how to level yourself up as a developer.</p>
+        <form action='//app.mailerlite.com/webforms/submit/g5t8r8' method='POST' target='_blank'>
+          <input name='ml-submit' type='hidden' value='1'>
+          <div class='form-group'>
+            <div class='row mail-input'>
+              <div class='column col-md-8 col-xs-12'>
+                <input class='form-control input-lg col-sm-8' name='fields[email]' placeholder='Email address' required type='email'>
+              </div>
+              <div class='column col-md-4 col-xs-12'>
+                <button class='btn btn-primary btn-lg btn-block'>I want to level up!</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <p>You'll also be the first to know about some awesome courses I have coming up!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+              <div class="middle-line">
+                <h2><span>Comments</span></h2>
+              </div>
+              <div class='disqusbox'>
+  <div id='disqus_thread'></div>
+</div>
+<script>
+  var disqus_shortname = "theblogofgrantammons";
+  var disqus_url = "http://grantammons.me/2016/12/16/javascript-promises-made-easy/";
+  var disqus_identifier = "articles/2016-12-16-javascript-promises-made-easy.html";
+  
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='footer'>
+  <div class='container'>
+    <div class='col-md-12'>
+      <ul class='list-inline bottom-nav'>
+        <li>
+          <a href='/about'>About</a>
+        </li>
+        <li>
+          <a href='/blog'>Blog</a>
+        </li>
+        <li>
+          <a href='/portfolio'>Portfolio</a>
+        </li>
+        <li>
+          <a href='/talks'>Talks</a>
+        </li>
+        <li>
+          <a href='/contact'>
+            <i class='fa fa-envelope'></i>
+            Contact me
+          </a>
+        </li>
+      </ul>
+      &copy; 2016 Grant Ammons
+    </div>
+  </div>
+</div>
+
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37191428-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>
