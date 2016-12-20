@@ -187,7 +187,7 @@
 
 <p>Are there other benefits to using promises?  You betcha!  There <em>are</em> other benefits that look <em>promising</em> (yup) as well!</p>
 
-<p>See the thing is, whatever you return in the <code>then</code> block of a promise <em>gets wrapped in a promise</em> that immediately resolves.  If you are already returning a promise, it will not wrap.</p>
+<p>See the thing is, promises always return promises.  Whatever you return in the <code>then</code> block of a promise <em>gets wrapped in a promise</em> that immediately resolves.  If you are already returning a promise, it will not wrap.</p>
 
 <p>This has some pretty nifty IRL consequences, because you can chain <code>then</code> calls and avoid the dreaded <a href="http://web.archive.org/web/20151209151711/http://tritarget.org/blog/2012/11/28/the-pyramid-of-doom-a-javascript-style-trap" rel="nofollow">pyramid of doom</a>.</p>
 
@@ -206,28 +206,11 @@
   <span class="p">})</span>  
 <span class="p">}</span>
 </code></pre>
-<p>The other benefit is that aysnchronous calls can be sequenced easily.  Since <code>then</code> is run <em>after</em> an asynchronous function is done, chaining <code>then</code> calls ensures that the asynchronous calls are sequentially run.</p>
+<p>This has the potential to flatten out a lot of deeply nested asynchronous calls.</p>
 
-<p>This is enormously easier to comprehend than the alternative, which are mountains of callback functions.  These callback functions have the potential to get very deeply nested:</p>
-<pre class="highlight javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">"button"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/test.json"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s2">".list"</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-          <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-              <span class="nx">alert</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">);</span>
-            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
-          <span class="p">});</span>
-        <span class="p">});</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-  <span class="p">});</span>
-<span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
-</code></pre>
-<p>Yuck.  Yes, using promises has the potential to flatten out this giant mountaintop of code.</p>
+<h2>Sequential async events</h2>
 
-<h2>Chaining promises example</h2>
+<p>Using promises, aysnchronous calls can be sequenced easily.  Since <code>then</code> is run <em>after</em> an asynchronous function is done, chaining <code>then</code> calls ensures that the asynchronous calls are sequentially run.</p>
 
 <p>Since it&rsquo;s (currently) &lsquo;tis the season, we&rsquo;ll be lighting some balls to celebrate. So I present to you: <strong>BALL LIGHTER.</strong>  </p>
 
@@ -350,6 +333,16 @@
 <p data-height="550" data-theme-id="0" data-slug-hash="JbxXEa" data-default-tab="js,result" data-user="gammons" data-embed-version="2" data-pen-title="Promises with errors, and a then at the end" class="codepen">See the Pen <a href="http://codepen.io/gammons/pen/JbxXEa/">Promises with errors, and a then at the end</a> by Grant Ammons (<a href="http://codepen.io/gammons">@gammons</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h2>Parallel asynchronous events</h2>
+
+<p>You can also run promise-based functions using <code>Promise.all</code>.  Consider the following example:</p>
+
+<p data-height="550" data-theme-id="0" data-slug-hash="bBzoyW" data-default-tab="js,result" data-user="gammons" data-embed-version="2" data-pen-title="Parallel execution" class="codepen">See the Pen <a href="https://codepen.io/gammons/pen/bBzoyW/">Parallel execution</a> by Grant Ammons (<a href="http://codepen.io/gammons">@gammons</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>We&rsquo;re doing a lot of very similar looking, duplicative code in <code>lightBallsInParallel</code>.  By using <code>Promise.all</code>, it can be cleaned up significantly, and we get a single place to handle exceptions:</p>
 
 <h1>Conclusion</h1>
 
