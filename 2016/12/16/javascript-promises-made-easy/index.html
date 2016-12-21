@@ -7,7 +7,7 @@
     <meta name="google-site-verification" content="Su9DAzyh4kqIZRj1EP_bybJM0q_NdYemm_ekm32s7F8" />
 
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title>Grant Ammons - The Promised Land: Javascript Promises Made Easy</title>
+    <title>Grant Ammons - Learn promises the fun way -  through ridiculous examples</title>
 
     <link href="https://fonts.googleapis.com/css?family=Arimo:400,700|Roboto:300,300i,500,500i,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
@@ -92,11 +92,11 @@
     <div class="container main-container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="title">The Promised Land: Javascript Promises Made Easy</h1>
+          <h1 class="title">Learn promises the fun way -  through ridiculous examples</h1>
           <div class="page">
             <p><em><strong>Note</strong></em>: <em>while reading this article, you should listen to <a href="https://www.youtube.com/watch?v=WBupia9oidU" rel="nofollow">Promises, Promises by Naked eyes.</a></em></p>
 
-<p>Promises hold the <strong>promise</strong> (yup) that they will make your asynchronous code easier to work with.  They will help you avoid <em>callback hell</em> in a lot of situations, where you&rsquo;d otherwise need to deeply nest code.  </p>
+<p>Promises hold the <strong>promise</strong> (yup) that they will make your asynchronous code easier to work with.  They will help you avoid <em>callback hell</em> in a lot of situations, where you&rsquo;d otherwise need to deeply nest code.</p>
 
 <p>Promises are now native to all modern browsers, and the pattern is ubiquitous in the Javascript community.  So if you haven&rsquo;t taken the time to learn it yet, settle in and learn you Promises for great justice.</p>
 
@@ -199,11 +199,11 @@
     <span class="k">return</span> <span class="nx">getRandoNumButNotTooHigh</span><span class="p">()</span> <span class="c1">// returns a promise already so no wrapping</span>
   <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">num</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">// returns a number so will be wrapped in a promise</span>
-  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>    
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="c1">// returns null so will be wrapped in a promise</span>
   <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-  <span class="p">})</span>  
+  <span class="p">})</span>
 <span class="p">}</span>
 </code></pre>
 <p>This has the potential to flatten out a lot of deeply nested asynchronous calls.</p>
@@ -212,7 +212,7 @@
 
 <p>Using promises, aysnchronous calls can be sequenced easily.  Since <code>then</code> is run <em>after</em> an asynchronous function is done, chaining <code>then</code> calls ensures that the asynchronous calls are sequentially run.</p>
 
-<p>Since it&rsquo;s (currently) &lsquo;tis the season, we&rsquo;ll be lighting some balls to celebrate. So I present to you: <strong>BALL LIGHTER.</strong>  </p>
+<p>Since it&rsquo;s (currently) &lsquo;tis the season, we&rsquo;ll be lighting some balls to celebrate. So I present to you: <strong>BALL LIGHTER.</strong></p>
 
 <h3>Sequential ball lighting (the non-promise way)</h3>
 
@@ -350,7 +350,7 @@
 
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-<p>Now, let&rsquo;s introduce an exception call.  Notice that even though the 3rd <code>lightBall</code> had an error, the fourth call still ran.  </p>
+<p>Now, let&rsquo;s introduce an exception call.  Notice that even though the 3rd <code>lightBall</code> had an error, the fourth call still ran.</p>
 
 <p data-height="550" data-theme-id="0" data-slug-hash="zoePBb" data-default-tab="js,result" data-user="gammons" data-embed-version="2" data-pen-title="Parallel execution with Promise.all, with exception" class="codepen">See the Pen <a href="https://codepen.io/gammons/pen/zoePBb/">Parallel execution with Promise.all, with exception</a> by Grant Ammons (<a href="http://codepen.io/gammons">@gammons</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
@@ -358,7 +358,7 @@
 
 <h1>Conclusion</h1>
 
-<p>By now, you should be a freaking <em>ninja</em> at promises.  They are not too hard after the initial learning curve.  </p>
+<p>By now, you should be a freaking <em>ninja</em> at promises.  They are not too hard after the initial learning curve.</p>
 
 <p>Remember, promises are great for the following reasons:</p>
 
