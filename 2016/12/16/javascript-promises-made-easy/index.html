@@ -193,17 +193,12 @@
 
 <p>Check it out:</p>
 <pre class="highlight javascript"><code><span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">getRandoNumButNotTooHigh</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">num</span>  <span class="c1">// returns a number so it will be wrapped in a promise</span>
-  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">getRandoNumButNotTooHigh</span><span class="p">()</span> <span class="c1">// returns a promise already so no wrapping</span>
-  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">num</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">// returns a number so will be wrapped in a promise</span>
-  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="c1">// returns null so will be wrapped in a promise</span>
-  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-  <span class="p">})</span>
+  <span class="nx">getRandoNumButNotTooHigh</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="nx">num</span><span class="p">)</span>  <span class="c1">// returns a number so it will be wrapped in a promise</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="nx">getRandoNumButNotTooHigh</span><span class="p">())</span> <span class="c1">// returns a promise already so no wrapping</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="nx">num</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// returns a number so will be wrapped in a promise</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">))</span> <span class="c1">// returns undefined so will be wrapped in a promise</span>
+  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">))</span>
 <span class="p">}</span>
 </code></pre>
 <p>This has the potential to flatten out a lot of deeply nested asynchronous calls.</p>
@@ -285,15 +280,11 @@
 <p>When the <code>resolve()</code> function runs, the caller of the promise will run <code>then()</code>.  Similarly, if <code>reject()</code> was called, the <code>catch</code> block will run.</p>
 
 <p>And now, with the promises in place, we can run our ball lighting sequence <em>without</em> the pyramid of doom!</p>
-<pre class="highlight javascript"><code><span class="nx">lightBall</span><span class="p">(</span><span class="s1">'one'</span><span class="p">).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'two'</span><span class="p">)</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'three'</span><span class="p">)</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'four'</span><span class="p">)</span>
-<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"error was "</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-<span class="p">})</span>
+<pre class="highlight javascript"><code><span class="nx">lightBall</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'two'</span><span class="p">))</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'three'</span><span class="p">))</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'four'</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"error was "</span><span class="p">,</span> <span class="nx">err</span><span class="p">))</span>
 </code></pre>
 <p>Take a look at the final promise-ified solution:</p>
 
@@ -307,15 +298,11 @@
 
 <p>Take this code for instance:</p>
 <pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">lightBallsSequentially</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'one'</span><span class="p">).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'two'</span><span class="p">)</span>
-  <span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'nope'</span><span class="p">)</span> <span class="c1">// This will throw an error!!</span>
-  <span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'four'</span><span class="p">)</span>
-  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"error was "</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-  <span class="p">})</span>
+  <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'two'</span><span class="p">))</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'nope'</span><span class="p">))</span> <span class="c1">// This will throw an error!!</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">lightBall</span><span class="p">(</span><span class="s1">'four'</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"error was "</span><span class="p">,</span> <span class="nx">err</span><span class="p">))</span>
 <span class="p">}</span>
 </code></pre>
 <p>In the above code, <code>lightBall(&#39;four&#39;)</code> will never run.  Once the error is thrown, the <code>catch</code> block runs.</p>
@@ -375,8 +362,8 @@
   <div class='col-md-8 col-md-offset-2'>
     <div class='panel panel-default mailing-list'>
       <div class='panel-body text-center'>
-        <h2>Did you like this article?</h2>
-        <p>Sign up to receive <em>short, focused, occasional</em> emails about how to level yourself up as a developer.</p>
+        <h2>Want to level up your Javascript-fu?</h2>
+        <p>I write short, focused tutorials on Javascript topics.  Never miss a new article!</p>
         <form action='//app.mailerlite.com/webforms/submit/g5t8r8' method='POST' target='_blank'>
           <input name='ml-submit' type='hidden' value='1'>
           <div class='form-group'>
@@ -385,7 +372,7 @@
                 <input class='form-control input-lg col-sm-8' name='fields[email]' placeholder='Email address' required type='email'>
               </div>
               <div class='column col-md-4 col-xs-12'>
-                <button class='btn btn-primary btn-lg btn-block'>I want to level up!</button>
+                <button class='btn btn-primary btn-lg btn-block'>Sign up</button>
               </div>
             </div>
           </div>
