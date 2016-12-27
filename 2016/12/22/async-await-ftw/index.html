@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta name="google-site-verification" content="Su9DAzyh4kqIZRj1EP_bybJM0q_NdYemm_ekm32s7F8" />
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Grant Ammons - async/await:  The asynchronous code detangler</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Arimo:400,700|Roboto:300,300i,500,500i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" /><link href="/stylesheets/syntax.css" rel="stylesheet" />
+    <script src="/javascripts/all.js"></script>
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+  </head>
+
+  
+    <div class='me-header-small'>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+  
+      </button>
+        <a class="navbar-brand" href="/">
+          Grant Ammons
+        </a>
+  
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/">
+              Home
+            </a>
+          </li>
+          <li class="">
+            <a href="/about">
+              About
+            </a>
+          </li>
+          <li class="">
+            <a href="/blog">Blog</a>
+          </li>
+          <li class="">
+            <a href="/portfolio">Portfolio</a>
+          </li>
+          <li class="">
+            <a href="/talks">Talks</a>
+          </li>
+          <li class="">
+            <a href="/contact">
+              <i class="fa fa-envelope"></i>
+              Contact me
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-12 logo centered'>
+        <img class='img-responsive desktop-logo' src='/images/me.png'>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container main-container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="title">async/await:  The asynchronous code detangler</h1>
+          <div class="page">
+            <p>In my previous post, we went through some examples of using promises to light up some balls.  It was fun.  And I showed how promises can really clean up asynchronous function calls.</p>
+
+<p>But&hellip;</p>
+
+<p><img src="/images/morpheus.jpg" alt="Morpheus" /></p>
+
+<p>Did you know that there is an <em>even easier</em> way of writing asynchronous code?  Using <code>async</code> and <code>await</code>, you can write asynchronous code in a very procedural, synchronous way.</p>
+
+<p>We’ll continue where we left off with our Ball Lighter application and convert our promise-based solution to something that uses <code>async</code> and <code>await</code>, and we’ll compare and contrast the differences.</p>
+
+<h2>What do I need to know before diving in?</h2>
+
+<p>Be sure you have a firm grasp on promises.  <code>await</code> relies on Promises to function, and you&rsquo;ll need to have a good understanding of how those work before continuing.</p>
+
+<p><a href="http://grantammons.me/2016/12/16/javascript-promises-made-easy/" rel="nofollow">I wrote an article on how to use promises</a>.  If you&rsquo;re a little shaky, start there.</p>
+
+<h2>The quest for cleaner asynchronous code</h2>
+
+<p>If you remember, we had our Ball Lighter example with promises, and that would light up our balls sequentially, one after the other, with a 700ms delay in between:</p>
+
+<p data-height="550" data-theme-id="0" data-slug-hash="xRyMpK" data-default-tab="js,result" data-user="gammons" data-embed-version="2" data-pen-title="Promises" class="codepen">See the Pen <a href="http://codepen.io/gammons/pen/xRyMpK/">Promises</a> by Grant Ammons (<a href="http://codepen.io/gammons">@gammons</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p><code>lightBallsSequentially</code> looks pretty good, but wouldn&rsquo;t it be awesome if we could just &ldquo;get rid of&rdquo; the asynchronous-ness of it all, and just write the code in a more straightforward way?</p>
+
+<p>I come from a Ruby background, where functions do not execute asynchrnously.  If I wrote <code>lightBallsSequentially</code> in Ruby, it might look something like this:</p>
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">lightBallsSequentially</span><span class="p">()</span>
+  <span class="k">begin</span>
+    <span class="n">lightBall</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span>
+    <span class="n">lightBall</span><span class="p">(</span><span class="s1">'two'</span><span class="p">)</span>
+    <span class="n">lightBall</span><span class="p">(</span><span class="s1">'three'</span><span class="p">)</span>
+    <span class="n">lightBall</span><span class="p">(</span><span class="s1">'four'</span><span class="p">)</span>
+  <span class="k">rescue</span> <span class="no">Exception</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="n">alert</span><span class="p">(</span><span class="s2">"Whoops, error was </span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+<p>That feels very straightforward.  Can we do it in Javascript?</p>
+
+<p>The answer:  <strong>Yup! Use <code>async</code> and <code>await!</code></strong> These are new(ish) concepts that are part of ES2016+, which now have <a href="http://kangax.github.io/compat-table/es2016plus/#test-async_functions" rel="nofollow">some major browser support</a>.</p>
+
+<h2><code>async</code> and <code>await</code> in detail</h2>
+
+<p>Let&rsquo;s start off with a super-simple example:</p>
+
+<p data-height="550" data-theme-id="0" data-slug-hash="rWgNRq" data-default-tab="js,result" data-user="gammons" data-embed-version="2" data-pen-title="async / await simple example" class="codepen">See the Pen <a href="http://codepen.io/gammons/pen/rWgNRq/">async / await simple example</a> by Grant Ammons (<a href="http://codepen.io/gammons">@gammons</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>Here you&rsquo;ll notice that when you run the <code>testAwait</code> function, You see &ldquo;about to run asyncFn&rdquo; followed by &ldquo;Result is Bingo!&rdquo; 1 second later.  It feels very procedural indeed.</p>
+
+<p><code>await</code> is the real star of the show here.  It will automatically wait for the asynchronous call to complete before moving onto the next statement.  Since <code>await</code> is promise-based, it is technically waiting for the promise to <em>be fulfilled</em> before moving onto the next statement.</p>
+
+<p>In our example, <code>asyncFn</code> is already returning a promise, so we&rsquo;re all good.  But can <code>await</code> work <em>without</em> returning a promise?  Yup, it can!  <code>await</code> will <em>promisify</em> anything after it.  That is, it will wrap a value in a promise and resolve it immediately.  if If the result is already an instance of <code>Promise</code>, then it’s left alone.</p>
+
+<p><code>await</code> will then wait for the promise to be fulfilled, which means that either the <code>resolve</code> or <code>reject</code> functions have ran in the promise.  If the promise is resolved successfully.  Take a look below:</p>
+
+<p data-height="513" data-theme-id="0" data-slug-hash="YpbzKB" data-default-tab="js,result" data-user="gammons" data-embed-version="2" data-pen-title="Fun with async / await" class="codepen">See the Pen <a href="http://codepen.io/gammons/pen/YpbzKB/">Fun with async / await</a> by Grant Ammons (<a href="http://codepen.io/gammons">@gammons</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>One caveat here:  In order to use <code>await</code>, you must place <code>async</code> before the function defintion of the function using it.  That&rsquo;s why we have <code>async function testAwait()</code> at the top.</p>
+
+<h2>Lighting up these balls using <code>async</code> and <code>await</code></h2>
+
+<p>Onto the wonderful ball-lighting example.  Below, we see Ball Lighter running using <code>async</code> and <code>await</code>.</p>
+
+<p data-height="482" data-theme-id="0" data-slug-hash="gLyXWa" data-default-tab="js,result" data-user="gammons" data-embed-version="2" data-pen-title="Async / await version" class="codepen">See the Pen <a href="http://codepen.io/gammons/pen/gLyXWa/">Async / await version</a> by Grant Ammons (<a href="http://codepen.io/gammons">@gammons</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>The <code>lightBallsSequentially</code> function looks <em>very</em> nice indeed!</p>
+
+<p>It&rsquo;s super easy to read - almost like a procedural language.  And really that’s the key thing: <strong>async and await will make your code easier to read</strong>.  And readability is the #1 thing you should be going for when writing code.</p>
+
+<h2>Can I use <code>async</code> and <code>await</code> now?</h2>
+
+<p>In the words of Ned flanders:  The short answer is yes, with an if; long answer, no with a but.</p>
+
+<p>As of July 2016, async/await are now in Stage 4, which means they are accepted into the ES2017 spec.  Some browsers (like Google Chrome and Firefox nightly) <a href="https://developers.google.com/web/fundamentals/getting-started/primers/async-functions" rel="nofollow">already implement async/await natively</a>.  However in most cases, you&rsquo;ll need a polyfill like Babel to ensure that your code can be run on all modern browsers.</p>
+
+<h1>Conclusion</h1>
+
+<p>When I first started out writing a lot of asynchronous Javascript code, I was tearing my hair out trying to keep things clean and understandable.  Now, with async/await, my asynchronous code is much <em>much</em> nicer.  It&rsquo;s a lot easier for humans to read and understand, which is the whole point of this coding thing.</p>
+
+
+              <div class='row'>
+  <div class='col-md-8 col-md-offset-2'>
+    <div class='panel panel-default mailing-list'>
+      <div class='panel-body text-center'>
+        <h2>Want to level up your Javascript-fu?</h2>
+        <p>I write short, focused tutorials on Javascript topics.  Never miss a new article!</p>
+        <form action='//app.mailerlite.com/webforms/submit/g5t8r8' method='POST' target='_blank'>
+          <input name='ml-submit' type='hidden' value='1'>
+          <div class='form-group'>
+            <div class='row mail-input'>
+              <div class='column col-md-8 col-xs-12'>
+                <input class='form-control input-lg col-sm-8' name='fields[email]' placeholder='Email address' required type='email'>
+              </div>
+              <div class='column col-md-4 col-xs-12'>
+                <button class='btn btn-primary btn-lg btn-block'>Sign up</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+              <div class='middle-line'>
+  <h2 class='share-article'>
+    <span>
+      <a href='https://www.facebook.com/sharer/sharer.php?u=http://grantammons.me/2016/12/22/async-await-ftw/' target='_blank'>
+        <i class='fa fa-facebook'></i>
+      </a>
+      <a href='https://twitter.com/intent/tweet?text=async/await:  The asynchronous code detangler by @gammons&amp;amp;url=http://grantammons.me/2016/12/22/async-await-ftw/' target='_blank'>
+        <i class='fa fa-twitter'></i>
+      </a>
+      <a href='https://plus.google.com/share?url=http://grantammons.me/2016/12/22/async-await-ftw/' target='_blank'>
+        <i class='fa fa-google-plus'></i>
+      </a>
+    </span>
+  </h2>
+</div>
+
+              <div class='disqusbox'>
+  <div id='disqus_thread'></div>
+</div>
+<script>
+  var disqus_shortname = "theblogofgrantammons";
+  var disqus_url = "http://grantammons.me/2016/12/22/async-await-ftw/";
+  var disqus_identifier = "articles/2016-12-22-async-await-ftw.html";
+  
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='footer'>
+  <div class='container'>
+    <div class='col-md-12'>
+      <ul class='list-inline bottom-nav'>
+        <li>
+          <a href='/about'>About</a>
+        </li>
+        <li>
+          <a href='/blog'>Blog</a>
+        </li>
+        <li>
+          <a href='/portfolio'>Portfolio</a>
+        </li>
+        <li>
+          <a href='/talks'>Talks</a>
+        </li>
+        <li>
+          <a href='/contact'>
+            <i class='fa fa-envelope'></i>
+            Contact me
+          </a>
+        </li>
+      </ul>
+      &copy; 2016 Grant Ammons
+    </div>
+  </div>
+</div>
+
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37191428-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>
