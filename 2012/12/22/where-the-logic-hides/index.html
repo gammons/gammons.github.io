@@ -39,54 +39,55 @@
 
   
     <div class='me-header-small'>
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-  
-      </button>
-        <a class="navbar-brand" href="/">
-          Grant Ammons
-        </a>
-  
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="/">
-              Home
-            </a>
-          </li>
-          <li class="">
-            <a href="/about">
-              About
-            </a>
-          </li>
-          <li class="">
-            <a href="/blog">Blog</a>
-          </li>
-          <li class="">
-            <a href="/portfolio">Portfolio</a>
-          </li>
-          <li class="">
-            <a href="/talks">Talks</a>
-          </li>
-          <li class="">
-            <a href="/contact">
-              <i class="fa fa-envelope"></i>
-              Contact me
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-12 logo centered'>
-        <img class='img-responsive desktop-logo' src='/images/me.png'>
-      </div>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+
+    </button>
+      <a class="navbar-brand" href="/">
+        Grant Ammons
+      </a>
+
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/">
+            Home
+          </a>
+        </li>
+        <li class="">
+          <a href="/about">
+            About
+          </a>
+        </li>
+        <li class="">
+          <a href="/blog">Blog</a>
+        </li>
+        <li class="">
+          <a href="/portfolio">Portfolio</a>
+        </li>
+        <li class="">
+          <a href="/talks">Talks</a>
+        </li>
+        <li class="">
+          <a href="/contact">
+            <i class="fa fa-envelope"></i>
+            Contact me
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
+</nav>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-12 logo centered'>
+<img class='img-responsive desktop-logo' src='/images/me.png'>
+</div>
+</div>
+</div>
 </div>
 
     <div class="container main-container">
@@ -122,22 +123,22 @@
 <p>You manage a contact list application.  Imagine that when you create a new contact, the application is supposed to send an email to the contact.  There are many ways to solve this, but rails would encourage you to place that logic into a callback or an observer.</p>
 
 <p>Rails encourages you to put that type of business logic into the model.  So the controller probably looks something like this:</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">ContactsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">ContactsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
   <span class="k">def</span> <span class="nf">create</span>
     <span class="vi">@contact</span> <span class="o">=</span> <span class="no">Contact</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:contact</span><span class="p">])</span>
 
     <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
       <span class="k">if</span> <span class="vi">@contact</span><span class="p">.</span><span class="nf">save</span>
-        <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
-      <span class="nf">end</span>
+        <span class="o">...</span>
+      <span class="k">end</span>
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>To an outside observer, it is not entirely clear that an email will be sent.  I can see that the contact will be saved to the database (maybe), but the other intent, the email delivery, is obfuscated.</p>
 
 <p>In order to see that business logic in action, I must dive into the model:</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Contact</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Contact</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">after_create</span> <span class="ss">:send_welcome_email</span>
 
   <span class="kp">private</span>
@@ -146,7 +147,7 @@
     <span class="no">UserMailer</span><span class="p">.</span><span class="nf">welcome_email</span><span class="p">(</span><span class="nb">self</span><span class="p">).</span><span class="nf">deliver</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>It is bad enough that <code>@contact.save</code> now has triple duty:</p>
 
 <ul>
@@ -157,16 +158,16 @@
 
 <p>It is easy to imagine that in a sufficiently complex Rails application, this type of business logic is littered all over callbacks and observers.  The core value your application provides, therefore, is scattered all over the place.  In terms of
 readability or maintainability, it is simply not a good enough solution to simply break off that business logic into a module, after the model gets large enough.</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Contact</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Contact</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="kp">include</span> <span class="no">SendWelcomeEmailUponCreate</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>Imagine you are a brand new developer on the team that supports this app.  You see the <code>@contact.save</code> call but now, the fact that it performs business logic is even harder to see, since the logic is placed in another module, somewhere in some other directory.</p>
 
 <h3>Alternative - Use cases in their own place</h3>
 
 <p>The example provided above is simple enough to be covered by a <a href="http://martinfowler.com/eaaCatalog/transactionScript.html" rel="nofollow">transaction script</a> that can handle creating the contact and executing the core business logic, all in one place.</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">CreatesContact</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">CreatesContact</span>
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">contact</span><span class="p">)</span>
     <span class="vi">@contact</span> <span class="o">=</span> <span class="n">contact</span>
   <span class="k">end</span>
@@ -176,7 +177,7 @@ readability or maintainability, it is simply not a good enough solution to simpl
     <span class="no">UserMailer</span><span class="p">.</span><span class="nf">contact_created_email</span><span class="p">.</span><span class="nf">deliver</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>This simple class has a very clear intent.  It saves a contact and runs business logic.  It is short, concise, easily testable, and easily extendible, if need be.</p>
 
 <p>Perhaps this class lives in <code>app/use_cases</code>, where all of the primary use cases for your application live.</p>
@@ -184,12 +185,12 @@ readability or maintainability, it is simply not a good enough solution to simpl
 <p>Imagine, later down the road, that the use case changes, and we need to send a mail <em>only if</em> the contact has a certain flag set.</p>
 
 <p>If we continue with the Rails architecture, we might end up here:</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Contact</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Contact</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">after_create</span> <span class="ss">:send_welcome_email</span><span class="p">,</span> <span class="ss">:if</span> <span class="o">=&gt;</span> <span class="ss">:has_special_flag_set?</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>This is not ideal, however,  since we are continuing to extend a class that already has too many purposes.  Our <code>CreatesContact</code> class is a better place for that logic.</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">CreatesContact</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">CreatesContact</span>
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">contact</span><span class="p">)</span>
     <span class="vi">@contact</span> <span class="o">=</span> <span class="n">contact</span>
   <span class="k">end</span>
@@ -199,21 +200,21 @@ readability or maintainability, it is simply not a good enough solution to simpl
     <span class="n">deliver_contact_created_email</span> <span class="k">if</span> <span class="n">should_send_contact_created_email?</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>The intent is clear in the controller as well.  We are handing off to a class that knows all about creating contacts:</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">ContactsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">ContactsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
   <span class="k">def</span> <span class="nf">create</span>
     <span class="vi">@contact</span> <span class="o">=</span> <span class="no">Contact</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:contact</span><span class="p">])</span>
 
     <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
       <span class="k">if</span> <span class="vi">@contact</span><span class="p">.</span><span class="nf">valid?</span>
         <span class="no">CreatesContact</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="vi">@contact</span><span class="p">).</span><span class="nf">create_contact!</span>
-        <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
-      <span class="nf">end</span>
+        <span class="o">...</span>
+      <span class="k">end</span>
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p><code>CreatesContact</code> is simpler to test, easier to read and maintain, and simpler to extend, if need be.  It also divorces your application&rsquo;s core business logic from ActiveRecord.</p>
 
 <h3>Conclusion</h3>
@@ -231,29 +232,29 @@ news</a>.</p>
 
 
               <div class='row'>
-  <div class='col-md-8 col-md-offset-2'>
-    <script async id="_ck_122715" src="https://forms.convertkit.com/122715?v=6"></script>
-  </div>
+<div class='col-md-8 col-md-offset-2'>
+<script async id="_ck_122715" src="https://forms.convertkit.com/122715?v=6"></script>
+</div>
 </div>
 
               <div class='middle-line'>
-  <h2 class='share-article'>
-    <span>
-      <a href='https://www.facebook.com/sharer/sharer.php?u=http://grantammons.me/2012/12/22/where-the-logic-hides/' target='_blank'>
-        <i class='fa fa-facebook'></i>
-      </a>
-      <a href='https://twitter.com/intent/tweet?text=Where the logic hides in Rails apps by @gammons&amp;amp;url=http://grantammons.me/2012/12/22/where-the-logic-hides/' target='_blank'>
-        <i class='fa fa-twitter'></i>
-      </a>
-      <a href='https://plus.google.com/share?url=http://grantammons.me/2012/12/22/where-the-logic-hides/' target='_blank'>
-        <i class='fa fa-google-plus'></i>
-      </a>
-    </span>
-  </h2>
+<h2 class='share-article'>
+<span>
+<a href='https://www.facebook.com/sharer/sharer.php?u=http://grantammons.me/2012/12/22/where-the-logic-hides/' target='_blank'>
+<i class='fa fa-facebook'></i>
+</a>
+<a href='https://twitter.com/intent/tweet?text=Where the logic hides in Rails apps by @gammons&amp;amp;url=http://grantammons.me/2012/12/22/where-the-logic-hides/' target='_blank'>
+<i class='fa fa-twitter'></i>
+</a>
+<a href='https://plus.google.com/share?url=http://grantammons.me/2012/12/22/where-the-logic-hides/' target='_blank'>
+<i class='fa fa-google-plus'></i>
+</a>
+</span>
+</h2>
 </div>
 
               <div class='disqusbox'>
-  <div id='disqus_thread'></div>
+<div id='disqus_thread'></div>
 </div>
 <script>
   var disqus_shortname = "theblogofgrantammons";
@@ -276,31 +277,31 @@ news</a>.</p>
       </div>
     </div>
     <div class='footer'>
-  <div class='container'>
-    <div class='col-md-12'>
-      <ul class='list-inline bottom-nav'>
-        <li>
-          <a href='/about'>About</a>
-        </li>
-        <li>
-          <a href='/blog'>Blog</a>
-        </li>
-        <li>
-          <a href='/portfolio'>Portfolio</a>
-        </li>
-        <li>
-          <a href='/talks'>Talks</a>
-        </li>
-        <li>
-          <a href='/contact'>
-            <i class='fa fa-envelope'></i>
-            Contact me
-          </a>
-        </li>
-      </ul>
-      &copy; 2017 Grant Ammons
-    </div>
-  </div>
+<div class='container'>
+<div class='col-md-12'>
+<ul class='list-inline bottom-nav'>
+<li>
+<a href='/about'>About</a>
+</li>
+<li>
+<a href='/blog'>Blog</a>
+</li>
+<li>
+<a href='/portfolio'>Portfolio</a>
+</li>
+<li>
+<a href='/talks'>Talks</a>
+</li>
+<li>
+<a href='/contact'>
+<i class='fa fa-envelope'></i>
+Contact me
+</a>
+</li>
+</ul>
+&copy; 2017 Grant Ammons
+</div>
+</div>
 </div>
 
     <script type="text/javascript">

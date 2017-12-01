@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta name="google-site-verification" content="Su9DAzyh4kqIZRj1EP_bybJM0q_NdYemm_ekm32s7F8" />
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Grant Ammons - How to efficiently manage your dotfiles</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Arimo:400,700|Roboto:300,300i,500,500i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" /><link href="/stylesheets/syntax.css" rel="stylesheet" />
+    <script src="/javascripts/all.js"></script>
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+  </head>
+
+  
+    <div class='me-header-small'>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+
+    </button>
+      <a class="navbar-brand" href="/">
+        Grant Ammons
+      </a>
+
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/">
+            Home
+          </a>
+        </li>
+        <li class="">
+          <a href="/about">
+            About
+          </a>
+        </li>
+        <li class="">
+          <a href="/blog">Blog</a>
+        </li>
+        <li class="">
+          <a href="/portfolio">Portfolio</a>
+        </li>
+        <li class="">
+          <a href="/talks">Talks</a>
+        </li>
+        <li class="">
+          <a href="/contact">
+            <i class="fa fa-envelope"></i>
+            Contact me
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-12 logo centered'>
+<img class='img-responsive desktop-logo' src='/images/me.png'>
+</div>
+</div>
+</div>
+</div>
+
+    <div class="container main-container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="title">How to efficiently manage your dotfiles</h1>
+          <div class="page">
+            <p>Dotfiles and dotfile management are a foundational keystone to an organized, repeatable workflow.  They are a must if you&rsquo;re a developer, and also become critically important to properly manage if you&rsquo;re planning on running Linux as your primary desktop experience.</p>
+
+<h2>What are dotfiles?</h2>
+
+<p>Dotfiles are plain-text configuration files for various programs that you use.  These files typically reside in the root of your home directory (e.g. <code>/home/grant</code>) and are prefixed with a dot (e.g. <code>/home/grant/.vimrc</code>).  Dotfiles are becoming a more general term for any type of configuration file needed for your setup.</p>
+
+<p>Most programs nowadays are slowly moving to the <a href="https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html" rel="nofollow">XDG base directory specification</a>, which define <code>$XDG_CONFIG_HOME</code> as <code>$HOME/.config</code>.  This is why you now see many files in <code>~/.config/programname/configfile</code>.</p>
+
+<h2>Organizing dotfiles</h2>
+
+<p>Having a meticulously organized set of dotfiles is good hygiene and good practice.  Disasters happen.  Laptops get lost or stolen.  Hard drives die.  When dotfiles are properly managed, it allows you to get your computer back to feeling like &ldquo;home&rdquo; very quickly!</p>
+
+<ol>
+<li>Easily port your configs over to another computer or laptop (or recover from a crash on your main desktop)</li>
+<li>The ability to try out new configurations without messing up your existing, known-to-be-working configs</li>
+<li>Use commit messages to help documented why a change was made to your configs.</li>
+<li>Add to the collective hivemind of the greater community.  Learn from others, and have others learn from you.</li>
+</ol>
+
+<p>It&rsquo;s a good idea to store your dotfiles in Github, under the &ldquo;special&rdquo; name <code>dotfiles</code> (by convention).   Most people do not actually put the dots in front of the filenames they store in the repo.   So for instance, in the repo, your <code>.vimrc</code> would actually be stored as <code>vimrc</code>.</p>
+
+<p>Any personal executable scripts you have should also be stored here, in a <code>bin</code> folder.  You can then set up your <code>PATH</code> to include <code>~/.bin</code> to have access to those scripts.</p>
+
+<p>If you plan on really hacking your Linux desktop experience or using a tiling window manager like <a href="https://i3wm.org/" rel="nofollow">i3</a>, good dotfiles hygiene is a must.  You&rsquo;ll be storing all of your hard-earned configs there.</p>
+
+<h2>Installing dotfiles</h2>
+
+<p>Using an automated tool to install dotfiles as symlinks is a best practice.  The installation tool will create symlinks of the files in your dotfiles repo, in the correct location:</p>
+<div class="highlight"><pre class="highlight shell"><code>➜  ~ <span class="nb">ls</span> <span class="nt">-la</span> .vimrc
+lrwxrwxrwx 1 grant grant 26 Oct 17 15:17 .vimrc -&gt; /home/grant/dotfiles/vimrc
+</code></pre></div>
+<p>Additionally, any directories in your <code>dotfiles</code> repo should be installed with dots in front of them as well.  For instance, the installer should create a symlink called <code>~/.config</code> for your folder in <code>~/dotfiles/config</code>.</p>
+
+<p><strong>Some great dotfile managers:</strong></p>
+
+<ul>
+<li><a href="https://github.com/thoughtbot/rcm" rel="nofollow">RCM</a> - <a href="https://thoughtbot.com/" rel="nofollow">ThoughtBot&rsquo;s</a> homegrown tool for managing dotfiles.  This is the one I personally use.</li>
+<li><a href="https://thelocehiliosan.github.io/yadm/" rel="nofollow">YADM</a> - Yet another dotfiles manager</li>
+<li><a href="https://www.gnu.org/software/stow/" rel="nofollow">GNU Stow</a> - The old school choice.</li>
+<li><a href="https://github.com/anishathalye/dotbot" rel="nofollow">Dotbot</a> - Uses a YAML or JSON file to store configuration.</li>
+</ul>
+
+<h2>Secret management</h2>
+
+<p>&ldquo;But how do I keep mah secretz secret?&rdquo; Great question!  Once you start really getting into storing, managing, and curating your dotfiles, it&rsquo;s inevitable that you&rsquo;ll need to store some sort of secret information there.  In this case, we can lift a concept from Heroku&rsquo;s <a href="https://12factor.net/" rel="nofollow">12-factor app</a> concept, and store sensitive info in <a href="https://12factor.net/config" rel="nofollow">environment variables</a>.</p>
+
+<p>I create a <code>~/.secrets</code> file, which exports keys and other secret info as environment variables.</p>
+<div class="highlight"><pre class="highlight shell"><code><span class="nb">export </span><span class="nv">AWS_ACCESS_KEY</span><span class="o">=</span>ABCD1234
+<span class="nb">export </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>ABCD1234ABCD1234
+</code></pre></div>
+<p>Then, at the bottom of my <code>~/.zshrc</code> file, I have the line:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>source ~/.secrets
+</code></pre></div>
+<p>This will load my environment variables into my session, which I can then reference in other files.  The secrets are secure, and you don&rsquo;t need to worry about checking in sensitive info to your repo!</p>
+
+<h2>Using a curated set of base dotfiles</h2>
+
+<p>We can go deeper!  Many people (including me) use a curated set of dotfiles as a &ldquo;base&rdquo; to build upon.  For my workflow, using <a href="https://github.com/thoughtbot/dotfiles" rel="nofollow">Thoughtbot&rsquo;s dotfiles</a> is a perfect starting point:</p>
+
+<ul>
+<li>Their starting vim configuration includes <a href="https://github.com/junegunn/vim-plug" rel="nofollow">vim-plug</a>, <a href="https://github.com/ggreer/the_silver_searcher" rel="nofollow">Ag</a>, <a href="https://github.com/tpope/vim-rails" rel="nofollow">Rails.vim</a>, and <a href="https://github.com/ctrlpvim/ctrlp.vim" rel="nofollow">Ctrl-P</a> out of the box.</li>
+<li>Sensible defaults for using git, rspec, tmux and ag.</li>
+</ul>
+
+<p>When using Thoughtbot&rsquo;s dotfiles, your own personal configs would go into <code>~/dotfiles-local</code>.</p>
+
+<p>The benefits of using a set of base dotfiles is that someone has already culled together best practices.  A drawback, however, is the cognitive load associated with actually <em>learning</em> what is in them, how they work, what shortcuts they provide.  If you&rsquo;re declaring dotfile bankruptcy (which I have, twice), or are just starting out, it&rsquo;s worth considering base dotfiles that are sensible.  I like Thoughtbot, and I consider their dotfiles sensible, which is why I chose them as a good base.</p>
+
+<h2>Dotfiles and the Perfect Linux Desktop™</h2>
+
+<p>Dotfile management becomes even more important if you&rsquo;re crafting together a linux desktop experience.  I am personally running <a href="https://i3wm.org/" rel="nofollow">i3wm</a>.  All of i3&rsquo;s config is in a single file, stored in <code>~/.config/i3/config</code>.  Many users of i3 also use a nice bar called <a href="https://github.com/jaagr/polybar" rel="nofollow">Polybar</a> which stores its config in <code>~/.config/polybar/config</code>. (See the pattern yet).  There&rsquo;s also keyboard/mouse settings, dunst (a minimal notification manager), and others!  Basically, your whole desktop configuration comes under the umbrella of dotfiles.  Therefore, managing your dotfiles effectively becomes crucial to having a good experience.</p>
+
+<p>I am running i3 on a laptop and a desktop machine, and each have slightly different configs.  For <a href="https://github.com/gammons/dotfiles-local" rel="nofollow">my own dotfiles</a>, I keep 2 different branches for each config (<code>master</code> and <code>laptop</code> in this case).</p>
+
+<p>I am a frequenter of the <a href="https://www.reddit.com/r/unixporn/" rel="nofollow">/r/unixporn</a> subreddit (safe for work despite name) where you can get inspired and see fantastic looking desktops.  Most of the content submitters also share their dotfiles so you can replicate their setups!</p>
+
+<div class="caption">
+  <img src="https://i.imgur.com/kRxuRrf.png" />
+  Some folks get quite creative with their desktop setups, and they are always happy to <a href="https://www.reddit.com/r/unixporn/comments/7f6uh2/xfwm_my_kind_of_pornography/dq9tmcl/">share their dots!</a>
+</div>
+
+<p>Alongside /r/unixporn, <a href="http://lukesmith.xyz/" rel="nofollow">Luke Smith</a> has a great (albeit extremely meme-heavy)<a href="https://www.youtube.com/LukeSmithxyz" rel="nofollow">Youtube channel</a> walking through the benefits of using a tiling window manager.  He also <a href="https://github.com/LukeSmithxyz/voidrice" rel="nofollow">shares his dotfiles</a> and focuses on teaching others on how to craft a desktop experience like his.</p>
+
+<h2>Summary</h2>
+
+<p>Good dotfile hygiene is important for having a nice, repeatable, enjoyable computing experience.  It allows you to stay organized, easily port your setup to other machines, and to have confidence to experiment without messing things up.</p>
+
+<p>If you&rsquo;re striving for a fantastic Linux desktop experience, dotfile management becomes essential, because that&rsquo;s how you&rsquo;ll be tweaking and refining your entire desktop experience.</p>
+
+<p>I hope after reading this, you&rsquo;re excited to experiment, curate, and move your dotfiles to the next level!</p>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='footer'>
+<div class='container'>
+<div class='col-md-12'>
+<ul class='list-inline bottom-nav'>
+<li>
+<a href='/about'>About</a>
+</li>
+<li>
+<a href='/blog'>Blog</a>
+</li>
+<li>
+<a href='/portfolio'>Portfolio</a>
+</li>
+<li>
+<a href='/talks'>Talks</a>
+</li>
+<li>
+<a href='/contact'>
+<i class='fa fa-envelope'></i>
+Contact me
+</a>
+</li>
+</ul>
+&copy; 2017 Grant Ammons
+</div>
+</div>
+</div>
+
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37191428-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>

@@ -39,54 +39,55 @@
 
   
     <div class='me-header-small'>
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-  
-      </button>
-        <a class="navbar-brand" href="/">
-          Grant Ammons
-        </a>
-  
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="/">
-              Home
-            </a>
-          </li>
-          <li class="">
-            <a href="/about">
-              About
-            </a>
-          </li>
-          <li class="">
-            <a href="/blog">Blog</a>
-          </li>
-          <li class="">
-            <a href="/portfolio">Portfolio</a>
-          </li>
-          <li class="">
-            <a href="/talks">Talks</a>
-          </li>
-          <li class="">
-            <a href="/contact">
-              <i class="fa fa-envelope"></i>
-              Contact me
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-12 logo centered'>
-        <img class='img-responsive desktop-logo' src='/images/me.png'>
-      </div>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+
+    </button>
+      <a class="navbar-brand" href="/">
+        Grant Ammons
+      </a>
+
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/">
+            Home
+          </a>
+        </li>
+        <li class="">
+          <a href="/about">
+            About
+          </a>
+        </li>
+        <li class="">
+          <a href="/blog">Blog</a>
+        </li>
+        <li class="">
+          <a href="/portfolio">Portfolio</a>
+        </li>
+        <li class="">
+          <a href="/talks">Talks</a>
+        </li>
+        <li class="">
+          <a href="/contact">
+            <i class="fa fa-envelope"></i>
+            Contact me
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
+</nav>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-12 logo centered'>
+<img class='img-responsive desktop-logo' src='/images/me.png'>
+</div>
+</div>
+</div>
 </div>
 
     <div class="container main-container">
@@ -95,82 +96,94 @@
           <h1 class="title"></h1>
           <div class="page">
             <div class='extra-pagination inner'>
-  <nav class='pagination' role='pagination'>
-    <span class='page-number'>Page 1 of 1</span>
-  </nav>
+<nav class='pagination' role='pagination'>
+<span class='page-number'>Page 1 of 1</span>
+</nav>
+
 </div>
 <article class='post'>
-  <header class='post-header'>
-    <h2 class='post-title'><a href="/2015/11/10/how-dependency-lines-work-in-oo/">How dependency lines work in object-oriented design</a></h2>
-  </header>
-  <section class='post-excerpt'>
-    <p>
-      When you look at an object dependency graph, it’s not 100% clear how to read it.  When one object points to another,
-      what does that mean exactly?
-      
-      An object is said to depend on another object in the following scenarios:
-      
-      
-      When an object knows the name
-      <a href="/2015/11/10/how-dependency-lines-work-in-oo/" class="read-more">&raquo;</a>
-    </p>
-  </section>
-  <footer class='post-meta'>
-    <img alt='Grant Ammons' class='author-thumb' nopin='nopin' src='https://www.gravatar.com/avatar/5fc5f4dd13be5f1e40834300d23a398c?size=24'>
-    <a href='/author/grant-ammons/'>Grant Ammons</a>
-    on <a href='/tag/software/'>software</a>, <a href='/tag/architecture/'>architecture</a>
-    <time class='post-date' datetime='2015-11-10'>
-      10 November 2015
-    </time>
-  </footer>
+<header class='post-header'>
+<h2 class='post-title'><a href="/2015/11/10/how-dependency-lines-work-in-oo/">How dependency lines work in object-oriented design</a></h2>
+</header>
+<section class='post-excerpt'>
+<p>
+When you look at an object dependency graph, it’s not 100% clear how to read it.  When one object points to another,
+what does that mean exactly?
+
+An object is said to depend on another object in the following scenarios:
+
+
+When an object knows the name of another object
+When an object knows the name of a method of another object, and knows the arguments that method takes
+
+
+The first is quite easy to recognize and if you have that first dependency level, you implicitly have the second.  If at
+all possible, you want to strive towards the second point.
+
+
+<a href="/2015/11/10/how-dependency-lines-work-in-oo/" class="read-more">&raquo;</a>
+</p>
+</section>
+<footer class='post-meta'>
+<img alt='Grant Ammons' class='author-thumb' nopin='nopin' src='https://www.gravatar.com/avatar/5fc5f4dd13be5f1e40834300d23a398c?size=24'>
+<a href='/author/grant-ammons/'>Grant Ammons</a>
+on <a href='/tag/software/'>software</a>, <a href='/tag/architecture/'>architecture</a>
+<time class='post-date' datetime='2015-11-10'>
+10 November 2015
+</time>
+</footer>
 </article>
 <article class='post'>
-  <header class='post-header'>
-    <h2 class='post-title'><a href="/2013/12/23/resources-to-help-guide-architectural-decisions/">Resources to help guide architectural decisions in Rails apps</a></h2>
-  </header>
-  <section class='post-excerpt'>
-    <p>
-      My previous
-      post outlined a trivial example where I refactored some basic, boring business logic into a
-      service object, or transaction script (depending on who you ask).
-      
-      It set off a lot of debate on Twitter and Hacker news about the topic.  I was quite
-      <a href="/2013/12/23/resources-to-help-guide-architectural-decisions/" class="read-more">&raquo;</a>
-    </p>
-  </section>
-  <footer class='post-meta'>
-    <img alt='Grant Ammons' class='author-thumb' nopin='nopin' src='https://www.gravatar.com/avatar/5fc5f4dd13be5f1e40834300d23a398c?size=24'>
-    <a href='/author/grant-ammons/'>Grant Ammons</a>
-    on <a href='/tag/architecture/'>architecture</a>, <a href='/tag/rails/'>rails</a>
-    <time class='post-date' datetime='2013-12-23'>
-      23 December 2013
-    </time>
-  </footer>
+<header class='post-header'>
+<h2 class='post-title'><a href="/2013/12/23/resources-to-help-guide-architectural-decisions/">Resources to help guide architectural decisions in Rails apps</a></h2>
+</header>
+<section class='post-excerpt'>
+<p>
+My previous
+post outlined a trivial example where I refactored some basic, boring business logic into a
+service object, or transaction script (depending on who you ask).
+
+It set off a lot of debate on Twitter and Hacker news about the topic.  I was quite surprised.  At the very least it means
+that many others have felt the pain of having rails dictate your applications core architecture.
+
+
+<a href="/2013/12/23/resources-to-help-guide-architectural-decisions/" class="read-more">&raquo;</a>
+</p>
+</section>
+<footer class='post-meta'>
+<img alt='Grant Ammons' class='author-thumb' nopin='nopin' src='https://www.gravatar.com/avatar/5fc5f4dd13be5f1e40834300d23a398c?size=24'>
+<a href='/author/grant-ammons/'>Grant Ammons</a>
+on <a href='/tag/architecture/'>architecture</a>, <a href='/tag/rails/'>rails</a>
+<time class='post-date' datetime='2013-12-23'>
+23 December 2013
+</time>
+</footer>
 </article>
 <article class='post'>
-  <header class='post-header'>
-    <h2 class='post-title'><a href="/2012/12/22/where-the-logic-hides/">Where the logic hides in Rails apps</a></h2>
-  </header>
-  <section class='post-excerpt'>
-    <p>
-      DHH recently authored a SVN blog post that advocated breaking up fat models into separate mixins that would live in a new directory in the rails structure, app/concerns.
-      
-      He made it clear that breaking up domain logic into concerns will make code easier
-      <a href="/2012/12/22/where-the-logic-hides/" class="read-more">&raquo;</a>
-    </p>
-  </section>
-  <footer class='post-meta'>
-    <img alt='Grant Ammons' class='author-thumb' nopin='nopin' src='https://www.gravatar.com/avatar/5fc5f4dd13be5f1e40834300d23a398c?size=24'>
-    <a href='/author/grant-ammons/'>Grant Ammons</a>
-    on <a href='/tag/architecture/'>architecture</a>, <a href='/tag/rails/'>rails</a>
-    <time class='post-date' datetime='2012-12-22'>
-      22 December 2012
-    </time>
-  </footer>
+<header class='post-header'>
+<h2 class='post-title'><a href="/2012/12/22/where-the-logic-hides/">Where the logic hides in Rails apps</a></h2>
+</header>
+<section class='post-excerpt'>
+<p>
+DHH recently authored a SVN blog post that advocated breaking up fat models into separate mixins that would live in a new directory in the rails structure, app/concerns.
+
+He made it clear that breaking up domain logic into concerns will make code easier
+<a href="/2012/12/22/where-the-logic-hides/" class="read-more">&raquo;</a>
+</p>
+</section>
+<footer class='post-meta'>
+<img alt='Grant Ammons' class='author-thumb' nopin='nopin' src='https://www.gravatar.com/avatar/5fc5f4dd13be5f1e40834300d23a398c?size=24'>
+<a href='/author/grant-ammons/'>Grant Ammons</a>
+on <a href='/tag/architecture/'>architecture</a>, <a href='/tag/rails/'>rails</a>
+<time class='post-date' datetime='2012-12-22'>
+22 December 2012
+</time>
+</footer>
 </article>
 <nav class='pagination' role='pagination'>
-  <span class='page-number'>Page 1 of 1</span>
+<span class='page-number'>Page 1 of 1</span>
 </nav>
+
 
 
 
@@ -180,31 +193,31 @@
       </div>
     </div>
     <div class='footer'>
-  <div class='container'>
-    <div class='col-md-12'>
-      <ul class='list-inline bottom-nav'>
-        <li>
-          <a href='/about'>About</a>
-        </li>
-        <li>
-          <a href='/blog'>Blog</a>
-        </li>
-        <li>
-          <a href='/portfolio'>Portfolio</a>
-        </li>
-        <li>
-          <a href='/talks'>Talks</a>
-        </li>
-        <li>
-          <a href='/contact'>
-            <i class='fa fa-envelope'></i>
-            Contact me
-          </a>
-        </li>
-      </ul>
-      &copy; 2017 Grant Ammons
-    </div>
-  </div>
+<div class='container'>
+<div class='col-md-12'>
+<ul class='list-inline bottom-nav'>
+<li>
+<a href='/about'>About</a>
+</li>
+<li>
+<a href='/blog'>Blog</a>
+</li>
+<li>
+<a href='/portfolio'>Portfolio</a>
+</li>
+<li>
+<a href='/talks'>Talks</a>
+</li>
+<li>
+<a href='/contact'>
+<i class='fa fa-envelope'></i>
+Contact me
+</a>
+</li>
+</ul>
+&copy; 2017 Grant Ammons
+</div>
+</div>
 </div>
 
     <script type="text/javascript">

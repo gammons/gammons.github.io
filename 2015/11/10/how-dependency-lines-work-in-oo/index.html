@@ -39,54 +39,55 @@
 
   
     <div class='me-header-small'>
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-  
-      </button>
-        <a class="navbar-brand" href="/">
-          Grant Ammons
-        </a>
-  
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="/">
-              Home
-            </a>
-          </li>
-          <li class="">
-            <a href="/about">
-              About
-            </a>
-          </li>
-          <li class="">
-            <a href="/blog">Blog</a>
-          </li>
-          <li class="">
-            <a href="/portfolio">Portfolio</a>
-          </li>
-          <li class="">
-            <a href="/talks">Talks</a>
-          </li>
-          <li class="">
-            <a href="/contact">
-              <i class="fa fa-envelope"></i>
-              Contact me
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-12 logo centered'>
-        <img class='img-responsive desktop-logo' src='/images/me.png'>
-      </div>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+
+    </button>
+      <a class="navbar-brand" href="/">
+        Grant Ammons
+      </a>
+
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/">
+            Home
+          </a>
+        </li>
+        <li class="">
+          <a href="/about">
+            About
+          </a>
+        </li>
+        <li class="">
+          <a href="/blog">Blog</a>
+        </li>
+        <li class="">
+          <a href="/portfolio">Portfolio</a>
+        </li>
+        <li class="">
+          <a href="/talks">Talks</a>
+        </li>
+        <li class="">
+          <a href="/contact">
+            <i class="fa fa-envelope"></i>
+            Contact me
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
+</nav>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-12 logo centered'>
+<img class='img-responsive desktop-logo' src='/images/me.png'>
+</div>
+</div>
+</div>
 </div>
 
     <div class="container main-container">
@@ -111,7 +112,7 @@ all possible, you want to strive towards the second point.</p>
 
 <p>Below is an obvious example of a class having a name dependency on another object.  In this case a <code>Car</code> object has a
 dependency on an <code>Engine</code> object.</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Car</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Car</span>
   <span class="k">def</span> <span class="nf">initialize</span>
     <span class="vi">@engine</span> <span class="o">=</span> <span class="no">Engine</span><span class="p">.</span><span class="nf">new</span>
     <span class="vi">@engine</span><span class="p">.</span><span class="nf">start</span>
@@ -120,10 +121,10 @@ dependency on an <code>Engine</code> object.</p>
 
 <span class="k">class</span> <span class="nc">Engine</span>
   <span class="k">def</span> <span class="nf">start</span>
-    <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
-  <span class="nf">end</span>
+    <span class="o">...</span>
+  <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>If we looked at this relationship using UML, it would look something like this.</p>
 
 <p><img src="/images/car_dependency-1.png" alt="Car dependency 1" /></p>
@@ -140,7 +141,7 @@ object&rsquo;s message, rather than than the name.</p>
 
 <p>If at all possible, you should always strive for the second type of coupling, which is to bind to a <em>message</em>, rather
 than a <em>class</em>.  This is illustrated below:</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Car</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Car</span>
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
     <span class="vi">@engine</span> <span class="o">=</span> <span class="n">engine</span>
     <span class="n">engine</span><span class="p">.</span><span class="nf">start</span>
@@ -149,12 +150,12 @@ than a <em>class</em>.  This is illustrated below:</p>
 
 <span class="k">class</span> <span class="nc">Engine</span>
   <span class="k">def</span> <span class="nf">start</span>
-    <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
-  <span class="nf">end</span>
+    <span class="o">...</span>
+  <span class="k">end</span>
 <span class="k">end</span>
 
 <span class="no">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">GasEngine</span><span class="p">.</span><span class="nf">new</span><span class="p">)</span>
-</code></pre>
+</code></pre></div>
 <p>This is an example of a more loosely coupled binding, and is preferable to the name-based tight coupling in many ways.
 Essentially, you have removed the hard coupling to another class, and instead have a coupling to an <em>interface</em>.   You
 can then pass in anything that implements the <code>start</code> method.</p>
@@ -186,7 +187,7 @@ business logic.  You <em>don&rsquo;t</em> want your business logic to be calling
 
 <p>So, for instance, it&rsquo;s perfectly fine for your a Rails controller to call a class that invokes business logic.  Imagine
 if you have a simple policy object that determines whether or not a user has sufficient privileges to post:</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
   <span class="k">def</span> <span class="nf">create</span>
     <span class="k">if</span> <span class="no">PostingPolicy</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">user</span><span class="p">).</span><span class="nf">can_create_post?</span>
       <span class="n">flash</span><span class="p">[</span><span class="ss">:notice</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Post has been saved."</span>
@@ -195,10 +196,10 @@ if you have a simple policy object that determines whether or not a user has suf
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>And then, somewhere else, perhaps in <code>app/lib</code>, you have <code>PostingPolicy</code> defined:</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostingPolicy</span>
-  <span class="kp">attr_reader</span> <span class="ss">:user</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostingPolicy</span>
+  <span class="nb">attr_reader</span> <span class="ss">:user</span>
 
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
     <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span>
@@ -208,7 +209,7 @@ if you have a simple policy object that determines whether or not a user has suf
     <span class="vi">@user</span><span class="p">.</span><span class="nf">has_post_access?</span> <span class="o">||</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">is_admin?</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>It&rsquo;s perfectly acceptable for your Rails-y objects to call up your business logic.  In the case above, <code>PostsController</code>
 is depends on <code>PostingPolicy</code>, and that is just fine.</p>
 
@@ -218,8 +219,8 @@ is depends on <code>PostingPolicy</code>, and that is just fine.</p>
 <p>Where we get into trouble, however, is when your business logic uses Rails objects directly.</p>
 
 <p>Imagine we have a <code>PostingPolicy</code> as such:</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostingPolicy</span>
-  <span class="kp">attr_reader</span> <span class="ss">:user</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostingPolicy</span>
+  <span class="nb">attr_reader</span> <span class="ss">:user</span>
 
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
     <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span>
@@ -230,12 +231,12 @@ is depends on <code>PostingPolicy</code>, and that is just fine.</p>
     <span class="no">User</span><span class="p">.</span><span class="nf">increment!</span><span class="p">(</span><span class="ss">:post_attempts</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>Do you see the problematic line?  If you said the one with <code>UserMailer</code>, you are correct.  Here, <code>PostingPolicy</code> is calling a Rails model.  In this case, your business logic is starting to get tied up in Rails-y
 things.  Your business logic is pointing <em>back</em> to the Rails framework, and <em>depending</em> on Rails.  <strong>This is what is to be avoided.</strong></p>
 
 <p>In this particular case, it would be easy enough just to throw the <code>User.increment!</code> back into the controller.</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
   <span class="k">def</span> <span class="nf">create</span>
     <span class="no">User</span><span class="p">.</span><span class="nf">increment!</span><span class="p">(</span><span class="ss">:post_attempts</span><span class="p">)</span>
     <span class="k">if</span> <span class="no">PostingPolicy</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">user</span><span class="p">).</span><span class="nf">can_create_post?</span>
@@ -245,10 +246,10 @@ things.  Your business logic is pointing <em>back</em> to the Rails framework, a
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>That way, the <code>increment!</code> call is still within the Rails land, and your business logic does not have a dependency on Rails:</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostingPolicy</span>
-  <span class="kp">attr_reader</span> <span class="ss">:user</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">PostingPolicy</span>
+  <span class="nb">attr_reader</span> <span class="ss">:user</span>
 
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
     <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span>
@@ -258,7 +259,7 @@ things.  Your business logic is pointing <em>back</em> to the Rails framework, a
     <span class="n">user</span><span class="p">.</span><span class="nf">has_post_access?</span> <span class="o">||</span> <span class="n">user</span><span class="p">.</span><span class="nf">is_admin?</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>&ldquo;But wait!&rdquo; you say, &ldquo;isn&rsquo;t <code>user&#39; a rails model, and therefore the dependency lines are still pointing in the wrong direction?</code></p>
 
 <p>And the answer is, <strong>no!</strong>.  But why?  Well, I&rsquo;ll tell you why.</p>
@@ -269,29 +270,29 @@ things.  Your business logic is pointing <em>back</em> to the Rails framework, a
 
 
               <div class='row'>
-  <div class='col-md-8 col-md-offset-2'>
-    <script async id="_ck_122715" src="https://forms.convertkit.com/122715?v=6"></script>
-  </div>
+<div class='col-md-8 col-md-offset-2'>
+<script async id="_ck_122715" src="https://forms.convertkit.com/122715?v=6"></script>
+</div>
 </div>
 
               <div class='middle-line'>
-  <h2 class='share-article'>
-    <span>
-      <a href='https://www.facebook.com/sharer/sharer.php?u=http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' target='_blank'>
-        <i class='fa fa-facebook'></i>
-      </a>
-      <a href='https://twitter.com/intent/tweet?text=How dependency lines work in object-oriented design by @gammons&amp;amp;url=http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' target='_blank'>
-        <i class='fa fa-twitter'></i>
-      </a>
-      <a href='https://plus.google.com/share?url=http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' target='_blank'>
-        <i class='fa fa-google-plus'></i>
-      </a>
-    </span>
-  </h2>
+<h2 class='share-article'>
+<span>
+<a href='https://www.facebook.com/sharer/sharer.php?u=http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' target='_blank'>
+<i class='fa fa-facebook'></i>
+</a>
+<a href='https://twitter.com/intent/tweet?text=How dependency lines work in object-oriented design by @gammons&amp;amp;url=http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' target='_blank'>
+<i class='fa fa-twitter'></i>
+</a>
+<a href='https://plus.google.com/share?url=http://grantammons.me/2015/11/10/how-dependency-lines-work-in-oo/' target='_blank'>
+<i class='fa fa-google-plus'></i>
+</a>
+</span>
+</h2>
 </div>
 
               <div class='disqusbox'>
-  <div id='disqus_thread'></div>
+<div id='disqus_thread'></div>
 </div>
 <script>
   var disqus_shortname = "theblogofgrantammons";
@@ -314,31 +315,31 @@ things.  Your business logic is pointing <em>back</em> to the Rails framework, a
       </div>
     </div>
     <div class='footer'>
-  <div class='container'>
-    <div class='col-md-12'>
-      <ul class='list-inline bottom-nav'>
-        <li>
-          <a href='/about'>About</a>
-        </li>
-        <li>
-          <a href='/blog'>Blog</a>
-        </li>
-        <li>
-          <a href='/portfolio'>Portfolio</a>
-        </li>
-        <li>
-          <a href='/talks'>Talks</a>
-        </li>
-        <li>
-          <a href='/contact'>
-            <i class='fa fa-envelope'></i>
-            Contact me
-          </a>
-        </li>
-      </ul>
-      &copy; 2017 Grant Ammons
-    </div>
-  </div>
+<div class='container'>
+<div class='col-md-12'>
+<ul class='list-inline bottom-nav'>
+<li>
+<a href='/about'>About</a>
+</li>
+<li>
+<a href='/blog'>Blog</a>
+</li>
+<li>
+<a href='/portfolio'>Portfolio</a>
+</li>
+<li>
+<a href='/talks'>Talks</a>
+</li>
+<li>
+<a href='/contact'>
+<i class='fa fa-envelope'></i>
+Contact me
+</a>
+</li>
+</ul>
+&copy; 2017 Grant Ammons
+</div>
+</div>
 </div>
 
     <script type="text/javascript">

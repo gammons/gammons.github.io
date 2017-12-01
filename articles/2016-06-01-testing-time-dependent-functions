@@ -5,14 +5,14 @@
 <p>But you have to ask yourself, is this the best way to test time-dependent code?  By mocking a global variable?</p>
 
 <p>Consider the following (very contrived) function:</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">WeekLibrary</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">WeekLibrary</span>
   <span class="k">def</span> <span class="nf">is_weekday?</span>
     <span class="o">!</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">].</span><span class="nf">include?</span><span class="p">(</span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">.</span><span class="nf">wday</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>The above function, while easy to reason about, is actually very hard to test.  If I were to test this I&rsquo;d probably do something like this:</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s2">"minitest/autorun"</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s2">"minitest/autorun"</span>
 <span class="nb">require</span> <span class="s2">"timecop"</span>
 
 <span class="k">class</span> <span class="nc">TestWeekLibrary</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
@@ -39,22 +39,22 @@
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>The main issue here is that I must mock the <code>Time</code> and <code>Date</code> classes in order to test my function.  The reason is because my function is fully dependent on today&rsquo;s date.   It is a hard dependency on a global state (in this case <code>Date.today</code>).  The output of my function will change based upon the day I run my test!  So I <em>must</em> mock <code>Date.today</code>.  Right?  Right!?</p>
 
 <p>Well, maybe not!  If we treat today&rsquo;s date as a <em>dependency</em> then we can always <em>reverse</em> that dependency with good ol&rsquo; <a href="http://martinfowler.com/articles/dipInTheWild.html" rel="nofollow">dependency injection</a>.  In this case, if we <em>inject</em> the date rather than depending on it, then the function instantly becomes much more testable:</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">WeekLibrary</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">WeekLibrary</span>
   <span class="k">def</span> <span class="nf">is_weekday?</span><span class="p">(</span><span class="n">day</span> <span class="o">=</span> <span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">)</span>
     <span class="o">!</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">].</span><span class="nf">include?</span><span class="p">(</span><span class="n">day</span><span class="p">.</span><span class="nf">wday</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>Well huh, so the default here is still today&rsquo;s date, which is great for the usability of my class&rsquo;s API. But I can also <em>inject</em> a specific date, which is great for testing purposes. This completely eliminates the need for Timecop, <code>travel_to</code>, or what have you.</p>
 
 <p>Another positive side effect is that my function is now much more generic.  Now, <code>is_weekday</code> will tell me if <em>any</em> date is a weekday, rather than <em>today&rsquo;s</em> date.  It has much more utility.</p>
 
 <p>The tests are also much simpler. We have no need for a monkeypatching time library or any time traveling boilerplate:</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s2">"minitest/autorun"</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s2">"minitest/autorun"</span>
 
 <span class="k">class</span> <span class="nc">TestWeekLibrary</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
   <span class="k">def</span> <span class="nf">test_is_weekday_when_weekday</span>
@@ -76,7 +76,7 @@
   <span class="k">end</span>
 <span class="k">end</span>
 
-</code></pre>
+</code></pre></div>
 <p>So what&rsquo;s the TLDR?</p>
 
 <p><strong>1. Functions that require comparisons to today&rsquo;s date are <em>dependent</em> on time.</strong></p>

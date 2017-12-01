@@ -39,54 +39,55 @@
 
   
     <div class='me-header-small'>
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-  
-      </button>
-        <a class="navbar-brand" href="/">
-          Grant Ammons
-        </a>
-  
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="/">
-              Home
-            </a>
-          </li>
-          <li class="">
-            <a href="/about">
-              About
-            </a>
-          </li>
-          <li class="">
-            <a href="/blog">Blog</a>
-          </li>
-          <li class="">
-            <a href="/portfolio">Portfolio</a>
-          </li>
-          <li class="">
-            <a href="/talks">Talks</a>
-          </li>
-          <li class="">
-            <a href="/contact">
-              <i class="fa fa-envelope"></i>
-              Contact me
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-12 logo centered'>
-        <img class='img-responsive desktop-logo' src='/images/me.png'>
-      </div>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+
+    </button>
+      <a class="navbar-brand" href="/">
+        Grant Ammons
+      </a>
+
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/">
+            Home
+          </a>
+        </li>
+        <li class="">
+          <a href="/about">
+            About
+          </a>
+        </li>
+        <li class="">
+          <a href="/blog">Blog</a>
+        </li>
+        <li class="">
+          <a href="/portfolio">Portfolio</a>
+        </li>
+        <li class="">
+          <a href="/talks">Talks</a>
+        </li>
+        <li class="">
+          <a href="/contact">
+            <i class="fa fa-envelope"></i>
+            Contact me
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
+</nav>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-12 logo centered'>
+<img class='img-responsive desktop-logo' src='/images/me.png'>
+</div>
+</div>
+</div>
 </div>
 
     <div class="container main-container">
@@ -138,7 +139,7 @@ process happening in your system.</p>
 <p>Ok fine then, that logic should go in the controller!  Maybe that makes sense!</p>
 
 <p>Let&rsquo;s implement the above use case.</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">LeadsController</span> <span class="o">&lt;</span> <span class="no">ActionController</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">LeadsController</span> <span class="o">&lt;</span> <span class="no">ActionController</span>
   <span class="k">def</span> <span class="nf">convert</span>
     <span class="vi">@lead</span> <span class="o">=</span> <span class="no">Lead</span><span class="p">.</span><span class="nf">find</span> <span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">]</span>
     <span class="vi">@lead_source</span> <span class="o">=</span> <span class="vi">@lead</span><span class="p">.</span><span class="nf">lead_source</span>
@@ -147,10 +148,10 @@ process happening in your system.</p>
     <span class="vi">@lead</span><span class="p">.</span><span class="nf">update_attribute</span><span class="p">(</span><span class="ss">deal_id: </span><span class="vi">@deal</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
     <span class="no">UserMailer</span><span class="p">.</span><span class="nf">lead_converted_email</span><span class="p">(</span><span class="vi">@lead</span><span class="p">,</span> <span class="vi">@deal</span><span class="p">).</span><span class="nf">deliver</span> <span class="k">if</span> <span class="vi">@lead_source</span><span class="p">.</span><span class="nf">value</span><span class="p">.</span><span class="nf">present?</span>
 
-    <span class="n">respond_to</span> <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
-  <span class="nf">end</span>
+    <span class="n">respond_to</span> <span class="o">...</span>
+  <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>Now you could argue that this is fine.  All of the logic is encapsulated into the controller.  However everyone knows that <a href="http://weblog.jamisbuck.org/2006/10/18/skinny-controller-fat-model" rel="nofollow">you should keep your controllers
 skinny</a>.</p>
 
@@ -158,7 +159,7 @@ skinny</a>.</p>
 
 <p>A good alternative is a <a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/" rel="nofollow">service object</a> whose job is solely to perform the convert
 action.</p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">ConvertLead</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">ConvertLead</span>
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">lead</span><span class="p">,</span> <span class="n">lead_source</span><span class="p">)</span>
     <span class="vi">@lead</span><span class="p">,</span> <span class="vi">@lead_source</span> <span class="o">=</span> <span class="n">lead</span><span class="p">,</span> <span class="n">lead_source</span>
   <span class="k">end</span>
@@ -173,21 +174,21 @@ action.</p>
   <span class="kp">private</span>
 
   <span class="k">def</span> <span class="nf">send_lead_converted_email</span>
-    <span class="no">UserMailer</span><span class="p">.</span><span class="nf">.</span><span class="p">.</span><span class="nf">.</span><span class="n">deliver</span>
+    <span class="no">UserMailer</span><span class="o">...</span><span class="p">.</span><span class="nf">deliver</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>Since we have extracted this logic outside of rails, we can <em>test it in isolation</em>, which means we can <strong>test it fast</strong>, which brings me to my next point:</p>
 
 <h4>3.  Your tests are slow, and you are testing your database too much</h4>
 
 <p>If you have tests that are reliant on the state of your database, that is a sign that you are not testing business logic, you are testing your database.</p>
-<pre class="highlight plaintext"><code>expect { Deal.convert! }.to change { Lead.count }.by(1)
-</code></pre>
+<div class="highlight"><pre class="highlight plaintext"><code>expect { Deal.convert! }.to change { Lead.count }.by(1)
+</code></pre></div>
 <p>Trust me, <strong>your database works</strong>.  It will happily persist objects all the live long day.  It should <em>not</em> be used as an intermediary to testing your business logic.</p>
 
 <p>Going back to our example with the controller, testing that is a much easier process.  All we need to do is assert that we have handed control to our service object:</p>
-<pre class="highlight ruby"><code><span class="n">describe</span> <span class="no">LeadsController</span><span class="p">,</span> <span class="s2">"#convert"</span> <span class="k">do</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">describe</span> <span class="no">LeadsController</span><span class="p">,</span> <span class="s2">"#convert"</span> <span class="k">do</span>
   <span class="n">it</span> <span class="s2">"hands control to our service object"</span> <span class="k">do</span>
     <span class="n">convert_lead</span> <span class="o">=</span> <span class="n">stub</span>
     <span class="n">convert_lead</span><span class="p">.</span><span class="nf">should_receive</span><span class="p">(</span><span class="ss">:convert_lead!</span><span class="p">)</span>
@@ -195,7 +196,7 @@ action.</p>
     <span class="n">put</span> <span class="ss">:convert</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>All we need to assert is that the message got there, with the correct args.  <code>ConvertLead</code> is tested in isolation, outside of Rails.</p>
 
 <h4>Resources that can help</h4>
@@ -251,29 +252,29 @@ application architecture.  They claim fast tests, and the ability to switch from
 
 
               <div class='row'>
-  <div class='col-md-8 col-md-offset-2'>
-    <script async id="_ck_122715" src="https://forms.convertkit.com/122715?v=6"></script>
-  </div>
+<div class='col-md-8 col-md-offset-2'>
+<script async id="_ck_122715" src="https://forms.convertkit.com/122715?v=6"></script>
+</div>
 </div>
 
               <div class='middle-line'>
-  <h2 class='share-article'>
-    <span>
-      <a href='https://www.facebook.com/sharer/sharer.php?u=http://grantammons.me/2013/12/23/resources-to-help-guide-architectural-decisions/' target='_blank'>
-        <i class='fa fa-facebook'></i>
-      </a>
-      <a href='https://twitter.com/intent/tweet?text=Resources to help guide architectural decisions in Rails apps by @gammons&amp;amp;url=http://grantammons.me/2013/12/23/resources-to-help-guide-architectural-decisions/' target='_blank'>
-        <i class='fa fa-twitter'></i>
-      </a>
-      <a href='https://plus.google.com/share?url=http://grantammons.me/2013/12/23/resources-to-help-guide-architectural-decisions/' target='_blank'>
-        <i class='fa fa-google-plus'></i>
-      </a>
-    </span>
-  </h2>
+<h2 class='share-article'>
+<span>
+<a href='https://www.facebook.com/sharer/sharer.php?u=http://grantammons.me/2013/12/23/resources-to-help-guide-architectural-decisions/' target='_blank'>
+<i class='fa fa-facebook'></i>
+</a>
+<a href='https://twitter.com/intent/tweet?text=Resources to help guide architectural decisions in Rails apps by @gammons&amp;amp;url=http://grantammons.me/2013/12/23/resources-to-help-guide-architectural-decisions/' target='_blank'>
+<i class='fa fa-twitter'></i>
+</a>
+<a href='https://plus.google.com/share?url=http://grantammons.me/2013/12/23/resources-to-help-guide-architectural-decisions/' target='_blank'>
+<i class='fa fa-google-plus'></i>
+</a>
+</span>
+</h2>
 </div>
 
               <div class='disqusbox'>
-  <div id='disqus_thread'></div>
+<div id='disqus_thread'></div>
 </div>
 <script>
   var disqus_shortname = "theblogofgrantammons";
@@ -296,31 +297,31 @@ application architecture.  They claim fast tests, and the ability to switch from
       </div>
     </div>
     <div class='footer'>
-  <div class='container'>
-    <div class='col-md-12'>
-      <ul class='list-inline bottom-nav'>
-        <li>
-          <a href='/about'>About</a>
-        </li>
-        <li>
-          <a href='/blog'>Blog</a>
-        </li>
-        <li>
-          <a href='/portfolio'>Portfolio</a>
-        </li>
-        <li>
-          <a href='/talks'>Talks</a>
-        </li>
-        <li>
-          <a href='/contact'>
-            <i class='fa fa-envelope'></i>
-            Contact me
-          </a>
-        </li>
-      </ul>
-      &copy; 2017 Grant Ammons
-    </div>
-  </div>
+<div class='container'>
+<div class='col-md-12'>
+<ul class='list-inline bottom-nav'>
+<li>
+<a href='/about'>About</a>
+</li>
+<li>
+<a href='/blog'>Blog</a>
+</li>
+<li>
+<a href='/portfolio'>Portfolio</a>
+</li>
+<li>
+<a href='/talks'>Talks</a>
+</li>
+<li>
+<a href='/contact'>
+<i class='fa fa-envelope'></i>
+Contact me
+</a>
+</li>
+</ul>
+&copy; 2017 Grant Ammons
+</div>
+</div>
 </div>
 
     <script type="text/javascript">
