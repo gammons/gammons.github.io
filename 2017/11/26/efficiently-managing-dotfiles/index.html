@@ -139,16 +139,15 @@ lrwxrwxrwx 1 grant grant 26 Oct 17 15:17 .vimrc -&gt; /home/grant/dotfiles/vimrc
 
 <h2>Secret management</h2>
 
-<p>&ldquo;But how do I keep mah secretz secret?&rdquo; Great question!  Once you start really getting into storing, managing, and curating your dotfiles, it&rsquo;s inevitable that you&rsquo;ll need to store some sort of secret information there.  In this case, we can lift a concept from Heroku&rsquo;s <a href="https://12factor.net/" rel="nofollow">12-factor app</a> concept, and store sensitive info in <a href="https://12factor.net/config" rel="nofollow">environment variables</a>.</p>
+<p>Originally, I was recommending a solution based on keeping secrets stored in a <code>~/.secrets</code> file with the secrets stored as environment variables.  This emulates Heroku&rsquo;s <a href="https://12factor.net" rel="nofollow">12-factor approach</a>.  However, after talking with colleagues, this approach is not ideal for a desktop environment, and here&rsquo;s why:</p>
 
-<p>I create a <code>~/.secrets</code> file, which exports keys and other secret info as environment variables.</p>
-<div class="highlight"><pre class="highlight shell"><code><span class="nb">export </span><span class="nv">AWS_ACCESS_KEY</span><span class="o">=</span>ABCD1234
-<span class="nb">export </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>ABCD1234ABCD1234
-</code></pre></div>
-<p>Then, at the bottom of my <code>~/.zshrc</code> file, I have the line:</p>
-<div class="highlight"><pre class="highlight plaintext"><code>source ~/.secrets
-</code></pre></div>
-<p>This will load my environment variables into my session, which I can then reference in other files.  The secrets are secure, and you don&rsquo;t need to worry about checking in sensitive info to your repo!</p>
+<ol>
+<li>You now have a plaintext file on your hard drive that is storing sensitive information.  There are tools for handling sensitive info, so use them!</li>
+<li>Crash reports that get shipped off usually include environment variables.  You don&rsquo;t have control over where your secrets go.</li>
+<li>On a desktop machine, processes can easily spawn many sub-processes, each of which now has access to sensitive environment variables.</li>
+</ol>
+
+<p>A good alternative is to Use a password store like <code>pass</code> or <code>lpass</code> and store sensitive info as a note.  You can write a quick script to decrypt and use in an environment variable as needed.  It explicitly limits the scope of how far sensitive information can travel, and it keeps this info behind your passphrase.</p>
 
 <h2>Using a curated set of base dotfiles</h2>
 
@@ -165,7 +164,7 @@ lrwxrwxrwx 1 grant grant 26 Oct 17 15:17 .vimrc -&gt; /home/grant/dotfiles/vimrc
 
 <h2>Dotfiles and the Perfect Linux Desktop™</h2>
 
-<p>Dotfile management becomes even more important if you&rsquo;re crafting together a linux desktop experience.  I am personally running <a href="https://i3wm.org/" rel="nofollow">i3wm</a>.  All of i3&rsquo;s config is in a single file, stored in <code>~/.config/i3/config</code>.  Many users of i3 also use a nice bar called <a href="https://github.com/jaagr/polybar" rel="nofollow">Polybar</a> which stores its config in <code>~/.config/polybar/config</code>. (See the pattern yet).  There&rsquo;s also keyboard/mouse settings, dunst (a minimal notification manager), and others!  Basically, your whole desktop configuration comes under the umbrella of dotfiles.  Therefore, managing your dotfiles effectively becomes crucial to having a good experience.</p>
+<p>Dotfile management becomes even more important if you&rsquo;re crafting together a linux desktop experience.  I am personally running <a href="https://i3wm.org/" rel="nofollow">i3wm</a>.  All of i3&rsquo;s config is in a single file, stored in <code>~/.config/i3/config</code>.  Many users of i3 also use a nice bar called <a href="https://github.com/jaagr/polybar" rel="nofollow">Polybar</a> which stores its config in <code>~/.config/polybar/config</code>. (See the pattern yet?).  There&rsquo;s also keyboard/mouse settings, dunst (a minimal notification manager), and others!  Basically, your whole desktop configuration comes under the umbrella of dotfiles.  Therefore, managing your dotfiles effectively becomes crucial to having a good experience.</p>
 
 <p>I am running i3 on a laptop and a desktop machine, and each have slightly different configs.  For <a href="https://github.com/gammons/dotfiles-local" rel="nofollow">my own dotfiles</a>, I keep 2 different branches for each config (<code>master</code> and <code>laptop</code> in this case).</p>
 
@@ -188,6 +187,40 @@ lrwxrwxrwx 1 grant grant 26 Oct 17 15:17 .vimrc -&gt; /home/grant/dotfiles/vimrc
 
 <p>I hope after reading this, you&rsquo;re excited to experiment, curate, and move your dotfiles to the next level!</p>
 
+
+              <div class='middle-line'>
+<h2 class='share-article'>
+<span>
+<a href='https://www.facebook.com/sharer/sharer.php?u=http://grantammons.me/2017/11/26/efficiently-managing-dotfiles/' target='_blank'>
+<i class='fa fa-facebook'></i>
+</a>
+<a href='https://twitter.com/intent/tweet?text=How to efficiently manage your dotfiles by @gammons&amp;amp;url=http://grantammons.me/2017/11/26/efficiently-managing-dotfiles/' target='_blank'>
+<i class='fa fa-twitter'></i>
+</a>
+<a href='https://plus.google.com/share?url=http://grantammons.me/2017/11/26/efficiently-managing-dotfiles/' target='_blank'>
+<i class='fa fa-google-plus'></i>
+</a>
+</span>
+</h2>
+</div>
+
+              <div class='disqusbox'>
+<div id='disqus_thread'></div>
+</div>
+<script>
+  var disqus_shortname = "theblogofgrantammons";
+  var disqus_url = "http://grantammons.me/2017/11/26/efficiently-managing-dotfiles/";
+  var disqus_identifier = "articles/2017-11-26-efficiently-managing-dotfiles.html";
+  
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
 
 
           </div>
