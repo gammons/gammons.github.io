@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta name="google-site-verification" content="Su9DAzyh4kqIZRj1EP_bybJM0q_NdYemm_ekm32s7F8" />
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Grant Ammons - Using OKRs with Your Engineering Team</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Arimo:400,700|Roboto:300,300i,500,500i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" /><link href="/stylesheets/syntax.css" rel="stylesheet" />
+    <script src="/javascripts/all.js"></script>
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+  </head>
+
+  
+    <div class='me-header-small'>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+
+    </button>
+      <a class="navbar-brand" href="/">
+        Grant Ammons
+      </a>
+
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/">
+            Home
+          </a>
+        </li>
+        <li class="">
+          <a href="/about">
+            About
+          </a>
+        </li>
+        <li class="">
+          <a href="/blog">Blog</a>
+        </li>
+        <li class="">
+          <a href="/portfolio">Portfolio</a>
+        </li>
+        <li class="">
+          <a href="/talks">Talks</a>
+        </li>
+        <li class="">
+          <a href="/contact">
+            <i class="fa fa-envelope"></i>
+            Contact me
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-12 logo centered'>
+<img class='img-responsive desktop-logo' src='/images/me.png'>
+</div>
+</div>
+</div>
+</div>
+
+    <div class="container main-container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="title">Using OKRs with Your Engineering Team</h1>
+          <div class="page">
+            <p><img src="/images/goals.jpg" alt="Goals" /></p>
+
+<p>OKRs are a fantastic tool for aligning your Engineering team against common goals.  At PipelineDeals, we use OKRs at a teamwide level to hit the following objectives:</p>
+
+<ul>
+<li>Exercising and enhancing our Engineering cultural goals</li>
+<li>Exploring new tech</li>
+<li>Executing on any company-wide goals that can be cascaded down to us.</li>
+</ul>
+
+<p>If you&rsquo;re the manager of an engineering team, you might find teamwide OKRs a great way to focus on what it means to be a team.</p>
+
+<h2>The TL;DR on OKRs</h2>
+
+<p><a href="http://en.wikipedia.org/wiki/OKR" rel="nofollow">OKR</a> stands for <em>objectives</em> and <em>key results</em>.</p>
+
+<p>The <em>objective</em> is the high level goal or achievement to work toward.  It should feel ambitious and slightly uncomfortable.  It will be a <em>stretch</em> to get there.</p>
+
+<p>An example:</p>
+
+<p><strong>Objective: Improve our company&rsquo;s technical brand.</strong></p>
+
+<p>The objective itself is qualitative in nature.  It could be something company-wide.  A football team might have an objective of &ldquo;win the Super Bowl&rdquo;.</p>
+
+<p>The <em>key results</em> are the <a href="http://hrweb.mit.edu/performance-development/goal-setting-developmental-planning/smart-goals" rel="nofollow">SMART</a>, quantifiable evidence that the objective was achieved.  For each objective, identify 3 to 5 ways that you will measure your progress towards achievement.   For the objective above, some key results might be</p>
+
+<ul>
+<li><em>Key result:</em>  20 blog posts written this quarter, achieving 100 unique visits in the first week of publishing</li>
+<li><em>Key result:</em>  8 meetups attended this quarter, with 10 business cards exchanged for each meetup</li>
+<li><em>Key result:</em>  4 speaking engagements this quarter</li>
+</ul>
+
+<p>OKRs are meant to be stretch goals.  You should look at the list of key results and think, &ldquo;wow, this is going to be really difficult to hit all these!&rdquo;  If you feel that way, then your OKRs are probably at the correct difficulty level.</p>
+
+<p>In fact, you&rsquo;re not supposed to meet all of the key results.  If you <em>do</em> meet all of them, then that means they were a little too easy, and next time around you should make them a bit harder.</p>
+
+<blockquote>
+<p>Strive to achieve about 70% of the key results.</p>
+</blockquote>
+
+<h3>Timeboxing and evaluating</h3>
+
+<p>You should define your team&rsquo;s OKRs with a specific time frame in mind.  Quarterly is a good start, but you can even define weekly OKRs for more fine-grained goals.</p>
+
+<p>At the end of the period, do a retrospective on the goals you hit and missed, and give a score for each.</p>
+
+<p>You&rsquo;ll want to evaluate progress towards your OKRs at a regular interval. At PipelineDeals we have weekly checkins as a team, to ensure we&rsquo;re making progress towards our goals.</p>
+
+<h3>Key results != Tasks</h3>
+
+<p>It&rsquo;s important to keep in mind that key results are not tasks that need to be performed.  Key results are the things that happen <em>after</em> those tasks are performed.</p>
+
+<p>Because Key results are not tasks, keep a list of tasks that need to be accomplished in order to see the key results.</p>
+
+<blockquote>
+<p>Key results are <em>not</em> tasks.  They are something that happened because of tasks you accomplished against the objective.</p>
+</blockquote>
+
+<p>Examples:</p>
+
+<p><strong>Objective</strong>: Increase engineering velocity</p>
+
+<p><strong>Key results</strong>:</p>
+
+<ul>
+<li>3 new engineering hires this quarter</li>
+<li>Inflow of 10 candidate resumes incoming / week</li>
+<li>4 blog posts published around our engineering team and culture</li>
+</ul>
+
+<p><strong>Tasks</strong>:</p>
+
+<ul>
+<li>List job posting on SO careers, Github jobs, and weworkremotely</li>
+<li>Finish hiring process and have all team leads agree to it</li>
+<li>Identify 3-4 3rd party rails shops</li>
+</ul>
+
+<blockquote>
+<p>Because key results are not tasks, list and identify any tasks that need to be one outside of the key results list.</p>
+</blockquote>
+
+<p>Key results need to be carefully considered, because you need to be able to measure them.  If you cannot measure your key results, it will be very hard to track them going forward.</p>
+
+<h2>OKRs for the PipelineDeals engineering team</h2>
+
+<p>At PipelineDeals, we use team-level OKRs to explore new tech, enhance our cultural goals, as well as execute on any company-wide goals that have cascaded down to the team.</p>
+
+<h3>Exploring new tech</h3>
+
+<p>Team OKRs are a great way to start exploring new tech, and making informed decisions about where to steer the ship, from a technical perspective.</p>
+
+<p><strong>Objective</strong>: We need our frontend to be faster, easier to maintain, and less buggy</p>
+
+<ul>
+<li>Key result:  1 javascript framework identified and agreed upon, with all member of the team achieving a high level of comfort with the framework</li>
+<li>Key result:  Achieve 20% frontend unit test coverage</li>
+</ul>
+
+<p><strong>Tasks</strong>:</p>
+
+<ul>
+<li>Spike out list view functionality in Ember, Angular, and React</li>
+<li>Host 3 lunch and learn deep dive meetings to discuss each framework and approach, identifying positives, pitfalls, and gotchas</li>
+</ul>
+
+<h3>Defining your engineering culture</h3>
+
+<p>Team OKRs are also a fantastic tool to help define and keep focus on your cultural goals as an engineering team.  At PipelineDeals, we strive to have our engineers reach out to the community and teach, as well as learn.  Beacuse of that, have an ongoing objective:</p>
+
+<p><strong>Objective</strong>: Make PipelineDeals a force within the tech community</p>
+
+<ul>
+<li>Key result: 8 meetups attended, with 10 business cards gathered per meetup</li>
+<li>Key result: 4 conferences spoken at</li>
+<li>Key result: 20 blog posts written achieving at least 200 views and 5 likes in the first week</li>
+</ul>
+
+<p>Each quarter, we think of new objectives for the team.  These objectives are relevant to where we are at currently.  For instance, at the moment we are taking a hard look at front end.  So, one of the objectives for next quarter might be the following:</p>
+
+<p>Team-level OKRs are a great place to also put your cultural objectives as well.  If you want your team to be a pillar of the tech community, then placing team-wide objectives on learning, community and culture all belong at this level.</p>
+
+<blockquote>
+<p>Use team-level OKRs to define your cultural goals, e.g. the &ldquo;What we do here&rdquo;.</p>
+</blockquote>
+
+<h3>Hitting cascading company-wide objectives</h3>
+
+<p>If there are company-wide OKRs that are applicable to the Engineering team, we will ensure those KRs become Os for our team.  </p>
+
+<p>As an example:</p>
+
+<p><strong>Objective</strong>:  Boost revenue this quarter.</p>
+
+<ul>
+<li>Key result: Triggers &amp; Automation project shipped, achieving 30% pen rate</li>
+<li>Key result: New marketing site shipped showing off all features for </li>
+<li>Key result: Churn rate down from 1.2% to 0.8%.</li>
+</ul>
+
+<p>The one key result that is very relevant to Engineering is the first one, so that would become an objective for our team:</p>
+
+<p><strong>Objective</strong>:  Ship the Triggers &amp; Automation project in early April</p>
+
+<ul>
+<li>Key result: All 6 automation types coded and tested, with 100% test coverage</li>
+<li>Key result: Webhooks functionality 80% completed by automation ship date</li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>OKRs are a fantastic way of aligning your team to shared, timely goals, provided they are used effectively.  When setting up new OKRs for your team, care must be taken to ensure that you do not mix tasks with key results.  Key results should be measurable, timeboxed, and quantifiable. </p>
+
+<p>You can use teamwide goals for a variety of purposes that help further the shared goals of your team.  These can be cultural goals, goals for exploring new tech, or sprinting towards a major project deadline.</p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://blog.pusher.com/okrs-implementation-challenges/" rel="nofollow">https://blog.pusher.com/okrs-implementation-challenges/</a></li>
+<li><a href="http://firstround.com/review/How-to-Make-OKRs-Actually-Work-at-Your-Startup/" rel="nofollow">http://firstround.com/review/How-to-Make-OKRs-Actually-Work-at-Your-Startup/</a></li>
+<li><a href="https://info.7geese.com/hubfs/Final%20Ebooks/okrs-for-companies.pdf?t=1531172309786&amp;utm_campaign=OKR%20E-Book&amp;utm_source=hs_automation&amp;utm_medium=email&amp;utm_content=26223402&amp;_hsenc=p2ANqtz-8TA7lyVfji7X9uEseKVz1mHr0Ru4jELVUtzDhBoxd33q8cN0jEQ4XHFMDo1eVl4mDdhQcojhG8AZVhD14FTCHAtEOAQw&amp;_hsmi=26223402" rel="nofollow">7geese PDF about OKRs</a></li>
+</ul>
+
+
+              <div class='middle-line'>
+<h2 class='share-article'>
+<span>
+<a href='https://www.facebook.com/sharer/sharer.php?u=http://grantammons.me/2016/05/23/okrs-at-pipelinedeals/' target='_blank'>
+<i class='fa fa-facebook'></i>
+</a>
+<a href='https://twitter.com/intent/tweet?text=Using OKRs with Your Engineering Team by @gammons&amp;amp;url=http://grantammons.me/2016/05/23/okrs-at-pipelinedeals/' target='_blank'>
+<i class='fa fa-twitter'></i>
+</a>
+<a href='https://plus.google.com/share?url=http://grantammons.me/2016/05/23/okrs-at-pipelinedeals/' target='_blank'>
+<i class='fa fa-google-plus'></i>
+</a>
+</span>
+</h2>
+</div>
+
+              <div class='disqusbox'>
+<div id='disqus_thread'></div>
+</div>
+<script>
+  var disqus_shortname = "theblogofgrantammons";
+  var disqus_url = "http://grantammons.me/2016/05/23/okrs-at-pipelinedeals/";
+  var disqus_identifier = "articles/2016-05-23-okrs-at-pipelinedeals.html";
+  
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='footer'>
+<div class='container'>
+<div class='col-md-12'>
+<ul class='list-inline bottom-nav'>
+<li>
+<a href='/about'>About</a>
+</li>
+<li>
+<a href='/blog'>Blog</a>
+</li>
+<li>
+<a href='/portfolio'>Portfolio</a>
+</li>
+<li>
+<a href='/talks'>Talks</a>
+</li>
+<li>
+<a href='/contact'>
+<i class='fa fa-envelope'></i>
+Contact me
+</a>
+</li>
+</ul>
+&copy; 2018 Grant Ammons
+</div>
+</div>
+</div>
+
+    <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37191428-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>
