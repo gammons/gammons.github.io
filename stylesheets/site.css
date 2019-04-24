@@ -389,20 +389,19 @@ textarea {
   .me-header-small h1.name-boss {
     font-size: 50px;
     margin: 0; }
-
   .me-header-small {
     margin-bottom: 80px;
     padding-bottom: 30px; }
-
   .me-header-small .logo {
     margin: 0px auto 0 auto; } }
+
 @media (min-width: 768px) {
   .me-header-small h1.name-boss {
     font-size: 100px;
     margin: 30px 0 0 0; }
-
   .me-header-small .logo {
     margin: 60px auto 0 auto; } }
+
 .navbar {
   border: none;
   color: #fff;
@@ -526,6 +525,7 @@ input:focus:invalid {
 @media (max-width: 768px) {
   .arrows {
     display: none; } }
+
 @media (min-width: 768px) {
   .arrows {
     top: 180px;
@@ -535,14 +535,12 @@ input:focus:invalid {
     left: 50%;
     margin-left: -30px;
     bottom: 20px; }
-
   .arrows path {
     stroke: #2994D1;
     fill: transparent;
     stroke-width: 1px;
     animation: arrow 2s infinite;
     -webkit-animation: arrow 2s infinite; }
-
   @keyframes arrow {
     0% {
       opacity: 0; }
@@ -565,16 +563,15 @@ input:focus:invalid {
     animation-delay: -1s;
     -webkit-animation-delay: -1s;
     /* Safari 和 Chrome */ }
-
   .arrows path.a2 {
     animation-delay: -0.5s;
     -webkit-animation-delay: -0.5s;
     /* Safari 和 Chrome */ }
-
   .arrows path.a3 {
     animation-delay: 0s;
     -webkit-animation-delay: 0s;
     /* Safari 和 Chrome */ } }
+
 .me-header {
   color: #eee;
   background: url(../images/mountain.jpg) no-repeat center center;
@@ -587,23 +584,21 @@ input:focus:invalid {
   .me-header h1.name-boss {
     font-size: 50px;
     margin: 0; }
-
   .me-header {
     margin-bottom: 10px;
     padding-bottom: 30px; }
-
   .me-header .logo {
     margin: 0px auto 0 auto; } }
+
 @media (min-width: 768px) {
   .me-header h1.name-boss {
     font-size: 100px;
     margin: 30px 0 0 0; }
-
   .me-header {
     min-height: 685px; }
-
   .me-header .logo {
     margin: 50px auto 0 auto; } }
+
 .me-header strong {
   font-weight: 100; }
 
@@ -649,13 +644,14 @@ pre {
 @media (min-width: 768px) {
   .main-container {
     min-height: calc(100vh - 446px); }
-
   .cp_embed_wrapper {
     margin-left: 5%;
     margin-right: 5%; } }
+
 @media (max-width: 768px) {
   .main-container {
     min-height: calc(100vh - 388px); } }
+
 .main-container p {
   margin-top: 15px;
   margin-bottom: 15px; }
